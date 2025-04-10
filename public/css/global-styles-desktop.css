@@ -1,0 +1,159 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-size: 16px;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    background-color: #D3D9D4;
+
+}
+
+/* Navbar Styles */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    background: #003153;
+}
+
+#title {
+    font-family: "Bungee Tint", sans-serif;
+    font-size: 2.5rem; /* 40px */
+    font-weight: bold;
+}
+
+#nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem; /* 16px */
+}
+
+#nav-links a {
+    padding: 0.5rem 0.75rem; /* 8px 12px */
+    border-radius: 0.5rem; /* 8px */
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#user {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 110.5rem;
+    right: 0;
+    padding: 0;
+    max-width: 2rem; /* 32px */
+    max-height: 2rem; /* 32px */
+}
+
+#cart {
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 116rem;
+    right: 0;
+    padding: 0;
+    max-width: 2rem; /* 32px */
+    max-height: 2rem; /* 32px */
+}
+
+#nav-links a:hover {
+    background-color: #749D92;
+}
+
+#nav-links li {
+    position: relative;
+}
+
+#nav-links li:hover #projects {
+    display: block;
+}
+
+#nav-links li::after {
+    content: "";
+    position: absolute;
+    top: 100%;         
+    left: 0;
+    width: 100%;
+    height: 2rem;       
+    pointer-events: auto;
+}
+
+#projects {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 16%);
+    z-index: 1000;
+    padding: 0;
+    list-style: none;
+    background: #003153;
+    border-radius: 0.5rem;
+}
+
+#projects li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+    text-align: center;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#projects li a:hover {
+    background-color: #749D92;
+}
+
+/* Footer Styles */
+#footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    margin: auto;
+    background-color: #003153;
+    color: white;
+    font-weight: 600;
+}
+
+.social-media img {
+    margin-left: 1.875rem; /* 30px */
+    max-width: 2rem; /* 32px */
+    max-height: 2rem; /* 32px */
+}
+
+#X {
+    margin-top: 0.1875rem; /* 3px */
+}
+
+#instagram {
+    margin-top: 0.1875rem; /* 3px */
+}
+
+#discord {
+    margin-bottom: 0.1875rem; /* 3px */
+}

@@ -1,0 +1,15 @@
+/* Content Styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3.5rem;
+}
