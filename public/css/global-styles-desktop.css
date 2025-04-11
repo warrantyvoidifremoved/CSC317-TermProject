@@ -69,7 +69,7 @@ body {
     position: relative;
 }
 
-#nav-links li:hover #projects {
+#nav-links li:hover #nav-products {
     display: block;
 }
 
@@ -83,12 +83,12 @@ body {
     pointer-events: auto;
 }
 
-#projects {
+#nav-products {
     display: none;
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, 16%);
+    transform: translate(-50%, 21%);
     z-index: 1000;
     padding: 0;
     list-style: none;
@@ -96,7 +96,7 @@ body {
     border-radius: 0.5rem;
 }
 
-#projects li a {
+#nav-products li a {
     display: block;
     color: white;
     text-decoration: none;
@@ -105,7 +105,7 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
-#projects li a:hover {
+#nav-products li a:hover {
     background-color: #749D92;
 }
 
