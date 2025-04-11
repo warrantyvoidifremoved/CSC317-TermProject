@@ -54,28 +54,9 @@ body {
     transition: background-color 0.3s ease-in-out;
 }
 
-#user {
-    display: block;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 110.5rem;
-    right: 0;
-    padding: 0;
-    max-width: 2rem; /* 32px */
-    max-height: 2rem; /* 32px */
-}
-
-#cart {
-    display: block;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 116rem;
-    right: 0;
-    padding: 0;
+.nav-img {
+    display: inline-block;
+    vertical-align: middle;
     max-width: 2rem; /* 32px */
     max-height: 2rem; /* 32px */
 }
