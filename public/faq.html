@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>FAQ | Rocks!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global-styles-desktop.css">
+    <link rel="stylesheet" href="css/faq-styles-desktop.css">
+    <!-- <link rel="icon" type="image/x-icon" href="/images/favicon.webp"> -->
+    <script src="/js/faq.js" defer></script>
+</head>
+
+<body>
+    <nav id="navbar">
+    <div id="title">Rocks!</div>
+
+    <ul id="nav-links">
+        <li>
+            <a href="/">Products ▾</a>
+            <ul id="nav-products">
+                <li><a href="/igneous.html">Igneous</a></li>
+                <li><a href="/sedimentary.html">Sedimentary</a></li>
+                <li><a href="/metamorphic.html">Metamorphic</a></li>
+            </ul>
+        </li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
+        <li>
+            <img class="nav-img" src="/images/user.webp" alt="User Profile">
+            <ul id="profile-options">
+                <li><a href="/user.html">Profile</a></li>
+                <li><a href="/signup.html">Sign Up</a></li>
+                <li><a href="/login.html">Log in</a></li>
+            </ul>
+        </li>
+        <li><a href="/cart.html"><img class="nav-img" src="/images/shopping-cart.webp" alt="Shopping Cart"></a></li>
+    </ul>
+</nav>
+
+
+    <main>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our products, shipping, and more</p>
+        </div>
+
+        <!-- FAQ Content Section -->
+        <div id="faqContainer">
+            <!-- FAQ Categories -->
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All Questions</button>
+                <button class="category-btn" data-category="products">Products</button>
+                <button class="category-btn" data-category="orders">Orders & Shipping</button>
+                <button class="category-btn" data-category="returns">Returns & Refunds</button>
+                <button class="category-btn" data-category="account">Account & Payment</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="faq-search">
+                <input type="text" placeholder="Search FAQs...">
+                <button type="submit" class="search-btn">Search</button>
+            </div>
+
+            <!-- FAQ Questions and Answers -->
+            <div class="faq-list">
+                <!-- Products -->
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <h3>What types of rocks do you sell?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a wide variety of rock specimens across three main categories: igneous, sedimentary, and metamorphic. Our collection includes everything from common specimens perfect for beginners to rare and exotic specimens for serious collectors. Each specimen comes with detailed information about its geological formation, composition, and origin.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <h3>Are your specimens natural or treated?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unless specifically stated in the product description, all our specimens are 100% natural and untreated. We believe in the authenticity and natural beauty of geological specimens. Any treatments or enhancements (such as polishing) will be clearly indicated in the product description.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <h3>How do you source your rocks?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We source our specimens from reputable miners, collectors, and geological expeditions worldwide. We are committed to ethical and sustainable sourcing practices and work only with partners who share our values. Each specimen is carefully selected and authenticated by our team of expert geologists before being added to our inventory.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        <h3>Do you provide certificates of authenticity?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our premium and rare specimens come with a certificate of authenticity detailing the specimen's geological classification, origin, and unique characteristics. For standard specimens, detailed information is provided in the product description, but formal certificates can be requested for an additional fee.</p>
+                    </div>
+                </div>
+
+                <!-- Orders & Shipping -->
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <h3>How long does shipping take?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard shipping typically takes 3-5 business days within the continental US. Express shipping (1-2 business days) is available for an additional fee. International shipping times vary by location but usually take 7-14 business days. Please note that larger or heavier specimens may require special shipping arrangements and additional time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <h3>Do you ship internationally?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we ship to most countries worldwide. International shipping costs and delivery times vary by location. Please note that customers are responsible for any customs fees, import taxes, or other charges that may apply. Some rare specimens may have export restrictions based on international regulations or the laws of specific countries.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        <h3>How are specimens packaged for shipping?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We take great care in packaging our specimens to ensure they arrive safely. Each specimen is individually wrapped in protective materials and placed in a sturdy box with additional cushioning. Delicate specimens receive extra protection with custom foam inserts or double-boxing when necessary. We also use environmentally friendly packaging materials whenever possible.</p>
+                    </div>
+                </div>
+
+                <!-- Returns & Refunds -->
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <h3>What is your return policy?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day return policy for most items. Specimens must be in their original condition and packaging. If you receive a damaged specimen or one that doesn't match the description, please contact us within 7 days of receipt with photos of the issue. Special order or custom items may have different return policies, which will be clearly stated at the time of purchase.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <h3>How do I initiate a return?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To initiate a return, please log into your account and navigate to your order history. Select the specific order and follow the return instructions. You'll need to provide a reason for the return and may be asked to upload photos if you're returning due to damage or misrepresentation. Once your return is approved, you'll receive a return shipping label and instructions for packaging.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        <h3>Do you cover return shipping costs?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We cover return shipping costs for items that arrived damaged or were incorrectly described. For returns due to change of mind or other personal reasons, the customer is responsible for return shipping costs. Please note that due to the weight and size of some specimens, return shipping can be expensive, so we recommend considering this before finalizing your purchase.</p>
+                    </div>
+                </div>
+
+                <!-- Account & Payment -->
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and bank transfers. For larger purchases, we can also arrange direct bank transfers or other payment methods. All transactions are processed securely using industry-standard encryption and security measures.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <h3>Do I need an account to make a purchase?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we recommend creating an account for the best shopping experience and to track your orders, you can also check out as a guest. Creating an account allows you to save your shipping information, view order history, receive personalized recommendations, and participate in our loyalty program for discounts on future purchases.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="account">
+                    <div class="faq-question">
+                        <h3>Is my personal information secure?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, protecting your personal information is a top priority for us. We use industry-standard SSL encryption to secure all transactions. We never store complete credit card information on our servers. Our website and data storage comply with all relevant privacy regulations, and we never share your personal information with third parties without your explicit consent.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="faq-contact">
+                <h2>Still have questions?</h2>
+                <p>Our customer service team is here to help. Contact us and we'll get back to you as soon as possible.</p>
+                <a href="/contact.html" class="contact-btn">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer">
+            <div id="SFSU">
+                © 2025 San Francisco State University - Introduction to Web Software Development
+            </div>
+
+            <div class="social-media">
+                <a href="/x" target="_blank"><img id="X" src="images/SocialMedia/X-logo.png" alt="X Logo"></a>
+                <a href="/instagram" target="_blank"><img id="instagram" src="images/SocialMedia/Instagram-logo.png" alt="Instagram Logo"></a>
+                <a href="/discord" target="_blank"><img id="discord" src="images/SocialMedia/Discord-logo.png" alt="Discord Logo"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
