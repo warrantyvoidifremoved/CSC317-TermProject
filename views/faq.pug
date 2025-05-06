@@ -1,0 +1,123 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/faq-styles-desktop.css")
+    script(src="/js/faq.js", defer)
+
+block content
+    .hero-section
+        h1 Frequently Asked Questions
+        p Find answers to common questions about our products, shipping, and more
+
+    #faqContainer
+        .faq-categories
+            button.category-btn.active(data-category="all") All Questions
+            button.category-btn(data-category="products") Products
+            button.category-btn(data-category="orders") Orders & Shipping
+            button.category-btn(data-category="returns") Returns & Refunds
+            button.category-btn(data-category="account") Account & Payment
+
+        .faq-search
+            input(type="text", placeholder="Search FAQs...")
+            button.search-btn(type="submit") Search
+
+        .faq-list
+            // Products
+            .faq-item(data-category="products")
+                .faq-question
+                    h3 What types of rocks do you sell?
+                    span.faq-toggle +
+                .faq-answer
+                    p We offer a wide variety of rock specimens across three main categories: igneous, sedimentary, and metamorphic...
+
+            .faq-item(data-category="products")
+                .faq-question
+                    h3 Are your specimens natural or treated?
+                    span.faq-toggle +
+                .faq-answer
+                    p Unless specifically stated in the product description, all our specimens are 100% natural and untreated...
+
+            .faq-item(data-category="products")
+                .faq-question
+                    h3 How do you source your rocks?
+                    span.faq-toggle +
+                .faq-answer
+                    p We source our specimens from reputable miners, collectors, and geological expeditions worldwide...
+
+            .faq-item(data-category="products")
+                .faq-question
+                    h3 Do you provide certificates of authenticity?
+                    span.faq-toggle +
+                .faq-answer
+                    p Yes, all our premium and rare specimens come with a certificate of authenticity...
+
+            // Orders & Shipping
+            .faq-item(data-category="orders")
+                .faq-question
+                    h3 How long does shipping take?
+                    span.faq-toggle +
+                .faq-answer
+                    p Standard shipping typically takes 3-5 business days within the continental US...
+
+            .faq-item(data-category="orders")
+                .faq-question
+                    h3 Do you ship internationally?
+                    span.faq-toggle +
+                .faq-answer
+                    p Yes, we ship to most countries worldwide...
+
+            .faq-item(data-category="orders")
+                .faq-question
+                    h3 How are specimens packaged for shipping?
+                    span.faq-toggle +
+                .faq-answer
+                    p We take great care in packaging our specimens to ensure they arrive safely...
+
+            // Returns & Refunds
+            .faq-item(data-category="returns")
+                .faq-question
+                    h3 What is your return policy?
+                    span.faq-toggle +
+                .faq-answer
+                    p We offer a 30-day return policy for most items...
+
+            .faq-item(data-category="returns")
+                .faq-question
+                    h3 How do I initiate a return?
+                    span.faq-toggle +
+                .faq-answer
+                    p To initiate a return, please log into your account and navigate to your order history...
+
+            .faq-item(data-category="returns")
+                .faq-question
+                    h3 Do you cover return shipping costs?
+                    span.faq-toggle +
+                .faq-answer
+                    p We cover return shipping costs for items that arrived damaged or were incorrectly described...
+
+            // Account & Payment
+            .faq-item(data-category="account")
+                .faq-question
+                    h3 What payment methods do you accept?
+                    span.faq-toggle +
+                .faq-answer
+                    p We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, and bank transfers...
+
+            .faq-item(data-category="account")
+                .faq-question
+                    h3 Do I need an account to make a purchase?
+                    span.faq-toggle +
+                .faq-answer
+                    p While we recommend creating an account for the best shopping experience...
+
+            .faq-item(data-category="account")
+                .faq-question
+                    h3 Is my personal information secure?
+                    span.faq-toggle +
+                .faq-answer
+                    p Yes, protecting your personal information is a top priority for us...
+
+        .faq-contact
+            h2 Still have questions?
+            p Our customer service team is here to help. Contact us and we'll get back to you as soon as possible.
+            a.contact-btn(href="/contact.html") Contact Us

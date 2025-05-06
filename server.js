@@ -1,9 +1,24 @@
+const path = require("path");
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
-const path = require("path");
+const PORT = 3000;
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Set view engine to Pug
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+const authRouter = require('./routes/auth');
+const cartRouter = require('./routes/cart');
+const productsRouter = require('./routes/products');
+const userRouter = require('./routes/user');
+
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+
+// Mount routers
+app.use('/', authRouter);
+app.use('/cart', cartRouter);
+app.use('/products', productsRouter);
+app.use('/user', userRouter);
 
 // Map for routes
 const redirectRoutes = new Map([
@@ -18,9 +33,11 @@ redirectRoutes.forEach((url, route) => {
     });
 });
 
-// Catch for undefined endpoints
+// 404 handler
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, 'public', 'error.html'));
+    res.status(404).render('error', {
+        title: 'Oops!',
+    });
 });
 
 // Start the server

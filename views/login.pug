@@ -1,0 +1,20 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/login-styles-desktop.css")
+
+block content
+    .login-container
+        .login-content
+            h2 Welcome Back
+            form(action="/login", method="POST")
+                .form-group
+                    label(for="email") Email
+                    input(type="email", id="email", name="email", required)
+                .form-group
+                    label(for="password") Password
+                    input(type="password", id="password", name="password", required)
+                button(type="submit").login-btn Login
+                p.signup-link
+                    | Don't have an account?
+                    a(href="/signup")  Sign Up

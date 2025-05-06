@@ -1,0 +1,28 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/users-styles-desktop.css")
+
+block content
+    .account-wrapper
+        aside.sidebar
+            .profile
+                img.profile-pic(src="/images/user.webp", alt="Profile Picture")
+                h3 #{username}
+            nav.sidebar-links
+                a(href="#") Orders
+                a(href="#") Account
+                a(href="#") Payment Info
+                a(href="#") Settings
+        main.main-content
+            h2 Current Order
+            each order in currentOrders
+                .order-card
+                    img.order-img(src=order.imageUrl, alt=order.name)
+                    button.order-btn Track
+            hr
+            h2 Previous Orders
+            each order in previousOrders
+                .order-card
+                    img.order-img(src=order.imageUrl, alt=order.name)
+                    button.order-btn Return / Rate

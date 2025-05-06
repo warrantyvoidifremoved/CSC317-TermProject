@@ -1,0 +1,11 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/index-styles-desktop.css")
+
+block content
+    #productsContainer
+        each product in products
+            a.products(href=`/products/${product.id}`)
+                .headings
+                    h3 #{product.name}

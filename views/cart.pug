@@ -1,0 +1,26 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/cart-styles-desktop.css")
+
+block content
+    .payment-wrapper
+        .payment-left
+            section.cart-items
+                h2 Items in Cart
+                each item in cartItems
+                    .cart-item
+                        img(src=item.imageUrl, alt=item.name)
+                        span #{item.name}
+        .payment-right
+            section.price-summary
+                h2 Order Summary
+                each item in cartItems
+                    .price-item
+                        span #{item.name}
+                        span $#{item.price}
+                hr
+                .total
+                    strong Total:
+                    strong $#{totalPrice}
+            button.pay-btn Pay
