@@ -37,6 +37,7 @@ redirectRoutes.forEach((url, route) => {
 app.use((req, res) => {
     res.status(404).render('error', {
         title: 'Oops!',
+        error: 'Sorry, the page you are looking for does not exist.'
     });
 });
 

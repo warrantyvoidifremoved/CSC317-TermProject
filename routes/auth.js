@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../db/db');
 
 // Home page
-router.get('/', (req, res) => {
-    res.render('index', { title: 'Home', products: [] });
+router.get('/', async (req, res) => {
+    try {
+        const products = await db.allAsync('SELECT * FROM products');
+        res.render('index', { title: 'Home', products });
+    } catch (err) {
+        console.error(err);
+        res.status(500).render('error', { title: 'Error', message: 'Database query failed' });
+    }
 });
 
 // Login page

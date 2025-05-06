@@ -20,6 +20,7 @@
   "homepage": "https://github.com/warrantyvoidifremoved/CSC317-TermProject#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "sqlite3": "^5.1.7"
   }
 }
