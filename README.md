@@ -17,3 +17,6 @@ Basic pages and features of the webpage:
 - User Profile
 - Search
 - Navigation
+
+## How to Run
+TBD
