@@ -7,7 +7,7 @@ const PORT = 3000;
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-const authRouter = require('./routes/auth');
+const navRouter = require('./routes/nav');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
 const userRouter = require('./routes/user');
@@ -15,7 +15,7 @@ const userRouter = require('./routes/user');
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Mount routers
-app.use('/', authRouter);
+app.use('/', navRouter);
 app.use('/cart', cartRouter);
 app.use('/products', productsRouter);
 app.use('/user', userRouter);
