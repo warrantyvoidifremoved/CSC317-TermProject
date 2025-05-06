@@ -63,7 +63,8 @@ async function setupDatabase() {
         }
 
         console.log('Products inserted.');
-    } catch (err) {
+    }
+    catch (err) {
         console.error('Database setup error:', err);
     }
 }

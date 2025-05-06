@@ -6,7 +6,8 @@ router.get('/', async (req, res) => {
     try {
         const products = await db.allAsync('SELECT * FROM products');
         res.render('products', { title: 'Rocks!', products });
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).render('error', { title: 'Error', message: 'Database query failed' });
     }
@@ -34,7 +35,8 @@ router.get('/categories/:category', async (req, res) => {
             });
         }
 
-    } catch (err) {
+    }
+    catch (err) {
         console.error('Error fetching category products:', err);
         res.status(500).send('Internal Server Error');
     }
