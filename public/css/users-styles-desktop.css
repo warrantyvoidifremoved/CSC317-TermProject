@@ -1,12 +1,12 @@
 .account-wrapper {
     display: flex;
     min-height: 100vh;
-    background-color: darkslategray;
+    background-color: #749D92;
 }
 
 .sidebar {
     width: 250px;
-    background: darkslategray;
+    background: #D3D9D4;
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
 }
 
 .profile h3{
-    color: bisque   ;
+    color: black   ;
 }
 
 .profile-pic {
@@ -41,7 +41,7 @@
     padding: 1rem;
     margin: 0.5rem 0;
     text-align: center;
-    background-color: bisque;
+    background-color: papayawhip;
     border-radius: 8px;
     text-decoration: none;
     color: midnightblue;

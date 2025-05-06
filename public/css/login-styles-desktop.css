@@ -1,5 +1,4 @@
 .login-container {
-    background-color: #090a0a;
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -9,11 +8,12 @@
 
 .login-content {
     background: papayawhip;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 320px;
     text-align: center;
+    border: 1px solid white;
 }
 
 .login-content h2 {
@@ -64,8 +64,4 @@
 .signup-link a {
     color: #4CAF50;
     text-decoration: none;
-}
-
-.signup-link a:hover {
-    text-decoration: underline;
 }
