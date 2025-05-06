@@ -141,3 +141,5 @@ dist
 *.sqlite3
 *.db3
 *.db-journal
+
+.idea/

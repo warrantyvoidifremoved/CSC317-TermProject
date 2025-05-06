@@ -33,6 +33,7 @@ async function setupDatabase() {
         console.log('Old products cleared.');
 
         // TODO: Find images for products
+        // TODO: Separate table seeding
         const products = [
             { name: 'Marble', category: 'metamorphic', price: 25.99, image_url: '/images/marble.jpg' },
             { name: 'Slate', category: 'metamorphic', price: 18.50, image_url: '/images/slate.jpg' },
