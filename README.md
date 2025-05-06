@@ -1,5 +1,5 @@
 # CSC-317 Assignment: Term Project
-## Deployed link: TBD
+## Deployed Link: TBD
 This repository contains the files for CSC-317 Assignment: Term Project, with the final product being an e-commerce webpage.
 
 ## Design Choices
