@@ -52,7 +52,7 @@
 }
 
 .products:hover {
-    border: solid white 0.1875rem; /* 3px */
+    border: solid white 0.125rem; /* 3px */
 }
 
 .products:hover .headings{
