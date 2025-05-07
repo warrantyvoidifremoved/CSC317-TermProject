@@ -25,11 +25,12 @@ block content
                         input(type="hidden" name="product_id" value=product.id)
                         button(type="submit" id="addToCart").addToCart Add to Cart
             .suggestedContainer 
-                each product in suggested
-                    a.suggested(href=`/products/${product.id}`)
-                        img.suggestedImage(src=product.img_src alt='Image of ' + product.name)
-                        span.suggestedName #{product.name}
-                        span.suggestedPrice $#{product.price.toFixed(2)}
+                each suggest in suggested
+                    if suggest.id != product.id
+                        a.suggested(href=`/products/${suggest.id}`)
+                            img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
+                            span.suggestedName #{suggest.name}
+                            span.suggestedPrice $#{suggest.price.toFixed(2)}
 
             .reviewsContainer
                 p Here are some reviews for the product.
