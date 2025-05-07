@@ -30,14 +30,24 @@ router.post('/', async (req, res) => {
         if (user) return res.status(400).render('signup', {usernameError: 'Username already taken', username});
 
         const passwordHash = await bcrypt.hash(password, 10);
-        const res = await db.runAsync('INSERT INTO users (username, passwordHash) VALUES (?, ?)', [username, passwordHash]);
 
-        const userId = res.lastID;
+        const userId = await new Promise((resolve, reject) => {
+            db.run(
+                'INSERT INTO users (username, passwordHash) VALUES (?, ?)',
+                [username, passwordHash],
+                function (err) {
+                    if (err) return reject(err);
+                    resolve(this.lastID);
+                }
+            );
+        });
+
         req.session.user = {
             id: userId,
             username
         };
         res.redirect('/');
+
     } catch (err) {
         console.error('Signup error:', err);
         res.status(500).send('Server error');
