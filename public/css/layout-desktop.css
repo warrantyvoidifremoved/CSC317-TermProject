@@ -29,7 +29,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.625rem 1.25rem; /* 10px 20px */
+    padding: 0.625rem 1.25rem;
     background: #003153;
 }
 
@@ -39,19 +39,50 @@ body {
 
 #title {
     font-family: "Bungee Tint", sans-serif;
-    font-size: 2.5rem; /* 40px */
+    font-size: 2.5rem;
     font-weight: bold;
+}
+
+.searchContainer {
+    position: relative;
+    width: 40rem;
+
+}
+.search-bar {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 0.25rem;
+}
+
+.search-bar button {
+    position: absolute;
+    right: 0.0001rem;
+    top: 0.001rem;
+    padding: 0.69rem;
+    cursor: pointer;
+    background: #749D92;
+    border: none;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
 }
 
 #nav-links {
     display: flex;
     list-style: none;
-    gap: 1rem; /* 16px */
+    gap: 1rem;
 }
 
 #nav-links a {
-    padding: 0.5rem 0.75rem; /* 8px 12px */
-    border-radius: 0.5rem; /* 8px */
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
     color: white;
     font-weight: 600;
     text-decoration: none;
@@ -61,8 +92,8 @@ body {
 .nav-img {
     display: inline-block;
     vertical-align: middle;
-    max-width: 2rem; /* 32px */
-    max-height: 2rem; /* 32px */
+    max-width: 2rem;
+    max-height: 2rem;
 }
 
 #nav-links a:hover {
@@ -170,7 +201,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.625rem 1.25rem; /* 10px 20px */
+    padding: 0.625rem 1.25rem;
     margin: auto;
     background-color: #003153;
     color: white;
@@ -178,19 +209,19 @@ body {
 }
 
 .social-media img {
-    margin-left: 1.875rem; /* 30px */
-    max-width: 2rem; /* 32px */
-    max-height: 2rem; /* 32px */
+    margin-left: 1.875rem;
+    max-width: 2rem;
+    max-height: 2rem;
 }
 
 #X {
-    margin-top: 0.1875rem; /* 3px */
+    margin-top: 0.1875rem;
 }
 
 #instagram {
-    margin-top: 0.1875rem; /* 3px */
+    margin-top: 0.1875rem;
 }
 
 #discord {
-    margin-bottom: 0.1875rem; /* 3px */
+    margin-bottom: 0.1875rem;
 }
