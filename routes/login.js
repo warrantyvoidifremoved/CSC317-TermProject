@@ -47,7 +47,10 @@ router.post('/', async (req, res) => {
             res.redirect('/')
         } catch (err) {
             console.error('Login error:', err);
-            res.status(500).send('Server error');
+            res.status(500).render('error', {
+                title: 'Oops!',
+                error: 'Server error!',
+            });
         }
     }
 )
