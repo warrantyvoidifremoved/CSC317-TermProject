@@ -76,6 +76,7 @@ body {
 #nav-links li:hover #nav-products {
     display: block;
 }
+
 #nav-links li:hover #profile-options {
     display: block;
 }
@@ -141,7 +142,7 @@ body {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, 21%);
+    transform: translate(-50%, 32%);
     z-index: 1000;
     padding: 0;
     list-style: none;

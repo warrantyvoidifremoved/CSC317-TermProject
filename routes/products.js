@@ -23,6 +23,10 @@ router.get('/:id', async (req, res) => {
             'SELECT * FROM products WHERE id = ?', [id]
         );
 
+        const suggested = await db.allAsync(
+            'SELECT * FROM products WHERE category = ?', [product.category]
+        );
+
         if (!product) {
             res.status(404).render('error', {
                 title: 'Oops!',
@@ -32,7 +36,8 @@ router.get('/:id', async (req, res) => {
         else {
             res.render('product-details', {
                 title: `${product.name}`,
-                product
+                product,
+                suggested
             });
         }
     }
