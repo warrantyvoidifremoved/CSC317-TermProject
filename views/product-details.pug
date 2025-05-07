@@ -1,0 +1,31 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/product_details-desktop.css")
+
+block content
+    body
+        .productContainer
+            .imagesContainer
+                img(src=product.img_src alt='Image of ' + product.name)
+            .detailsContainer
+                .product
+                    span.name #{product.name}
+                    a.category(href=`/products/categories/${product.category}`) #{product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                hr
+                .about
+                    span.aboutHeading About
+                    span.details #{product.about}
+                hr
+                .checkout
+                    span.price US $#{product.price.toFixed(2)}
+                    form(action="/cart" method="POST")
+                        label(for="quantity") Quantity: 
+                        input(type="number" id="quantity" name="quantity" min="1" value="1")
+                        input(type="hidden" name="product_id" value=product.id)
+                        br
+                        button(type="submit" id="addToCart").addToCart Add to Cart
+            .suggestedContainer 
+                p Here are some alternative suggestions.
+            .reviewsContainer
+                p Here are some reviews for the product.
