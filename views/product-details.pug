@@ -23,9 +23,13 @@ block content
                         label(for="quantity") Quantity: 
                         input(type="number" id="quantity" name="quantity" min="1" value="1")
                         input(type="hidden" name="product_id" value=product.id)
-                        br
                         button(type="submit" id="addToCart").addToCart Add to Cart
             .suggestedContainer 
-                p Here are some alternative suggestions.
+                each product in suggested
+                    a.suggested(href=`/products/${product.id}`)
+                        img.suggestedImage(src=product.img_src alt='Image of ' + product.name)
+                        span.suggestedName #{product.name}
+                        span.suggestedPrice $#{product.price.toFixed(2)}
+
             .reviewsContainer
                 p Here are some reviews for the product.
