@@ -26,6 +26,18 @@ async function setupDatabase() {
             )
         `);
 
+        // Create users table
+        await db.runAsync(`
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                passwordHash TEXT NOT NULL
+            )
+        `);
+
+        console.log('Users table ensured.');
+
+
         console.log('Products table ensured.');
 
         // Clear existing products

@@ -80,6 +80,26 @@ body {
     display: block;
 }
 
+.logout-link {
+    background: none;
+    border: none;
+    color: white;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.logout-link:hover{
+    background-color: #749D92;
+}
+
 #nav-links li::after {
     content: "";
     position: absolute;
@@ -127,6 +147,12 @@ body {
     list-style: none;
     background: #003153;
     border-radius: 0.5rem;
+}
+
+#profile-options form {
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 #profile-options a{

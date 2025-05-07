@@ -65,3 +65,9 @@
     color: #4CAF50;
     text-decoration: none;
 }
+
+.error-msg {
+    color: red;
+    display: none;
+    font-size: 0.9rem;
+}

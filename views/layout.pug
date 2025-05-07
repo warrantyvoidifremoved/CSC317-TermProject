@@ -24,9 +24,13 @@ html(lang="en")
                         img.nav-img(src="/images/user.webp", alt="User Profile")
                     //- img.nav-img(src="/images/user.webp", alt="User Profile")
                     ul#profile-options
-                        li: a(href="/user") Profile
-                        li: a(href="/login") Log in
-                        li: a(href="/signup") Sign Up
+                        if !user
+                            li: a(href="/login") Log in
+                            li: a(href="/signup") Sign Up
+                        else
+                            li: a(href="/user") Profile
+                            li: form(action="/logout", method="POST")
+                                button(type="submit" class="logout-link") Log out
                 li: a(href="/cart")
                     img.nav-img(src="/images/shopping-cart.webp", alt="Shopping Cart")
         block content
@@ -40,3 +44,4 @@ html(lang="en")
                         img#instagram(src="/images/SocialMedia/Instagram-logo.png", alt="Instagram Logo")
                     a(href="/discord", target="_blank")
                         img#discord(src="/images/SocialMedia/Discord-logo.png", alt="Discord Logo")
+        block scripts
