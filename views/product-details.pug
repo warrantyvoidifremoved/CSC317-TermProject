@@ -1,0 +1,27 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/product-details-styles-desktop.css")
+
+block content
+    body
+        .productContainer
+            .imagesContainer
+                img(src=product.img_src alt='Image of ' + product.name)
+            .suggestedContainer 
+                p Here are some alternative suggestions.
+            .detailsContainer
+                h2.name #{product.name}
+                span.category #{product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+                span.price Price: $#{product.price.toFixed(2)}
+                .about 
+                    p About #{product.name} rocks:
+                    p #{product.about}
+                .checkout
+                    .quantity
+                        input(placeholder="1")
+                    button(type="submit").addToCart Add to Cart
+                    br
+                    button(type="submit").buyNow Buy it Now
+            .reviewsContainer
+                p Here are some reviews for the product.

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db/db');
 
+// Route all products
 router.get('/', async (req, res) => {
     try {
         const products = await db.allAsync('SELECT * FROM products');
@@ -13,13 +14,41 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Route by product ID
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const product = await db.getAsync(
+            'SELECT * FROM products WHERE id = ?', [id]
+        );
+
+        if (!product) {
+            res.status(404).render('error', {
+                title: 'Oops!',
+                error: 'Sorry, we could not find what you are looking for.',
+            });
+        }
+        else {
+            res.render('product-details', {
+                title: `${product.name}`,
+                product
+            });
+        }
+    }
+    catch (err) {
+        console.error('Error fetching category products:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Route by category
 router.get('/categories/:category', async (req, res) => {
     const category = req.params.category;
 
     try {
         const products = await db.allAsync(
-            'SELECT * FROM products WHERE category = ?',
-            [category]
+            'SELECT * FROM products WHERE category = ?', [category]
         );
 
         if (products.length > 0) {
