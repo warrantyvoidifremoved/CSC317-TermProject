@@ -5,8 +5,9 @@ block stylesheets
 
 block content
     main
-        #productsContainer
+        .productsContainer
             each product in products
-               a.products(href=`/products/${product.id}`)
-                    .headings
-                        h3 #{product.name}
+                a.products(href=`/products/${product.id}`)
+                    img.productImage(src=product.img_src alt='Image of ' + product.name)
+                    span.productName #{product.name}
+                    span.productPrice $#{product.price.toFixed(2)}

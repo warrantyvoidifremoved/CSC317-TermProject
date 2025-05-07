@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
             });
         }
         else {
-            res.render('product-details', {
+            res.render('product_details', {
                 title: `${product.name}`,
                 product,
                 suggested
