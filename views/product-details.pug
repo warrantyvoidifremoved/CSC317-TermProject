@@ -24,13 +24,14 @@ block content
                         input(type="number" id="quantity" name="quantity" min="1" value="1")
                         input(type="hidden" name="product_id" value=product.id)
                         button(type="submit" id="addToCart").addToCart Add to Cart
-            .suggestedContainer 
-                each suggest in suggested
-                    if suggest.id != product.id
-                        a.suggested(href=`/products/${suggest.id}`)
-                            img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
-                            span.suggestedName #{suggest.name}
-                            span.suggestedPrice $#{suggest.price.toFixed(2)}
-
+            .suggestedContainer
+                span.suggestedHeading Suggested for You
+                .suggestedItems
+                    each suggest in suggested
+                        if suggest.id != product.id
+                            a.suggested(href=`/products/${suggest.id}`)
+                                img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
+                                span.suggestedName #{suggest.name}
+                                span.suggestedPrice $#{suggest.price.toFixed(2)}
             .reviewsContainer
                 p Here are some reviews for the product.

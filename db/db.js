@@ -26,6 +26,8 @@ async function setupDatabase() {
                 about TEXT DEFAULT ''
             )
         `);
+        console.log('Products table ensured.');
+
 
         // Create users table
         await db.runAsync(`
@@ -35,11 +37,7 @@ async function setupDatabase() {
                 passwordHash TEXT NOT NULL
             )
         `);
-
         console.log('Users table ensured.');
-
-
-        console.log('Products table ensured.');
 
         // Clear existing products
         await db.runAsync(`DELETE FROM products`);
@@ -68,7 +66,6 @@ async function setupDatabase() {
             { name: 'Chalk', category: 'sedimentary', price: 7.40, image_url: '/images/chalk.jpg', about: 'Chalk is a soft, white, porous sedimentary rock made of calcium carbonate, formed from the skeletal remains of marine organisms.' }
         ];
         
-
         const insertQuery = `INSERT INTO products (name, category, price, image_url, about) VALUES (?, ?, ?, ?, ?)`;
 
         // Build products table

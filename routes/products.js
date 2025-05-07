@@ -68,7 +68,6 @@ router.get('/categories/:category', async (req, res) => {
                 error: 'Sorry, we could not find any products in that category.'
             });
         }
-
     }
     catch (err) {
         console.error('Error fetching category products:', err);

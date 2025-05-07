@@ -26,11 +26,14 @@ app.use(session({
         maxAge: 1000 * 60 * 60,
         secure: false }
 }));
+
 app.use((req, res, next) => {
     res.locals.user = req.session.user || null;
     next();
 });
+
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Mount routers
