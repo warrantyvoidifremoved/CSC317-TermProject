@@ -10,7 +10,7 @@
     text-align: center;
     align-items: center;
     background: #749D92;
-    border: 1px solid #003153;
+    border: 1px solid black;
     border-radius: 0.5rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -33,7 +33,7 @@
 .form-group input {
     width: 94.5%;
     padding: 0.5rem;
-    border: 1px solid #003153;
+    border: 1px solid black;
     outline: none;
     border-radius: 0.5rem;
 }
