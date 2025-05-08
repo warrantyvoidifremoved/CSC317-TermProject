@@ -48,6 +48,7 @@ body {
     height: 45px;
     padding: 10px;
     box-sizing: border-box;
+    cursor: pointer;
     background: #D3D9D4;
     color: black;
     border: 4px solid #749D92;
@@ -59,6 +60,7 @@ body {
 .searchContainer input:focus {
     width: 350px;
     border-radius: 10px;
+    cursor: text;
 }
 
 .searchContainer input:focus::placeholder {
