@@ -46,7 +46,6 @@ router.post('/update', async (req, res) => {
     const product_id = req.body.product_id;
     const quantity = parseInt(req.body.quantity);
 
-    console.log(quantity);
     try {
         if (quantity > 0) {
             await db.runAsync(
@@ -54,7 +53,6 @@ router.post('/update', async (req, res) => {
             );
         }
         else if (quantity == 0) {
-            console.log("HIT");
             await db.runAsync(
                 'DELETE FROM cart WHERE user_id = ? AND product_id = ?;', [user_id, product_id]
             );

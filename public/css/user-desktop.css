@@ -41,16 +41,16 @@
     padding: 1rem;
     margin: 0.5rem 0;
     text-align: center;
-    background-color: papayawhip;
+    background-color: rgb(118, 3, 3);
     border-radius: 8px;
     text-decoration: none;
-    color: midnightblue;
+    color: white;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
 .sidebar-links a:hover {
-    background-color: lightpink;
+    background-color: rgb(168, 5, 5);
 }
 
 .main-content {
