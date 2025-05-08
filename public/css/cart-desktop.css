@@ -2,7 +2,7 @@
     display: flex;
     padding: 2rem;
     gap: 2rem;
-    background-color: #f0f2f5;
+    background-color: #D3D9D4;
     min-height: 100vh;
 }
 
@@ -79,7 +79,7 @@
 
 .pay-btn {
     padding: 1rem;
-    background-color: #4CAF50;
+    background-color: rgb(118, 3, 3);
     color: white;
     border: none;
     border-radius: 8px;
@@ -89,5 +89,5 @@
 }
 
 .pay-btn:hover {
-    background-color: #45a049;
+    background-color: rgb(168, 5, 5);
 }
