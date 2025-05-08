@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const param = `%${query}%`;
         const products = await db.allAsync(
-            'SELECT * FROM products WHERE name LIKE ? OR about LIKE ?', [param, param]
+            'SELECT * FROM products WHERE name LIKE ? OR category LIKE ?', [param, param]
         );
 
         if (products.length > 0) {
