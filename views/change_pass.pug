@@ -1,0 +1,29 @@
+extends layout
+
+block stylesheets
+    link(rel="stylesheet", href="/css/change-pass-desktop.css")
+
+block content
+    .change-password-container
+        h2 Change Password
+
+        form(action="/change_pass", method="POST")
+            .form-group
+                label(for="currentPassword") Current Password
+                input#currentPassword(type="password", name="currentPassword", required)
+
+            .form-group
+                label(for="newPassword") New Password
+                input#newPassword(type="password", name="newPassword", required minlength="8")
+
+            .form-group
+                label(for="confirmPassword") Confirm New Password
+                input#confirmPassword(type="password", name="confirmPassword", required minlength="8")
+
+            if error
+                .error-msg= error
+
+            if success
+                .success-msg= success
+
+            button(type="submit").submit-btn Update Password
