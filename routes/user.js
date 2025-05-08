@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
 
     res.render('user', {
-        title: 'Profile',
+        title: 'Rocks! | Profile',
         username: req.session.user.username,
         currentOrders: [],
         previousOrders: []

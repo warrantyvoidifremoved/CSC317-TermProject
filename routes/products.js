@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
         }
         else {
             res.render('product_details', {
-                title: `${product.name}`,
+                title: 'Rocks! | ' + `${product.name}`,
                 product,
                 suggested
             });
@@ -58,7 +58,7 @@ router.get('/categories/:category', async (req, res) => {
 
         if (products.length > 0) {
             res.render('products', {
-                title: `${category.charAt(0).toUpperCase() + category.slice(1)} Rocks!`,
+                title: 'Rocks! | ' + `${category.charAt(0).toUpperCase() + category.slice(1)}`,
                 products
             });
         }

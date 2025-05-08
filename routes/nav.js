@@ -9,22 +9,22 @@ router.get('/', (req, res) => {
 
 // About page
 router.get('/about', (req, res) => {
-    res.render('about', { title: 'About Rocks!' });
+    res.render('about', { title: 'Rocks! | About' });
 });
 
 // FAQ page
 router.get('/faq', (req, res) => {
-    res.render('faq', { title: 'FAQ'});
+    res.render('faq', { title: 'Rocks! | FAQ' });
 });
 
 // Login page
 router.get('/login', (req, res) => {
-    res.render('login', { title: 'Login' });
+    res.render('login', { title: 'Rocks! | Login' });
 });
 
 // Signup page
 router.get('/signup', (req, res) => {
-    res.render('signup', { title: 'Sign Up' });
+    res.render('signup', { title: 'Rocks! | Signup' });
 });
 
 module.exports = router;

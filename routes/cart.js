@@ -4,7 +4,7 @@ const router = express.Router();
 // Cart page
 router.get('/', (req, res) => {
     res.render('cart', {
-        title: 'Your Cart',
+        title: 'Rocks! | Cart',
         cartItems: [],
         totalPrice: 0
     });

@@ -14,9 +14,10 @@ const navRouter = require('./routes/nav');
 const cartRouter = require('./routes/cart');
 const productsRouter = require('./routes/products');
 const userRouter = require('./routes/user');
-const signupRouter = require('./routes/signup')
-const loginRouter = require('./routes/login')
-const logoutRouter = require('./routes/logout')
+const signupRouter = require('./routes/signup');
+const loginRouter = require('./routes/login');
+const logoutRouter = require('./routes/logout');
+const searchRouter = require('./routes/search');
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -44,6 +45,7 @@ app.use('/user', userRouter);
 app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
+app.use('/search', searchRouter);
 
 // Map for routes
 const redirectRoutes = new Map([
