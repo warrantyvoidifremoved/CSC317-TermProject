@@ -7,20 +7,40 @@ block content
     .payment-wrapper
         .payment-left
             section.cart-items
-                h2 Items in Cart
-                each item in cartItems
+                h2 Cart
+                each product in cart
                     .cart-item
-                        img(src=item.imageUrl, alt=item.name)
-                        span #{item.name}
+                        .left
+                            .image
+                                a(href=`/products/${product.product_id}`)
+                                    img(src=product.img_src, alt=product.name)
+                            .item
+                                a(href=`/products/${product.product_id}`)
+                                    span #{product.name}
+                                form(action="/cart/update" method="POST")
+                                    input(type="hidden" name="product_id" value=product.product_id)
+                                    input(type="number" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
+                        .price
+                            form(action="/cart/update" method="POST")
+                                input(type="hidden" name="product_id" value=product.product_id)
+                                input(type="hidden" name="quantity" value=0)
+                                button(type="submit" style="background:none; border:none; cursor:pointer;") 🗑️
+                            span US $#{product.price.toFixed(2)}
+            section.personal-info
+                h2 Personal Information
+            section.card-info
+                h2 Card Information
         .payment-right
-            section.price-summary
+            section.order-summary
                 h2 Order Summary
-                each item in cartItems
-                    .price-item
-                        span #{item.name}
-                        span $#{item.price}
+                each product in cart
+                    .product-price
+                        span #{product.name}
+                        span US $#{product.price.toFixed(2)} x #{product.quantity}
                 hr
                 .total
                     strong Total:
-                    strong $#{totalPrice}
+                    strong US $#{totalPrice.toFixed(2)}
+            section.promo-code
+                input(type="text", name="code", placeholder="Enter Promo Code")
             button.pay-btn Pay

@@ -39,6 +39,19 @@ async function setupDatabase() {
         `);
         console.log('Users table ensured.');
 
+        // Create cart table
+        await db.runAsync(`
+            CREATE TABLE IF NOT EXISTS cart (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                product_id INTEGER NOT NULL,
+                quantity INTEGER NOT NULL DEFAULT 1,
+                FOREIGN KEY (user_id) REFERENCES users(id),
+                FOREIGN KEY (product_id) REFERENCES products(id)    
+            )    
+        `);
+        console.log('Cart table ensured.')
+
         // Clear existing products
         await db.runAsync(`DELETE FROM products`);
         console.log('Old products cleared.');
