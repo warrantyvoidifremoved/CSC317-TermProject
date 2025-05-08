@@ -27,14 +27,17 @@ block content
             .suggestedContainer
                 span.suggestedHeading Suggested for You
                 .suggestedItems
+                    - let count = 0
                     each suggest in suggested
-                        if suggest.id != product.id
+                        if suggest.id != product.id && count < 5
+                            - count++
                             a.suggested(href=`/products/${suggest.id}`)
                                 img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
                                 span.suggestedName #{suggest.name}
                                 span.suggestedPrice $#{suggest.price.toFixed(2)}
             .reviewsContainer
+                h2 Reviews
                 p Review
                 p Reivew
                 p Reivew
-                p Reivew   
+                p Reivew
