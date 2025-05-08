@@ -15,11 +15,11 @@ html(lang="en")
         nav#navbar
             div#title
                 a(href="/") Rocks!
-            form.search-bar(action="/search", method="GET")
-                .searchContainer
-                    input(type="text", name="q", placeholder="Search Rocks!")
-                    button(type="submit") 🔍
             ul#nav-links
+                li.searchContainer
+                    form(name="search", action="/search", method="GET")
+                        input(type="text", name="q", placeholder="🔍")
+                        button(type="submit") 🔍
                 li
                     a(href="/") Products ▾
                     ul#nav-products

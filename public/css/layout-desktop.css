@@ -43,39 +43,54 @@ body {
     font-weight: bold;
 }
 
-.searchContainer {
-    position: relative;
-    width: 40rem;
-
-}
-.search-bar {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-}
-
-.search-bar input {
-    width: 100%;
+.searchContainer input {
+    width: 45px;
+    height: 45px;
+    padding: 10px;
     box-sizing: border-box;
-    padding: 0.7rem;
-    border: none;
-    border-radius: 0.25rem;
+    background: #D3D9D4;
+    color: black;
+    border: 4px solid #749D92;
+    outline: none;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
 }
 
-.search-bar button {
+.searchContainer input:focus {
+    width: 350px;
+    border-radius: 10px;
+}
+
+.searchContainer input:focus::placeholder {
+    opacity: 0;
+}
+
+.searchContainer button {
     position: absolute;
-    right: 0.0001rem;
-    top: 0.001rem;
-    padding: 0.69rem;
+    right: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.68rem;
+    opacity: 0;
+    visibility: hidden;
     cursor: pointer;
-    background: #749D92;
     border: none;
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+    background-color: transparent;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transition: 0.3s ease-in-out;
+}
+
+.searchContainer:focus-within button {
+    opacity: 1;
+    visibility: visible;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 #nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 1rem;
 }
@@ -138,7 +153,7 @@ body {
     top: 100%;         
     left: 0;
     width: 100%;
-    height: 2rem;       
+    height: 2.3rem;       
     pointer-events: auto;
 }
 
@@ -147,7 +162,7 @@ body {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, 21%);
+    transform: translate(-50%, 30%);
     z-index: 1000;
     padding: 0;
     list-style: none;
@@ -173,7 +188,7 @@ body {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, 32%);
+    transform: translate(-50%, 40%);
     z-index: 1000;
     padding: 0;
     list-style: none;
