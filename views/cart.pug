@@ -28,8 +28,6 @@ block content
                             span US $#{product.price.toFixed(2)}
             section.personal-info
                 h2 Shipping Information
-            section.card-info
-                h2 Payment Information
         .payment-right
             section.order-summary
                 h2 Order Summary
@@ -43,4 +41,24 @@ block content
                     strong US $#{totalPrice.toFixed(2)}
             section.promo-code
                 input(type="text", name="code", placeholder="Enter Promo Code")
-            button.pay-btn Pay
+            section.card-info-container
+                h2.card-info-1 Payment Information
+                .card-info-2
+                    span Rocks! accepts the following major credit and debit cards:
+                    img(src="/images/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
+                hr
+                .card-info-3
+                    form(name="payment", action="#", method="POST")
+                        .form-row
+                            label(for="card-number") Card Number:
+                            input(type="text", name="card-number", placeholder="")
+                        .form-row
+                            label(for="card-name") Card Name:
+                            input(type="text", name="card-name", placeholder="")
+                        .form-row
+                            label(for="card-cvv") CVV:
+                            input(type="text", name="card-cvv", placeholder="")
+                        .form-row
+                            label(for="card-expiration") Expiration Date:
+                            input(type="text", name="card-expiration", placeholder="MM/YY")
+                        button.pay-btn(type="submit") Pay

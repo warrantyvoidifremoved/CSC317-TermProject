@@ -12,7 +12,7 @@
     gap: 2rem;
 }
 
-.cart-items, .personal-info, .card-info {
+.cart-items, .personal-info, .card-info-container {
     padding: 1.5rem;
     background: #749D92;
     border-radius: 0.5rem;
@@ -81,6 +81,7 @@
     gap: 1.5rem;
 }
 
+/* Order Summary */
 .order-summary {
     padding: 1.5rem;
     border-radius: 0.5rem;
@@ -109,7 +110,60 @@
     border-radius: 0.5rem;
 }
 
-.pay-btn {
+/* Card Information */
+.card-info-container {
+    display: grid;
+    grid-template-rows: 10% 10% 80%;
+    gap: 1rem;
+}
+
+.card-info-container img {
+    margin-top: 0.5rem;
+    width: 200px;
+    aspect-ratio: 1607/406;
+}
+
+.card-info-1, .card-info-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-info-3 form {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-info-3 label {
+    text-align: left;
+}
+
+.card-info-3 .form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-info-3 label {
+    flex: 0 0 125px;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+    text-align: right;
+}
+
+.card-info-3 input {
+    flex: 1;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    border: 0.0625rem solid black;
+    outline: none;
+    border-radius: 0.3rem;
+}
+
+.card-info-3 .pay-btn {
+    margin-top: 0.5rem;
     padding: 1rem;
     border: none;
     border-radius: 0.5rem;
@@ -121,7 +175,7 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.pay-btn:hover {
+.card-info-3 .pay-btn:hover {
     background-color: rgb(168, 5, 5);
 }
 
