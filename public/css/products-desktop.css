@@ -13,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
     cursor: pointer;
     background-color: #749D92;
     color: black;
@@ -30,12 +31,23 @@
 .productImage {
     width: 70%;
     height: 52.5%;
+    box-sizing: border-box;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    transition: border 0.3s ease-in-out;
 }
 
-.productName{
+.products:hover .productImage {
+    border: solid black 0.125rem;
+}
+
+.productName {
     font-size: 1.25rem;
+    transition: 0.3s ease-in-out;
+}
+
+.products:hover .productName {
+    transform: scale(1.2);
 }
 
 .productPrice {
