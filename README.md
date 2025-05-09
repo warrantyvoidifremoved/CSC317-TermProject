@@ -14,9 +14,15 @@ Basic pages and features of the webpage:
 - Search
 - Navigation
 
-Color palette: TBD
+Color palette:
 
-Fonts: TBD
+<img width="500" src="https://i.imgur.com/PJSxSf0.png">
+
+Fonts:
+
+Bungee Tint: https://fonts.google.com/specimen/Bungee+Tint
+
+Poppins: https://fonts.google.com/specimen/Poppins
 
 ## 🚀 How to Run
 Follow these steps to set up and run the website locally:
