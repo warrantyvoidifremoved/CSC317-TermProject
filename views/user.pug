@@ -4,25 +4,26 @@ block stylesheets
     link(rel="stylesheet", href="/css/user-desktop.css")
 
 block content
-    .account-wrapper
-        aside.sidebar
-            .profile
-                img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
-                h3 #{username}
-            nav.sidebar-links
-                a(href="#") Orders
-                a(href="/change_pass") Change Password
-                a(href="#") Addresses
-                a(href="#") Payments
-        main.main-content
-            h2 Current Orders
-            each order in currentOrders
-                .order-card
-                    img.order-img(src=order.imageUrl, alt=order.name)
-                    button.order-btn Track
-            hr
-            h2 Previous Orders
-            each order in previousOrders
-                .order-card
-                    img.order-img(src=order.imageUrl, alt=order.name)
-                    button.order-btn Return / Rate
+    main
+        .account-wrapper
+            aside.sidebar
+                .profile
+                    img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
+                    h3 #{username}
+                nav.sidebar-links
+                    a(href="#") Orders
+                    a(href="/change_pass") Change Password
+                    a(href="#") Addresses
+                    a(href="#") Payments
+            main.main-content
+                h2 Current Orders
+                each order in currentOrders
+                    .order-card
+                        img.order-img(src=order.imageUrl, alt=order.name)
+                        button.order-btn Track
+                hr
+                h2 Previous Orders
+                each order in previousOrders
+                    .order-card
+                        img.order-img(src=order.imageUrl, alt=order.name)
+                        button.order-btn Return / Rate

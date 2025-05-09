@@ -4,8 +4,8 @@ block stylesheets
     link(rel="stylesheet", href="/css/product_details-desktop.css")
 
 block content
-    body
-        .productContainer
+    main
+        section.productContainer
             .imagesContainer
                 img(src=product.img_src alt='Image of ' + product.name)
             .detailsContainer
@@ -24,7 +24,7 @@ block content
                         input(type="number" id="quantity" name="quantity" min="1" value="1")
                         input(type="hidden" name="product_id" value=product.id)
                         button(type="submit" id="addToCart").addToCart Add to Cart
-            .suggestedContainer
+            section.suggestedContainer
                 span.suggestedHeading Suggested for You
                 .suggestedItems
                     - let count = 0
@@ -35,7 +35,7 @@ block content
                                 img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
                                 span.suggestedName #{suggest.name}
                                 span.suggestedPrice $#{suggest.price.toFixed(2)}
-            .reviewsContainer
+            section.reviewsContainer
                 h2 Reviews
                 p Review
                 p Reivew

@@ -4,90 +4,91 @@ block stylesheets
     link(rel="stylesheet", href="/css/cart-desktop.css")
 
 block content
-    .payment-wrapper
-        .payment-left
-            section.cart-items
-                h2 Cart
-                each product in cart
-                    .cart-item
-                        .left
-                            .image
-                                a(href=`/products/${product.product_id}`)
-                                    img(src=product.img_src, alt=product.name)
-                            .item
-                                a(href=`/products/${product.product_id}`)
-                                    span #{product.name}
+    main
+        .payment-wrapper
+            .payment-left
+                section.cart-items
+                    h2 Cart
+                    each product in cart
+                        .cart-item
+                            .left
+                                .image
+                                    a(href=`/products/${product.product_id}`)
+                                        img(src=product.img_src, alt=product.name)
+                                .item
+                                    a(href=`/products/${product.product_id}`)
+                                        span #{product.name}
+                                    form(action="/cart/update" method="POST")
+                                        input(type="hidden" name="product_id" value=product.product_id)
+                                        .quantityControls
+                                            button(type="submit" name="action" value="decrease" id="decrease")
+                                                img(src="/images/cart/decrease.png" alt="Reduce quantity")
+                                            input(type="text" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
+                                            button(type="submit" name="action" value="increase" id="increase")
+                                                img(src="/images/cart/increase.png" alt="Decrease quantity")
+                            .price
                                 form(action="/cart/update" method="POST")
                                     input(type="hidden" name="product_id" value=product.product_id)
-                                    .quantityControls
-                                        button(type="submit" name="action" value="decrease" id="decrease")
-                                            img(src="/images/cart/decrease.png" alt="Reduce quantity")
-                                        input(type="text" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
-                                        button(type="submit" name="action" value="increase" id="increase")
-                                            img(src="/images/cart/increase.png" alt="Decrease quantity")
-                        .price
-                            form(action="/cart/update" method="POST")
-                                input(type="hidden" name="product_id" value=product.product_id)
-                                input(type="hidden" name="quantity" value=0)
-                                button(type="submit" id="remove")
-                                    img(src="/images/cart/remove-cart.png" alt="Remove from cart")
-                            span US $#{product.price.toFixed(2)}
-        .payment-right
-            section.order-summary
-                h2 Order Summary
-                each product in cart
-                    .product-price
-                        span #{product.name}
-                        span US $#{product.price.toFixed(2)} x #{product.quantity}
-                hr
-                .total
-                    strong Total:
-                    strong US $#{totalPrice.toFixed(2)}
-            section.promo-code
-                input(type="text", name="code", placeholder="Enter Promo Code")
-            section.shipping-info-container
-                h2.shipping-info-1 Shipping Information
-                .shipping-info-2
-                    form(name="shipping", action="#", method="POST")
-                        .form-row
-                            label(for="shipping-name") Full Name:
-                            input(type="text", name="shipping-name", required)
-                        .form-row
-                            label(for="shipping-phone") Phone Number:
-                            input(type="text", name="shipping-phone")
-                        .form-row
-                            label(for="shipping-address1") Address Line 1:
-                            input(type="text", name="shipping-address1", required)
-                        .form-row
-                            label(for="shipping-address2") Address Line 2:
-                            input(type="text", name="shipping-address2")
-                        .form-row
-                            label(for="shipping-city") City:
-                            input(type="text", name="shipping-city", required)
-                        .form-row
-                            label(for="shipping-state") State:
-                            input(type="text", name="shipping-state", required)
-                        .form-row
-                            label(for="shipping-zip") Zip Code:
-                            input(type="text", name="shipping-zip", required)
-            section.card-info-container
-                h2.card-info-1 Payment Information
-                .card-info-2
-                    span Rocks! accepts the following major credit and debit cards:
-                    img(src="/images/cart/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
-                hr
-                .card-info-3
-                    form(name="payment", action="#", method="POST")
-                        .form-row
-                            label(for="card-number") Card Number:
-                            input(type="text", name="card-number", required)
-                        .form-row
-                            label(for="card-name") Card Name:
-                            input(type="text", name="card-name", required)
-                        .form-row
-                            label(for="card-cvv") CVV:
-                            input(type="text", name="card-cvv", required)
-                        .form-row
-                            label(for="card-expiration") Expiration Date:
-                            input(type="text", name="card-expiration", placeholder="MM/YY", required)
-                        button.pay-btn(type="submit") Pay
+                                    input(type="hidden" name="quantity" value=0)
+                                    button(type="submit" id="remove")
+                                        img(src="/images/cart/remove-cart.png" alt="Remove from cart")
+                                span US $#{product.price.toFixed(2)}
+            .payment-right
+                section.order-summary
+                    h2 Order Summary
+                    each product in cart
+                        .product-price
+                            span #{product.name}
+                            span US $#{product.price.toFixed(2)} x #{product.quantity}
+                    hr
+                    .total
+                        strong Total:
+                        strong US $#{totalPrice.toFixed(2)}
+                section.promo-code
+                    input(type="text", name="code", placeholder="Enter Promo Code")
+                section.shipping-info-container
+                    h2.shipping-info-1 Shipping Information
+                    .shipping-info-2
+                        form(name="shipping", action="#", method="POST")
+                            .form-row
+                                label(for="shipping-name") Full Name:
+                                input(type="text", name="shipping-name", required)
+                            .form-row
+                                label(for="shipping-phone") Phone Number:
+                                input(type="text", name="shipping-phone")
+                            .form-row
+                                label(for="shipping-address1") Address Line 1:
+                                input(type="text", name="shipping-address1", required)
+                            .form-row
+                                label(for="shipping-address2") Address Line 2:
+                                input(type="text", name="shipping-address2")
+                            .form-row
+                                label(for="shipping-city") City:
+                                input(type="text", name="shipping-city", required)
+                            .form-row
+                                label(for="shipping-state") State:
+                                input(type="text", name="shipping-state", required)
+                            .form-row
+                                label(for="shipping-zip") Zip Code:
+                                input(type="text", name="shipping-zip", required)
+                section.card-info-container
+                    h2.card-info-1 Payment Information
+                    .card-info-2
+                        span Rocks! accepts the following major credit and debit cards:
+                        img(src="/images/cart/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
+                    hr
+                    .card-info-3
+                        form(name="payment", action="#", method="POST")
+                            .form-row
+                                label(for="card-number") Card Number:
+                                input(type="text", name="card-number", required)
+                            .form-row
+                                label(for="card-name") Card Name:
+                                input(type="text", name="card-name", required)
+                            .form-row
+                                label(for="card-cvv") CVV:
+                                input(type="text", name="card-cvv", required)
+                            .form-row
+                                label(for="card-expiration") Expiration Date:
+                                input(type="text", name="card-expiration", placeholder="MM/YY", required)
+                            button.pay-btn(type="submit") Pay

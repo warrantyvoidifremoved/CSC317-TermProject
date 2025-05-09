@@ -4,23 +4,24 @@ block stylesheets
     link(rel="stylesheet", href="/css/signup-desktop.css")
 
 block content
-    .signup-container
-        .signup-content
-            h2 Create Account
-            form#signup-form(action="/signup", method="POST")
-                .form-group
-                    label(for="username") Username
-                    input#username(type="text", name="username", value = username || '', required minlength="4" maxlength="20")
-                    span#username-error.error-msg(style="display:inline;")=usernameError || ''
+    main
+        section.signup-container
+            .signup-content
+                h2 Create Account
+                form#signup-form(action="/signup", method="POST")
+                    .form-group
+                        label(for="username") Username
+                        input#username(type="text", name="username", value = username || '', required minlength="4" maxlength="20")
+                        span#username-error.error-msg(style="display:inline;")=usernameError || ''
 
-                .form-group
-                    label(for="password") Password
-                    input#password(type="password", name="password", required minlength="8" maxlength="25")
-                    span#password-error.error-msg(style="display:inline;")=passwordError || ''
-                button(type="submit").signup-btn Sign Up
-                p.login-link
-                    | Already have an account?
-                    a(href="/login")  Log In
+                    .form-group
+                        label(for="password") Password
+                        input#password(type="password", name="password", required minlength="8" maxlength="25")
+                        span#password-error.error-msg(style="display:inline;")=passwordError || ''
+                    button(type="submit").signup-btn Sign Up
+                    p.login-link
+                        | Already have an account?
+                        a(href="/login")  Log In
 
 block scripts
     script.
