@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1.4rem 1rem 1rem 1rem;
     margin-top: 1rem;
     border-radius: 0.5rem;
     background: white;
@@ -55,11 +55,48 @@
     text-decoration: none;
 }
 
+.quantityControls {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
 #quantity {
-    width: 4rem;
+    padding: 0 0.2rem 0 0.2rem;
+    width: 2rem;
     height: 2rem;
+    text-align: center;
+    outline: none;
     border: solid black 0.0625rem;
     border-radius: 0.5rem;
+}
+
+#decrease {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#decrease img {
+    width: 30px;
+    height: 30px;
+}
+
+#increase {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#increase img {
+    width: 30px;
+    height: 30px;
 }
 
 .price {
@@ -70,7 +107,7 @@
     gap: 2.5rem;
 }
 
-.price button {
+#remove {
     padding: 0;
     margin: 0;
     background: none;
@@ -79,7 +116,7 @@
     cursor: pointer;
 }
 
-.price button img {
+#remove img {
     width: 30px;
     height: 30px;
 }

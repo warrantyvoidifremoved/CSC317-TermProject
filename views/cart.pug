@@ -19,12 +19,17 @@ block content
                                     span #{product.name}
                                 form(action="/cart/update" method="POST")
                                     input(type="hidden" name="product_id" value=product.product_id)
-                                    input(type="number" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
+                                    .quantityControls
+                                        button(type="submit" name="action" value="decrease" id="decrease")
+                                            img(src="/images/cart/decrease.png" alt="Reduce quantity")
+                                        input(type="text" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
+                                        button(type="submit" name="action" value="increase" id="increase")
+                                            img(src="/images/cart/increase.png" alt="Decrease quantity")
                         .price
                             form(action="/cart/update" method="POST")
                                 input(type="hidden" name="product_id" value=product.product_id)
                                 input(type="hidden" name="quantity" value=0)
-                                button(type="submit")
+                                button(type="submit" id="remove")
                                     img(src="/images/cart/remove-cart.png" alt="Remove from cart")
                             span US $#{product.price.toFixed(2)}
         .payment-right

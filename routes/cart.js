@@ -44,10 +44,21 @@ router.post('/update', async (req, res) => {
 
     const user_id = req.session.user.id;
     const product_id = req.body.product_id;
+    const action = req.body.action;
     const quantity = parseInt(req.body.quantity);
 
     try {
-        if (quantity > 0) {
+        if (action == "increase") {
+            await db.runAsync(
+                'UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND product_id = ?', [user_id, product_id]
+            );
+        }
+        else if (action == "decrease") {
+            await db.runAsync(
+                'UPDATE cart SET quantity = quantity - 1 WHERE user_id = ? AND product_id = ?', [user_id, product_id]
+            );
+        }
+        else if (quantity > 0) {
             await db.runAsync(
                 'UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?', [quantity, user_id, product_id]
             );
