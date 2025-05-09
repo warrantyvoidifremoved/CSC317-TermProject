@@ -1,4 +1,4 @@
-.productsContainer {
+.products-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 4rem auto;
@@ -27,7 +27,7 @@
     border: solid white 0.125rem;
 }
 
-.productImage {
+.product-image {
     width: 70%;
     height: 52.5%;
     box-sizing: border-box;
@@ -36,19 +36,19 @@
     transition: border 0.3s ease-in-out;
 }
 
-.products:hover .productImage {
+.products:hover .product-image {
     border: solid black 0.125rem;
 }
 
-.productName {
+.product-name {
     font-size: 1.25rem;
     transition: 0.3s ease-in-out;
 }
 
-.products:hover .productName {
+.products:hover .product-name {
     transform: scale(1.2);
 }
 
-.productPrice {
+.product-price {
     font-weight: 600;
 }

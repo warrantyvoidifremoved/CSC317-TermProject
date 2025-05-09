@@ -5,37 +5,37 @@ block stylesheets
 
 block content
     main
-        section.productContainer
-            .imagesContainer
+        section.product-container
+            .image-container
                 img(src=product.img_src alt='Image of ' + product.name)
-            .detailsContainer
+            .details-container
                 .product
                     span.name #{product.name}
                     a.category(href=`/products/categories/${product.category}`) #{product.category.charAt(0).toUpperCase() + product.category.slice(1)}
                 hr
                 .about
-                    span.aboutHeading About
+                    span.about-heading About
                     span.details #{product.about}
                 hr
                 .checkout
                     span.price US $#{product.price.toFixed(2)}
                     form(action="/cart" method="POST")
                         label(for="quantity") Quantity: 
-                        input(type="number" id="quantity" name="quantity" min="1" value="1")
+                        input(type="text" class="quantity" name="quantity" min="1" value="1")
                         input(type="hidden" name="product_id" value=product.id)
-                        button(type="submit" id="addToCart").addToCart Add to Cart
-            section.suggestedContainer
-                span.suggestedHeading Suggested for You
-                .suggestedItems
+                        button(type="submit").add-to-cart Add to Cart
+            section.suggested-container
+                span.suggested-heading Suggested for You
+                .suggested-items
                     - let count = 0
                     each suggest in suggested
                         if suggest.id != product.id && count < 5
                             - count++
                             a.suggested(href=`/products/${suggest.id}`)
-                                img.suggestedImage(src=suggest.img_src alt='Image of ' + suggest.name)
-                                span.suggestedName #{suggest.name}
-                                span.suggestedPrice $#{suggest.price.toFixed(2)}
-            section.reviewsContainer
+                                img.suggested-image(src=suggest.img_src alt='Image of ' + suggest.name)
+                                span.suggested-name #{suggest.name}
+                                span.suggested-price $#{suggest.price.toFixed(2)}
+            section.reviews-container
                 h2 Reviews
                 p Review
                 p Reivew

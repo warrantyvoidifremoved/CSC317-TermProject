@@ -20,7 +20,7 @@ block content
                                         span #{product.name}
                                     form(action="/cart/update" method="POST")
                                         input(type="hidden" name="product_id" value=product.product_id)
-                                        .quantityControls
+                                        .quantity-controls
                                             button(type="submit" name="action" value="decrease" id="decrease")
                                                 img(src="/images/cart/decrease.png" alt="Reduce quantity")
                                             input(type="text" id="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
