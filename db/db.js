@@ -5,7 +5,7 @@ const db = new sqlite3.Database("./db/database.db", (err) => {
     if (err) {
         return console.error("Error opening database:", err.message);
     }
-    console.log("Connected to the database.");
+    console.log("Connected to the database");
 });
 
 // Promisify sqlite3 methods
@@ -26,7 +26,7 @@ async function setupDatabase() {
                 about TEXT DEFAULT ''
             )
         `);
-        console.log('Products table ensured.');
+        console.log('Products table ensured');
 
 
         // Create users table
@@ -37,7 +37,7 @@ async function setupDatabase() {
                 passwordHash TEXT NOT NULL
             )
         `);
-        console.log('Users table ensured.');
+        console.log('Users table ensured');
 
         // Create cart table
         await db.runAsync(`
@@ -50,11 +50,24 @@ async function setupDatabase() {
                 FOREIGN KEY (product_id) REFERENCES products(id)    
             )    
         `);
-        console.log('Cart table ensured.')
+        console.log('Cart table ensured')
+
+        // Create reviews table
+        await db.runAsync(`
+            CREATE TABLE IF NOT EXISTS reviews (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                product_id INTEGER NOT NULL,
+                review TEXT DEFAULT'',
+                FOREIGN KEY (user_id) REFERENCES users(id),
+                FOREIGN KEY (product_id) REFERENCES products(id)    
+            )    
+        `);
+        console.log('Reviews table ensured')
 
         // Clear existing products
         await db.runAsync(`DELETE FROM products`);
-        console.log('Old products cleared.');
+        console.log('Products table cleared');
 
         // TODO: Separate table seeding
         const products = [
@@ -84,8 +97,7 @@ async function setupDatabase() {
         for (const product of products) {
             await db.runAsync(insertQuery, [product.name, product.category, product.price, product.img_src, product.about]);
         }
-
-        console.log('Products inserted.');
+        console.log('Products table seeded');
     }
     catch (err) {
         console.error('Database setup error:', err);
