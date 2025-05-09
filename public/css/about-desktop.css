@@ -51,9 +51,36 @@
 
 .content .aboutSection {
     font-weight: 600;
-    margin-bottom: 0.2rem;
 }
 
 .content .aboutBlurb {
     margin-left: 1.5rem;
+}
+
+.content-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem 1.5rem 2rem;
+}
+
+.content-grid .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 15rem;
+    border: solid black 0.125rem;
+    border-radius: 0.5rem;
+}
+
+.content-grid img {
+    width: 7rem;
+    height: 7rem;
+}
+
+.team-member .name {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
 }
