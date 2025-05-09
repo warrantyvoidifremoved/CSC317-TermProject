@@ -1,19 +1,12 @@
-/* Container */
-#faqContainer {
-    max-width: 1200px;
-    margin: auto;
-    padding: 3rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
 /* Hero Section */
 .hero-section {
-    text-align: center;
-    background-color: #f0f0f0;
-    padding: 3rem 1rem;
-    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    background-color: white;
+    margin-bottom: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,6 +18,16 @@
 .hero-section p {
     font-size: 1.25rem;
     color: #555;
+}
+
+/* Container */
+#faqContainer {
+    max-width: 1200px;
+    margin: auto;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 /* Category Buttons */
