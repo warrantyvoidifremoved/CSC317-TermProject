@@ -44,14 +44,14 @@
     width: 100%;
     cursor: pointer;
     color: white;
-    background-color: rgb(118, 3, 3);
+    background-color: #760303;
     border: none;
     border-radius: 0.5rem;
     transition: background-color 0.3s;
 }
 
 .signup-btn:hover {
-    background-color: rgb(168, 5, 5);
+    background-color: #A80505;
 }
 
 .login-link {
@@ -60,7 +60,7 @@
 }
 
 .login-link a {
-    color: rgb(118, 3, 3);
+    color: #760303;
     text-decoration: none;
 }
 

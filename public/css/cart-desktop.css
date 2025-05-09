@@ -175,12 +175,12 @@
     font-size: 1.25rem;
     font-weight: 600;
     color: white;
-    background-color: rgb(118, 3, 3);
+    background-color: #760303;
     transition: background-color 0.3s ease-in-out;
 }
 
 .card-info-3 .pay-btn:hover {
-    background-color: rgb(168, 5, 5);
+    background-color: #A80505;
 }
 
 hr {

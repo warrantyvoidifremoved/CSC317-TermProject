@@ -104,12 +104,12 @@
     font-weight: 600;
     border: none;
     border-radius: 0.5rem;
-    background-color: rgb(118, 3, 3);
+    background-color: #760303;
     transition: background-color 0.3s ease-in-out;
 }
 
 #addToCart:hover {
-    background-color: rgb(168, 5, 5);
+    background-color: #A80505;
 }
 
 .suggestedContainer {
