@@ -20,9 +20,9 @@ Color palette:
 
 Fonts:
 
-Bungee Tint: https://fonts.google.com/specimen/Bungee+Tint
+- Bungee Tint: https://fonts.google.com/specimen/Bungee+Tint
 
-Poppins: https://fonts.google.com/specimen/Poppins
+- Poppins: https://fonts.google.com/specimen/Poppins
 
 ## 🚀 How to Run
 Follow these steps to set up and run the website locally:
