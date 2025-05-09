@@ -6,9 +6,9 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/layout-desktop.css")
         link(rel="icon" type="image/png" href="/images/favicon.png")
-        link(rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png")
-        link(rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128x128.png")
-        link(rel="icon" type="image/png" sizes="256x256" href="/images/favicon-256x256.png")
+        link(rel="icon" type="image/png" sizes="64x64" href="/images/favicon/favicon-64x64.png")
+        link(rel="icon" type="image/png" sizes="128x128" href="/images/favicon/favicon-128x128.png")
+        link(rel="icon" type="image/png" sizes="256x256" href="/images/favicon/favicon-256x256.png")
 
         block stylesheets
     body
@@ -30,7 +30,7 @@ html(lang="en")
                 li: a(href="/faq") FAQ
                 li
                     a(href="#")
-                        img.nav-img(src="/images/user.png", alt="User Profile")
+                        img.nav-img(src="/images/nav/user.png", alt="User Profile")
                     ul#profile-options
                         if !user
                             li: a(href="/login") Log In
@@ -40,7 +40,7 @@ html(lang="en")
                             li: form(action="/logout", method="POST")
                                 button(type="submit" class="logout-link") Log Out
                 li: a(href="/cart")
-                    img.nav-img#cart(src="/images/shopping-cart.png", alt="Shopping Cart")
+                    img.nav-img#cart(src="/images/nav/shopping-cart.png", alt="Shopping Cart")
         block content
         footer
             #footer

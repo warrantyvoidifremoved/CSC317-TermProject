@@ -70,6 +70,20 @@
     gap: 2.5rem;
 }
 
+.price button {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.price button img {
+    width: 30px;
+    height: 30px;
+}
+
 .price span {
     font-weight: 600;
 }

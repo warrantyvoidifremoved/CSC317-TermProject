@@ -24,7 +24,8 @@ block content
                             form(action="/cart/update" method="POST")
                                 input(type="hidden" name="product_id" value=product.product_id)
                                 input(type="hidden" name="quantity" value=0)
-                                button(type="submit" style="background:none; border:none; cursor:pointer;") 🗑️
+                                button(type="submit")
+                                    img(src="/images/cart/remove-cart.png" alt="Remove from cart")
                             span US $#{product.price.toFixed(2)}
         .payment-right
             section.order-summary
@@ -68,7 +69,7 @@ block content
                 h2.card-info-1 Payment Information
                 .card-info-2
                     span Rocks! accepts the following major credit and debit cards:
-                    img(src="/images/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
+                    img(src="/images/cart/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
                 hr
                 .card-info-3
                     form(name="payment", action="#", method="POST")
