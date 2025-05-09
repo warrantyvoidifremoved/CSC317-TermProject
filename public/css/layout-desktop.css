@@ -234,6 +234,10 @@ body {
     max-height: 2rem;
 }
 
+#X, #instagram, #discord {
+    margin-left: 3rem;
+}
+
 #X {
     margin-top: 0.1875rem;
 }
