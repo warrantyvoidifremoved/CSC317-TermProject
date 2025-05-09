@@ -18,8 +18,8 @@ html(lang="en")
             ul#nav-links
                 li.searchContainer
                     form(name="search", action="/search", method="GET")
-                        input(type="text", name="q", placeholder="🔍")
-                        button(type="submit") 🔍
+                        input(type="text", name="q")
+                        button(type="submit")
                 li
                     a(href="/") Products ▾
                     ul#nav-products
@@ -30,7 +30,7 @@ html(lang="en")
                 li: a(href="/faq") FAQ
                 li
                     a(href="#")
-                        img.nav-img(src="/images/user.webp", alt="User Profile")
+                        img.nav-img(src="/images/user.png", alt="User Profile")
                     ul#profile-options
                         if !user
                             li: a(href="/login") Log In
@@ -40,7 +40,7 @@ html(lang="en")
                             li: form(action="/logout", method="POST")
                                 button(type="submit" class="logout-link") Log Out
                 li: a(href="/cart")
-                    img.nav-img(src="/images/shopping-cart.webp", alt="Shopping Cart")
+                    img.nav-img#cart(src="/images/shopping-cart.png", alt="Shopping Cart")
         block content
         footer
             #footer

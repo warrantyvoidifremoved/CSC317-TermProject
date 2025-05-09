@@ -46,53 +46,56 @@ body {
     font-weight: bold;
 }
 
+/* Search */
 .searchContainer input {
     width: 45px;
     height: 45px;
-    padding: 10px;
+    padding: 10px 10px 10px 33px;
     box-sizing: border-box;
     cursor: pointer;
-    background: #D3D9D4;
+    background: #D3D9D4 url("/images/search.png") no-repeat 12px center;
+    background-size: 20px 20px;
     color: black;
     border: 4px solid #749D92;
     outline: none;
     border-radius: 50px;
-    transition: 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 .searchContainer input:focus {
     width: 350px;
     border-radius: 10px;
     cursor: text;
-}
-
-.searchContainer input:focus::placeholder {
-    opacity: 0;
+    background: #D3D9D4;
 }
 
 .searchContainer button {
     position: absolute;
-    right: 1px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    padding: 0.68rem;
+    width: 40px;
+    height: 40px;
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
     border: none;
     background-color: transparent;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 20px;
     transition: 0.3s ease-in-out;
 }
 
 .searchContainer:focus-within button {
+    right: 310px;
     opacity: 1;
     visibility: visible;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    background-image: url("/images/search.png");
 }
 
+/* Nav links */
 #nav-links {
     display: flex;
     align-items: center;
@@ -130,6 +133,10 @@ body {
 
 #nav-links li:hover #profile-options {
     display: block;
+}
+
+#cart {
+    margin-bottom: 0.1rem;
 }
 
 .logout-link {
