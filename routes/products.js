@@ -23,17 +23,18 @@ router.get('/:id', async (req, res) => {
             'SELECT * FROM products WHERE id = ?', [id]
         );
 
-        const suggested = await db.allAsync(
-            'SELECT * FROM products WHERE category = ?', [product.category]
-        );
-
         if (!product) {
+            console
             res.status(404).render('error', {
                 title: 'Oops!',
                 error: 'Sorry, we could not find what you are looking for.',
             });
         }
         else {
+            const suggested = await db.allAsync(
+                'SELECT * FROM products WHERE category = ?', [product.category]
+            );
+            
             res.render('product_details', {
                 title: 'Rocks! | ' + `${product.name}`,
                 product,
