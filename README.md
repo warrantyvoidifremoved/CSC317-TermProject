@@ -53,5 +53,5 @@ Once the server is running, open your browser and go to: http://localhost:3000
 ### Notes
 - Static files (CSS, images) are served from the /public folder
 - Views are written in Pug and located in /views
-- Express routes are organized in /routes
+- Express routes are located in /routes
 - The SQLite database is located at /db/database.db
