@@ -8,17 +8,18 @@ block content
         section.hero
             h1 About Rocks!
             p Your premier destination for high-quality, rare, and beautiful rock specimens
-        section.about-container
-            .about
+        section.expanded-container-1
+        section.collapsed-container-1
+            .circle-1
                 h2.heading Our Story
                 .content
                     p Rocks! was founded in 2025 by geology enthusiasts fascinated by the beauty and diversity of the earth beneath our feet. From polished gemstones to rugged minerals, we’ve always believed that every rock tells a story millions of years in the making. 
                     p What started as a personal collection has grown into a passion for sharing these natural treasures with fellow enthusiasts, collectors, and curious minds. Today, we source high-quality rocks and minerals from around the world to bring a little piece of Earth’s wonder into your home.
-            .about
+            .circle-1
                 h2.heading Our Mission
                 .content
                     p We’re on a mission to make rocks, minerals, and crystals accessible and meaningful for everyone. Whether you’re a collector, a hobbyist, an educator, or simply someone who loves the natural world, we aim to provide an inspiring, educational, and reliable place to discover the beauty of geology. Every piece we sell is thoughtfully selected for its uniqueness, quality, and ability to spark curiosity and joy.
-            .about
+            .circle-1
                 h2.heading Our Values
                 .content
                     span.about-section 🌱 Sustainability
@@ -29,7 +30,8 @@ block content
                     p.about-blurb We’re passionate about promoting geological knowledge and making learning about rocks, minerals, and earth science fun, accessible, and engaging for all ages.
                     span.about-section 🤝 Community
                     p.about-blurb We believe in sharing knowledge and building a community of rock lovers, young and old, around the world.
-            .about
+        section.collapsed-container-2  
+            .circle-2
                 h2.heading Our Team
                 .content-grid
                     .team-member
@@ -48,7 +50,7 @@ block content
                         img(src="/images/users/user-default.png" alt="John Doe")
                         span.name John Doe
                         span.title Educational Content Director
-            .about
+            .circle-2
                 h2.heading Contact Us
                 .content
                     span.about-section 📧 Email
@@ -57,3 +59,6 @@ block content
                     p.about-blurb (123) 456-7890
                     span.about-section 📮 Location
                     p.about-blurb 1600 Holloway Avenue, San Francisco, CA 94132
+        section.expanded-container-2
+
+        script(src="/js/about.js")
