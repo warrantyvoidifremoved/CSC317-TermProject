@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
         else {
             res.render('error', {
                 title: 'Oops!',
-                error: 'Sorry, we could not find any results for ' + query
+                error: 'Sorry, we could not find any results for ' + query + '.'
             });
         }
     }
