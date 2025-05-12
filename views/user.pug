@@ -4,26 +4,63 @@ block stylesheets
     link(rel="stylesheet", href="/css/user-desktop.css")
 
 block content
-    main
-        .account-wrapper
-            aside.sidebar
-                .profile
-                    img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
-                    h3 #{username}
-                nav.sidebar-links
-                    a(href="#") Orders
-                    a(href="/change_pass") Change Password
-                    a(href="#") Addresses
-                    a(href="#") Payments
-            main.main-content
-                h2 Current Orders
-                each order in currentOrders
+    .account-wrapper
+        aside.sidebar
+            .profile
+                img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
+                h3 #{username}
+            nav.sidebar-links
+                button.option Orders
+                button.option Change Password
+                button.option Addresses
+                button.option Payments
+        main.main-content
+            .orders
+                h2 Orders
+                each order in orders
                     .order-card
-                        img.order-img(src=order.imageUrl, alt=order.name)
-                        button.order-btn Track
-                hr
-                h2 Previous Orders
-                each order in previousOrders
-                    .order-card
-                        img.order-img(src=order.imageUrl, alt=order.name)
-                        button.order-btn Return / Rate
+                        .top
+                            span Order Placed: xxx
+                            span Total: US $ #{totalPrice}
+                            span Order #: #{order.order_number}
+                        hr
+                        .products
+                            each product in order.products
+                                .item
+                                    .image
+                                        a(href=`/products/${product.id}`)
+                                            img(src=product.img_src, alt=product.name)
+                                    .details
+                                        a(href=`/products/${product.id}`)
+                                            span #{product.name} x#{product.quantity}
+                                        span US $#{product.price.toFixed(2)}
+                        hr
+                        .bottom
+                            button.order-btn Track
+                            button.order-btn Return
+                            button.order-btn Review
+            .change-password
+                .change-password-container
+                    h2#passwordHeading Change Password
+                    form(action="/user/change_pass", method="POST")
+                        .form-group
+                            label(for="currentPassword") Current Password
+                            input#currentPassword(type="password", name="currentPassword", required)
+                        .form-group
+                            label(for="newPassword") New Password
+                            input#newPassword(type="password", name="newPassword", required minlength="8")
+                        .form-group
+                            label(for="confirmPassword") Confirm New Password
+                            input#confirmPassword(type="password", name="confirmPassword", required minlength="8")
+                        if error
+                            .error-msg= error
+                        if success
+                            .success-msg= success
+                        button(type="submit").submit-btn Update Password
+            .addresses 
+                h2 Addresses
+            .payments
+                h2 Payments
+            script.
+                const selectedSection = !{JSON.stringify(selectedSection || "orders")};
+            script(src="/js/user.js")

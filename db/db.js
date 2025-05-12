@@ -61,9 +61,10 @@ async function setupDatabase() {
                 product_id INTEGER NOT NULL,
                 quantity INTEGER NOT NULL DEFAULT 1,
                 review TEXT DEFAULT '',
+                fulfilled INTEGER NOT NULL DEFAULT 0,
                 FOREIGN KEY (user_id) REFERENCES users(id),
                 FOREIGN KEY (product_id) REFERENCES products(id)    
-            )    
+            )
         `);
         console.log('Orders table ensured')
 
