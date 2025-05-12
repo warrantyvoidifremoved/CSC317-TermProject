@@ -1,5 +1,5 @@
 # CSC-317 Assignment: Term Project
-## 🔗 Deployed Link: TBD
+## 🔗 Deployed Link: https://laced-balanced-sodium.glitch.me/
 This repository contains the files for CSC-317 Assignment: Term Project, with the final product being an e-commerce website.
 
 ## 🎨 Design Choices
@@ -41,13 +41,25 @@ npm install
 ```
 This will install all required dependencies listed in `package.json`.
 
-### 3) Run the Application
+
+### 3) Setup Environment Variables
+Create a .env file in the root directory of the project:
+```
+touch .env
+```
+Add the following environment variable to the `.env` file:
+```
+SESSION_SECRET=your_secret_key_here
+```
+`SESSION_SECRET` is used to sign the session ID cookie for login sessions. It should be a long, random string to ensure security.
+
+### 4) Run the Application
 Start the server with:
 ```
 node app.js
 ```
 
-### 4) Access the Website
+### 5) Access the Website
 Once the server is running, open your browser and go to: http://localhost:3000
 
 ### Notes
