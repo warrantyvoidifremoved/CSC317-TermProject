@@ -35,7 +35,7 @@
     display: block;
 }
 
-.expanded-heading{
+.expanded-heading {
     display: flex;
     justify-content: space-between;
 }
