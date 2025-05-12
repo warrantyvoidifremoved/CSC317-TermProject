@@ -17,7 +17,7 @@ const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const searchRouter = require('./routes/search');
-const changeOrderRouter = require('./routes/order');
+const orderRouter = require('./routes/order');
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -46,7 +46,7 @@ app.use('/signup', signupRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/search', searchRouter);
-app.use('/order', changeOrderRouter);
+app.use('/order', orderRouter);
 
 // Map for routes
 const redirectRoutes = new Map([
