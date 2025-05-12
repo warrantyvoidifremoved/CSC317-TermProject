@@ -1,26 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const options = document.querySelectorAll('.option');
     const sections = document.querySelectorAll('.main-content > div');
+    const initialSection = document.querySelector('.main-content').dataset.selectedSection || 'orders';
 
-    const sectionMap = {
-        'orders': 0,
-        'change-password': 1,
-        'addresses': 2,
-        'payments': 3
-    };
+    function clearActiveState() {
+        options.forEach(btn => btn.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+    }
 
-    let defaultSection = sectionMap[selectedSection] || 0;
+    function activateSection(sectionName) {
+        clearActiveState();
 
-    options[defaultSection].classList.add('active');
-    sections[defaultSection].classList.add('active');
+        const button = document.querySelector(`.option[data-section="${sectionName}"]`);
+        const section = document.querySelector(`.main-content > div[data-section="${sectionName}"]`);
 
-    options.forEach((option, index) => {
-        option.addEventListener('click', () => {
-            options.forEach(o => o.classList.remove('active'));
-            option.classList.add('active');
+        if (button) button.classList.add('active');
+        if (section) section.classList.add('active');
+    }
 
-            sections.forEach(s => s.classList.remove('active'));
-            sections[index].classList.add('active');
+    activateSection(initialSection);
+    
+    options.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetSection = button.getAttribute('data-section');
+            activateSection(targetSection);
         });
     });
 });
