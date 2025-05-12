@@ -27,6 +27,7 @@ async function getUserPageData(user_id) {
         if (!grouped[row.order_number]) {
             grouped[row.order_number] = {
                 order_number: row.order_number,
+                order_date: new Date(row.order_number).toLocaleDateString(),
                 fulfilled: row.fulfilled,
                 products: []
             };
@@ -43,6 +44,15 @@ async function getUserPageData(user_id) {
     }
 
     const orders = Object.values(grouped);
+
+    for (const order of orders) {
+        let orderTotal = 0;
+        for (const product of order.products) {
+            orderTotal += product.price * product.quantity;
+        }
+        order.total = orderTotal;
+    }
+
     return orders;
 }
 

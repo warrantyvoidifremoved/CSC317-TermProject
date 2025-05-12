@@ -20,8 +20,8 @@ block content
                 each order in orders
                     .order-card
                         .top
-                            span Order Placed: xxx
-                            span Total: US $ #{totalPrice}
+                            span Order Placed: #{order.order_date}
+                            span Total: US $#{order.total.toFixed(2)}
                             span Order #: #{order.order_number}
                         hr
                         .products
@@ -33,7 +33,6 @@ block content
                                     .details
                                         a(href=`/products/${product.id}`)
                                             span #{product.name} x#{product.quantity}
-                                        span US $#{product.price.toFixed(2)}
                         hr
                         .bottom
                             button.order-btn Track

@@ -92,10 +92,12 @@
 
 .products {
     display: flex;
+    margin: 0 3rem;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10rem;
+    column-gap: 5rem;
+    row-gap: 2rem;
 }
 
 .item {
@@ -112,10 +114,7 @@
 }
 
 .details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2.5rem;
+    margin-top: 2.25rem;
 }
 
 .details a {
