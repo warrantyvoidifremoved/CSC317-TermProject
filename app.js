@@ -18,6 +18,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const searchRouter = require('./routes/search');
 const changePassRouter = require('./routes/change_pass');
+const changeOrderRouter = require('./routes/order');
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -47,6 +48,7 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/search', searchRouter);
 app.use('/change_pass', changePassRouter);
+app.use('/order', changeOrderRouter);
 
 // Map for routes
 const redirectRoutes = new Map([

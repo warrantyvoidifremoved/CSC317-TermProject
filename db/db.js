@@ -52,18 +52,20 @@ async function setupDatabase() {
         `);
         console.log('Cart table ensured')
 
-        // Create reviews table
+        // Create orders table
         await db.runAsync(`
-            CREATE TABLE IF NOT EXISTS reviews (
+            CREATE TABLE IF NOT EXISTS orders (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                order_number INTEGER NOT NULL,
                 user_id INTEGER NOT NULL,
                 product_id INTEGER NOT NULL,
-                review TEXT DEFAULT'',
+                quantity INTEGER NOT NULL DEFAULT 1,
+                review TEXT DEFAULT '',
                 FOREIGN KEY (user_id) REFERENCES users(id),
                 FOREIGN KEY (product_id) REFERENCES products(id)    
             )    
         `);
-        console.log('Reviews table ensured')
+        console.log('Orders table ensured')
 
         // Clear existing products
         await db.runAsync(`DELETE FROM products`);

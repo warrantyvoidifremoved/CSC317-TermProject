@@ -30,9 +30,10 @@
 }
 
 .left {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 1rem;
+    align-items: flex-start;
+    
 }
 
 .image img {
@@ -161,9 +162,10 @@
     justify-content: center;
 }
 
-.card-info-3 form, .shipping-info-2 form {
+.order form {
     display: flex;
     flex-direction: column;
+    gap: 1.5rem;
 }
 
 .form-row {
@@ -192,6 +194,7 @@
 .pay-btn {
     margin-top: 0.5rem;
     padding: 1rem;
+    width: 100%;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
