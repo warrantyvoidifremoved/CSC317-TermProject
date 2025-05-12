@@ -70,10 +70,19 @@ router.post('/update', async (req, res) => {
                 );
             }
         }
-        else if (quantity > 0) {
-            await db.runAsync(
-                'UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?', [quantity, user_id, product_id]
-            );
+        else if (!action) {
+            if (quantity === 0) {
+                await db.runAsync(
+                    'DELETE FROM cart WHERE user_id = ? AND product_id = ?;',
+                    [user_id, product_id]
+                );
+            }
+            else if (quantity > 0) {
+                await db.runAsync(
+                    'UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?;',
+                    [quantity, user_id, product_id]
+                );
+            }
         }
 
         res.redirect('/cart');

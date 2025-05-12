@@ -23,7 +23,7 @@ block content
                                         .quantity-controls
                                             button(type="submit" name="action" value="decrease" class="decrease")
                                                 img(src="/images/cart/decrease.png" alt="Reduce quantity")
-                                            input(type="text" class="quantity" name="quantity" min="0" value=product.quantity onchange="this.form.submit()")
+                                            input(type="text" name="quantity" min="0" value=product.quantity class="quantity" onchange="this.form.submit()")
                                             button(type="submit" name="action" value="increase" class="increase")
                                                 img(src="/images/cart/increase.png" alt="Decrease quantity")
                             .price
