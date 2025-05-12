@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 // Update cart
 router.post('/update', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).send('Please log in to see items to your cart.');
+        return res.status(401).send('Please log in to update items in your cart.');
     }
 
     const user_id = req.session.user.id;
@@ -48,24 +48,31 @@ router.post('/update', async (req, res) => {
     const quantity = parseInt(req.body.quantity);
 
     try {
-        if (action == "increase") {
+        if (action == "remove") {
+            await db.runAsync(
+                'DELETE FROM cart WHERE user_id = ? AND product_id = ?;', [user_id, product_id]
+            );
+        }
+        else if (action == "increase") {
             await db.runAsync(
                 'UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND product_id = ?', [user_id, product_id]
             );
         }
         else if (action == "decrease") {
-            await db.runAsync(
-                'UPDATE cart SET quantity = quantity - 1 WHERE user_id = ? AND product_id = ?', [user_id, product_id]
-            );
+            if (quantity - 1 == 0) {
+                await db.runAsync(
+                    'DELETE FROM cart WHERE user_id = ? AND product_id = ?;', [user_id, product_id]
+                );
+            }
+            else {
+                await db.runAsync(
+                    'UPDATE cart SET quantity = quantity - 1 WHERE user_id = ? AND product_id = ?', [user_id, product_id]
+                );
+            }
         }
         else if (quantity > 0) {
             await db.runAsync(
                 'UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?', [quantity, user_id, product_id]
-            );
-        }
-        else if (quantity == 0) {
-            await db.runAsync(
-                'DELETE FROM cart WHERE user_id = ? AND product_id = ?;', [user_id, product_id]
             );
         }
 

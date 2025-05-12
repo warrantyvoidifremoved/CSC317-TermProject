@@ -61,7 +61,7 @@
     gap: 0.2rem;
 }
 
-#quantity {
+.quantity {
     padding: 0 0.2rem 0 0.2rem;
     width: 2rem;
     height: 2rem;
@@ -71,7 +71,7 @@
     border-radius: 0.5rem;
 }
 
-#decrease {
+.decrease, .increase, .remove {
     padding: 0;
     margin: 0;
     background: none;
@@ -80,21 +80,7 @@
     cursor: pointer;
 }
 
-#decrease img {
-    width: 30px;
-    height: 30px;
-}
-
-#increase {
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-#increase img {
+.decrease img, .increase img, .remove img {
     width: 30px;
     height: 30px;
 }
@@ -105,20 +91,6 @@
     justify-content: center;
     align-items: flex-end;
     gap: 2.5rem;
-}
-
-#remove {
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-}
-
-#remove img {
-    width: 30px;
-    height: 30px;
 }
 
 .price span {
