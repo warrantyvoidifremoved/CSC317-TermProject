@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt');
 const db = require('../db/db');
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.render('login', { title: 'Rocks! | Login' });
+});
+
 router.post('/', async (req, res) => {
         const {username, password} = req.body;
 
