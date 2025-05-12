@@ -1,5 +1,5 @@
 # CSC-317 Assignment: Term Project
-## 🔗 Deployed Link: TBD
+## 🔗 Deployed Link: https://laced-balanced-sodium.glitch.me/
 This repository contains the files for CSC-317 Assignment: Term Project, with the final product being an e-commerce website.
 
 ## 🎨 Design Choices
