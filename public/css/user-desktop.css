@@ -57,6 +57,7 @@
     background-color: #A80505;
 }
 
+/* Main section */
 .main-content {
     flex: 1;
     padding: 1.5rem 2rem;
@@ -132,33 +133,100 @@
     text-decoration: none;
 }
 
-.bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-}
-
-.order-btn {
-    padding: 0.75rem 1.5rem;
-    width: 20%;
-    background-color: #760303;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.order-btn:hover {
-    background-color: #A80505;
-}
-
 hr {
     margin: 1rem 0;
     border: none;
     border-top: 0.0625rem solid black;
+}
+
+/* Reviews */
+.reviews {
+    display: none;
+}
+
+.reviews.active {
+    display: block;
+}
+
+.reviews-container {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 20%;
+    background: white;
+    box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+}
+
+.review-card .item {
+    display: flex;
+}
+
+.review-card .item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.review-card .details a {
+    font-size: 1.25rem;
+    color: black;
+    text-decoration: none;
+}
+
+.review-card .review {
+    margin-top: 1rem;
+}
+
+.review-card .review form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.review-card .review form textarea {
+    padding: 0.5rem;
+    height: 10rem;
+    width: 20rem;
+    outline: none;
+    border: solid black 0.0625rem;
+    border-radius: 0.3rem;
+    font-family: inherit;
+    line-height: 1.5;
+    resize: none;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+.submitReview {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #760303;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submitReview:hover {
+    background-color: #A80505;
 }
 
 /* Change Password */
