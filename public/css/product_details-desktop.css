@@ -216,20 +216,28 @@ hr {
     gap: 1.5rem;
   }
 
-  .image-container,
-  .details-container {
-    width: 100%;
-  }
-
   .image-container {
-    aspect-ratio: unset;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
   }
 
   .image-container img {
-    width: 100%;
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 100%;
     height: auto;
+    max-height: 300px;
     object-fit: contain;
+  }
+
+  .details-container {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
   }
 
   .name {
@@ -249,52 +257,5 @@ hr {
 
   .add-to-cart {
     width: 100%;
-  }
-
-  .suggested-container {
-    padding: 1rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-
-  .suggested-items {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    width: max-content;
-  }
-
-  .suggested {
-    min-width: 140px;
-    flex-shrink: 0;
-  }
-
-  .suggested-name {
-    font-size: 1rem;
-    text-align: center;
-  }
-
-  .suggested-price {
-    font-size: 0.9rem;
-  }
-
-  .reviews-container {
-    padding: 1rem;
-    max-height: unset;
-    overflow: auto;
-  }
-
-  .review {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .user img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .timestamp {
-    font-size: 0.85rem;
   }
 }
