@@ -11,7 +11,6 @@ async function getUserPageData(user_id) {
             orders.fulfilled,
             order_items.product_id,
             order_items.quantity,
-            order_items.review,
             products.name,
             products.img_src,
             products.price
@@ -57,6 +56,27 @@ async function getUserPageData(user_id) {
     return orders;
 }
 
+// Get unique products from user's orders
+async function getUniqueProducts(user_id) {
+    const uniqueProducts = await db.allAsync(`
+        SELECT DISTINCT
+            products.id,
+            products.name,
+            products.img_src,
+            products.price
+        FROM order_items
+        JOIN products ON order_items.product_id = products.id
+        WHERE order_items.order_number IN (
+            SELECT order_number FROM orders WHERE user_id = ?
+        )
+        AND products.id NOT IN (
+            SELECT product_id FROM reviews WHERE user_id = ?
+        )
+    `, [user_id, user_id]);
+
+    return uniqueProducts;
+}
+
 // User profile page
 router.get('/', async (req, res) => {
     if (!req.session.user) {
@@ -65,35 +85,65 @@ router.get('/', async (req, res) => {
 
     const user_id = req.session.user.id;
     const orders = await getUserPageData(user_id);
+    const uniqueProducts = await getUniqueProducts(user_id);
     const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+    const reviews = await db.allAsync(`
+        SELECT
+            reviews.product_id,
+            products.name,
+            products.img_src,
+            reviews.review,
+            reviews.timestamp
+        FROM reviews
+        JOIN products ON reviews.product_id = products.id
+        WHERE reviews.user_id = ?
+        ORDER BY reviews.timestamp DESC
+    `, [user_id]);
 
     res.render('user', {
         title: 'Rocks! | Profile',
         username: req.session.user.username,
         orders,
-        addresses
+        uniqueProducts,
+        addresses,
+        reviews
     });
 });
 
 // Change password
 router.post('/change_pass', async (req, res) => {
     const { currentPassword, newPassword, confirmPassword } = req.body;
-    const userId = req.session.user.id;
-    if (!userId) return res.redirect('/login');
+    const user_id = req.session.user.id;
+    if (!user_id) return res.redirect('/login');
 
     try {
-        const orders = await getUserPageData(userId);
-        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [userId]);
+        const orders = await getUserPageData(user_id);
+        const uniqueProducts = await getUniqueProducts(user_id);
+        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
-
+        const reviews = await db.allAsync(`
+            SELECT
+                reviews.product_id,
+                products.name,
+                products.img_src,
+                reviews.review,
+                reviews.timestamp
+            FROM reviews
+            JOIN products ON reviews.product_id = products.id
+            WHERE reviews.user_id = ?
+            ORDER BY reviews.timestamp DESC
+        `, [user_id]);
+        
         if (newPassword !== confirmPassword) {
             return res.render('user', {
                 title: 'Rocks! | Profile',
                 username: user.username,
                 orders,
                 error: 'New passwords do not match.',
-                selectedSection: 'change-password'.
-                    addresses
+                selectedSection: 'change-password',
+                uniqueProducts,
+                addresses,
+                reviews
             });
         }
 
@@ -105,12 +155,14 @@ router.post('/change_pass', async (req, res) => {
                 orders,
                 error: 'Current password is incorrect.',
                 selectedSection: 'change-password',
-                addresses
+                uniqueProducts,
+                addresses,
+                reviews
             });
         }
 
         const newHash = await bcrypt.hash(newPassword, 10);
-        await db.runAsync('UPDATE users SET passwordHash = ? WHERE id = ?', [newHash, userId]);
+        await db.runAsync('UPDATE users SET passwordHash = ? WHERE id = ?', [newHash, user_id]);
 
         res.render('user', {
             title: 'Rocks! | Profile',
@@ -118,7 +170,9 @@ router.post('/change_pass', async (req, res) => {
             orders,
             success: 'Password updated successfully.',
             selectedSection: 'change-password',
-            addresses
+            uniqueProducts,
+            addresses,
+            reviews
         });
     }
     catch (err) {
@@ -143,8 +197,6 @@ router.post('/add_address', async (req, res) => {
     if (!user_id) return res.redirect('/login');
 
     try {
-        const orders = await getUserPageData(user_id);
-
         await db.runAsync(`
             INSERT INTO addresses (
                 user_id, nickname, name, phone, address1, address2, city, state, zip
@@ -161,14 +213,30 @@ router.post('/add_address', async (req, res) => {
             shippingInfo.zip
         ]);
 
+        const orders = await getUserPageData(user_id);
+        const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+        const reviews = await db.allAsync(`
+            SELECT
+                reviews.product_id,
+                products.name,
+                products.img_src,
+                reviews.review,
+                reviews.timestamp
+            FROM reviews
+            JOIN products ON reviews.product_id = products.id
+            WHERE reviews.user_id = ?
+            ORDER BY reviews.timestamp DESC
+        `, [user_id]);
 
         res.render('user', {
             title: 'Rocks! | Profile',
             username: req.session.user.username,
             orders,
             selectedSection: 'addresses',
-            addresses
+            addresses,
+            uniqueProducts,
+            reviews
         });
     }
     catch (err) {
@@ -194,18 +262,77 @@ router.post('/remove_address', async (req, res) => {
         );
         
         const orders = await getUserPageData(user_id);
+        const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
-
+        const reviews = await db.allAsync(`
+            SELECT
+                reviews.product_id,
+                products.name,
+                products.img_src,
+                reviews.review,
+                reviews.timestamp
+            FROM reviews
+            JOIN products ON reviews.product_id = products.id
+            WHERE reviews.user_id = ?
+            ORDER BY reviews.timestamp DESC
+        `, [user_id]);
+        
         res.render('user', {
             title: 'Rocks! | Profile',
             username: req.session.user.username,
             orders,
             selectedSection: 'addresses',
-            addresses
+            addresses,
+            uniqueProducts,
+            reviews
         });
     }
     catch (err) {
         console.error('Error deleting address:', err);
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
+    }
+});
+
+// Add review
+router.post('/submit_review', async (req, res) => {
+    const user_id = req.session.user.id;
+    if (!user_id) return res.redirect('/login');
+
+    const { product_id, review } = req.body;
+
+    try {
+        await db.runAsync(`
+            INSERT INTO reviews (user_id, product_id, review) VALUES (?, ?, ?)
+        `, [user_id, product_id, review]);
+
+        const orders = await getUserPageData(user_id);
+        const uniqueProducts = await getUniqueProducts(user_id);
+        const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+        const reviews = await db.allAsync(`
+            SELECT
+                reviews.product_id,
+                products.name,
+                products.img_src,
+                reviews.review,
+                reviews.timestamp
+            FROM reviews
+            JOIN products ON reviews.product_id = products.id
+            WHERE reviews.user_id = ?
+            ORDER BY reviews.timestamp DESC
+        `, [user_id]);
+        
+        res.render('user', {
+            title: 'Rocks! | Profile',
+            username: req.session.user.username,
+            orders,
+            selectedSection: 'reviews',
+            addresses,
+            uniqueProducts,
+            reviews
+        });
+    }
+    catch (err) {
+        console.error(err);
         res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });

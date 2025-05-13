@@ -80,7 +80,6 @@ async function setupDatabase() {
                 order_number INTEGER NOT NULL,
                 product_id INTEGER NOT NULL,
                 quantity INTEGER NOT NULL DEFAULT 1,
-                review TEXT DEFAULT '',
                 FOREIGN KEY (order_number) REFERENCES orders(order_number) ON DELETE CASCADE,
                 FOREIGN KEY (product_id) REFERENCES products(id)
             );
@@ -104,6 +103,20 @@ async function setupDatabase() {
             );
         `);
         console.log('Addresses table ensured')
+
+        // Create reviews table
+        await db.runAsync(`
+            CREATE TABLE IF NOT EXISTS reviews (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                product_id INTEGER NOT NULL,
+                review TEXT NOT NULL DEFAULT '',
+                timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+                FOREIGN KEY (product_id) REFERENCES products(id)
+            );
+        `);
+        console.log('Reviews table ensured')
 
         // TODO: Separate table seeding
         const productCount = await db.getAsync(`SELECT COUNT(*) AS count FROM products`);
