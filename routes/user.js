@@ -66,12 +66,16 @@ router.get('/', async (req, res) => {
     const user_id = req.session.user.id;
     const orders = await getUserPageData(user_id);
     const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+    const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
+    const selectedSection = req.query.section || 'orders';
 
     res.render('user', {
         title: 'Rocks! | Profile',
         username: req.session.user.username,
         orders,
-        addresses
+        addresses,
+        selectedSection,
+        default_address_id: user.default_address_id
     });
 });
 
@@ -92,7 +96,7 @@ router.post('/change_pass', async (req, res) => {
                 username: user.username,
                 orders,
                 error: 'New passwords do not match.',
-                selectedSection: 'change-password'.
+                selectedSection: 'change-password',
                     addresses
             });
         }
@@ -209,5 +213,44 @@ router.post('/remove_address', async (req, res) => {
         res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
+
+
+router.post('/set_default_address', async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
+    const user_id = req.session.user.id;
+    const address_id = req.body.address_id;
+
+    try {
+        await db.runAsync(
+            'UPDATE users SET default_address_id = ? WHERE id = ?',
+            [address_id, user_id]
+        );
+
+        const orders = await getUserPageData(user_id);
+        const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
+
+        res.render('user', {
+            title: 'Rocks! | Profile',
+            username: req.session.user.username,
+            orders,
+            addresses,
+            default_address_id: user.default_address_id,
+            selectedSection: 'addresses'
+        });
+
+    } catch (err) {
+        console.error('Set Default Address Error:', err);
+        res.status(500).render('error', {
+            title: 'Error',
+            error: err.message || 'Failed to set default address'
+        });
+    }
+});
+
+
 
 module.exports = router;

@@ -104,6 +104,22 @@ router.get('/', async (req, res) => {
     }
     else {
         const user_id = req.session.user.id;
+        if (!user_id) return res.redirect('/login');
+
+
+        const userWithDefaultAddress = await db.getAsync(`
+            SELECT
+                addr.name AS address_name,
+                addr.phone AS address_phone,
+                addr.address1,
+                addr.address2,
+                addr.city,
+                addr.state,
+                addr.zip
+            FROM users AS users
+                     LEFT JOIN addresses AS addr ON users.default_address_id = addr.id
+            WHERE users.id = ?
+        `, [user_id]);
 
         const cart = await db.allAsync(`
             SELECT
@@ -123,10 +139,21 @@ router.get('/', async (req, res) => {
             totalPrice += item.price * item.quantity;
         });
 
+        const defaultAddress = userWithDefaultAddress?.address_name ? {
+            name: userWithDefaultAddress.address_name,
+            phone: userWithDefaultAddress.address_phone,
+            address1: userWithDefaultAddress.address1,
+            address2: userWithDefaultAddress.address2,
+            city: userWithDefaultAddress.city,
+            state: userWithDefaultAddress.state,
+            zip: userWithDefaultAddress.zip
+        } : null;
+
         res.render('cart', {
             title: 'Rocks! | Cart',
             cart,
-            totalPrice
+            totalPrice,
+            defaultAddress
         });
     }
 });

@@ -36,7 +36,8 @@ async function setupDatabase() {
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT UNIQUE NOT NULL,
-                passwordHash TEXT NOT NULL
+                passwordHash TEXT NOT NULL,
+                default_address_id INTEGER
             )
         `);
         console.log('Users table ensured');

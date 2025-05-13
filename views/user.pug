@@ -88,8 +88,8 @@ block content
                                     label(for="zip") Zip Code:
                                     input#zip(type="text", name="zip", required)
                                 button#save-address(type="submit").submit-btn Save Address
-                    each address in addresses 
-                        .address 
+                    each address in addresses
+                        .address
                             .heading
                                 h2 #{address.nickname}
                                 form(action="/user/remove_address" method="POST")
@@ -104,5 +104,11 @@ block content
                                 if address.address2
                                     span #{address.address2}
                                 span #{address.city}, #{address.state} #{address.zip}
+                                if address.id == default_address_id
+                                    span(style="color: green; font-weight: bold; margin-left: 10px") Default Address
+                                else
+                                    form(action="/user/set_default_address", method="POST")
+                                        input(type="hidden", name="address_id", value=address.id)
+                                        button(type="submit").submit-btn Use as Default
 
             script(src="/js/user.js")

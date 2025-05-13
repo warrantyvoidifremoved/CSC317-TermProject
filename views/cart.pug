@@ -47,32 +47,65 @@ block content
                 //- TODO: Implement promo code functionality
                 //- section.promo-code
                 //-     input(type="text", name="code", placeholder="Enter Promo Code")
-                section.order 
+                section.order
                     form(name="order", action="/order", method="POST")
                         section.shipping-info-container
                             h2.shipping-info-1 Shipping Information
                             .shipping-info-2
                                 .form-row
                                     label(for="shipping-name") Full Name:
-                                    input#shipping-name(type="text", name="shipping-name", required)
+                                    input#shipping-name(
+                                        type="text",
+                                        name="shipping-name",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.name ? defaultAddress.name : '')
+                                    )
                                 .form-row
                                     label(for="shipping-phone") Phone Number:
-                                    input#shipping-phone(type="tel", name="shipping-phone")
+                                    input#shipping-phone(
+                                        type="tel",
+                                        name="shipping-phone",
+                                        value=(defaultAddress && defaultAddress.phone ? defaultAddress.phone : '')
+                                    )
                                 .form-row
                                     label(for="shipping-address1") Address Line 1:
-                                    input#shipping-address1(type="text", name="shipping-address1", required)
+                                    input#shipping-address1(
+                                        type="text",
+                                        name="shipping-address1",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.address1 ? defaultAddress.address1 : '')
+                                    )
                                 .form-row
                                     label(for="shipping-address2") Address Line 2:
-                                    input#shipping-address2(type="text", name="shipping-address2")
+                                    input#shipping-address2(
+                                        type="text",
+                                        name="shipping-address2",
+                                        value=(defaultAddress && defaultAddress.address2 ? defaultAddress.address2 : '')
+                                    )
                                 .form-row
                                     label(for="shipping-city") City:
-                                    input#shipping-city(type="text", name="shipping-city", required)
+                                    input#shipping-city(
+                                        type="text",
+                                        name="shipping-city",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.city ? defaultAddress.city : '')
+                                    )
                                 .form-row
                                     label(for="shipping-state") State:
-                                    input#shipping-state(type="text", name="shipping-state", required)
+                                    input#shipping-state(
+                                        type="text",
+                                        name="shipping-state",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.state ? defaultAddress.state : '')
+                                    )
                                 .form-row
                                     label(for="shipping-zip") Zip Code:
-                                    input#shipping-zip(type="text", name="shipping-zip", required)
+                                    input#shipping-zip(
+                                        type="text",
+                                        name="shipping-zip",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.zip ? defaultAddress.zip : '')
+                                    )
                         section.card-info-container
                             h2.card-info-1 Payment Information
                             .card-info-2
