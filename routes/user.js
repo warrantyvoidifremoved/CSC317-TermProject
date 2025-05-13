@@ -9,14 +9,15 @@ async function getUserPageData(user_id) {
         SELECT
             orders.order_number,
             orders.fulfilled,
-            orders.review,
-            orders.quantity,
-            orders.product_id,
+            order_items.product_id,
+            order_items.quantity,
+            order_items.review,
             products.name,
             products.img_src,
             products.price
         FROM orders
-        JOIN products ON orders.product_id = products.id
+        JOIN order_items ON orders.order_number = order_items.order_number
+        JOIN products ON order_items.product_id = products.id
         WHERE orders.user_id = ?
         ORDER BY orders.order_number DESC
     `, [user_id]);
@@ -113,7 +114,7 @@ router.post('/change_pass', async (req, res) => {
             success: 'Password updated successfully.',
             selectedSection: 'change-password'
         });
-    } 
+    }
     catch (err) {
         console.error(err);
         const orders = await getUserPageData(userId);
