@@ -52,3 +52,32 @@
 .product-price {
     font-weight: 600;
 }
+
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+  .products-container {
+    grid-template-columns: 1fr;
+    width: 90%;
+    gap: 2rem;
+    margin: 2rem auto;
+  }
+
+  .products {
+    padding: 1rem;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .product-price {
+    font-size: 1rem;
+  }
+}
