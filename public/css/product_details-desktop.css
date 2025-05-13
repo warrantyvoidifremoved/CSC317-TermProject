@@ -259,12 +259,10 @@ hr {
     width: 100%;
   }
 
-  /* Updated: Scrollable Suggested Section */
   .suggested-container {
     padding: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-behavior: smooth;
   }
 
   .suggested-items {
@@ -275,8 +273,8 @@ hr {
   }
 
   .suggested {
-    flex: 0 0 auto;
     min-width: 140px;
+    flex-shrink: 0;
   }
 
   .suggested-name {
@@ -292,8 +290,6 @@ hr {
     padding: 1rem;
     max-height: unset;
     overflow: auto;
-    width: 90%;
-    margin: 1rem auto;
   }
 
   .review {
