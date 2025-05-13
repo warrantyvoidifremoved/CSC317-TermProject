@@ -338,15 +338,30 @@ router.post('/set_default_address', async (req, res) => {
     try {
         await db.runAsync('UPDATE users SET default_address_id = ? WHERE id = ?', [address_id, user_id]);
         const orders = await getUserPageData(user_id);
+        const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
         const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
+        const reviews = await db.allAsync(`
+            SELECT reviews.product_id,
+                   products.name,
+                   products.img_src,
+                   reviews.review,
+                   reviews.timestamp
+            FROM reviews
+                     JOIN products ON reviews.product_id = products.id
+            WHERE reviews.user_id = ?
+            ORDER BY reviews.timestamp DESC
+        `, [user_id]);
+
         res.render('user', {
             title: 'Rocks! | Profile',
             username: req.session.user.username,
             orders,
             addresses,
             default_address_id: user.default_address_id,
-            selectedSection: 'addresses'
+            selectedSection: 'addresses',
+            uniqueProducts,
+            reviews
         });
     } catch (err) {
         console.error('Set Default Address Error:', err);
