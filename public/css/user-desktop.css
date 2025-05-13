@@ -168,7 +168,7 @@ hr {
     align-self: center;
     padding: 2rem;
     background: white;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -176,22 +176,22 @@ hr {
     text-align: center;
 }
 
-.form-group {
+.form-row-password {
     margin-bottom: 1.2rem;
 }
 
-.form-group label {
+.form-row-password label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
-.form-group input[type="password"] {
+.form-row-password input[type="password"] {
     width: 100%;
-    padding: 0.6rem 0;
+    padding: 0.6rem 1rem;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 0.3rem;
     font-size: 1rem;
 }
 
@@ -215,7 +215,7 @@ hr {
     background-color: #760303;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 0.5rem;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
@@ -233,4 +233,85 @@ hr {
 
 .addresses.active {
     display: block;
+}
+
+.addresses-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.address, .add-address {
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+    padding: 2rem;
+    background-color: white;
+    border: solid black 0.125rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.address {
+    width: 20rem;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+}
+
+.remove {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+}
+
+.remove img {
+    width: 30px;
+    height: 30px;
+}
+
+.information {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-row-address {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-row-address label {
+    flex: 0 0 125px;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+    text-align: right;
+}
+
+.form-row-address input {
+    flex: 1;
+    margin-bottom: 0.5rem;
+    width: 20rem;
+    padding: 0.3rem 1rem;
+    border: 0.0625rem solid black;
+    outline: none;
+    border-radius: 0.3rem;
+}
+
+#save-address {
+    margin-top: 1rem;
 }

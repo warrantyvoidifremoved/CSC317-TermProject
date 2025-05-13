@@ -91,6 +91,7 @@ async function setupDatabase() {
         await db.runAsync(`
             CREATE TABLE IF NOT EXISTS addresses (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nickname TEXT,
                 user_id INTEGER NOT NULL,
                 name TEXT NOT NULL,
                 phone TEXT DEFAULT '',

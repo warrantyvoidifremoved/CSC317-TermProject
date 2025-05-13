@@ -41,13 +41,13 @@ block content
                 .change-password-container
                     h2#passwordHeading Change Password
                     form(action="/user/change_pass", method="POST")
-                        .form-group
+                        .form-row-password
                             label(for="currentPassword") Current Password
                             input#currentPassword(type="password", name="currentPassword", required)
-                        .form-group
+                        .form-row-password
                             label(for="newPassword") New Password
                             input#newPassword(type="password", name="newPassword", required minlength="8")
-                        .form-group
+                        .form-row-password
                             label(for="confirmPassword") Confirm New Password
                             input#confirmPassword(type="password", name="confirmPassword", required minlength="8")
                         if error
@@ -56,6 +56,52 @@ block content
                             .success-msg= success
                         button(type="submit").submit-btn Update Password
             .addresses(data-section="addresses")
-                h2 Addresses
+                .addresses-container
+                    .add-address
+                        .heading
+                            h2 Add Address
+                        .information
+                            form(action="/user/add_address", method="POST")
+                                .form-row-address
+                                    label(for="nickname") Address Name:
+                                    input#nickname(type="text", name="nickname", placeholder="Default: Address")
+                                .form-row-address
+                                    label(for="name") Full Name:
+                                    input#name(type="text", name="name", required)
+                                .form-row-address
+                                    label(for="phone") Phone Number:
+                                    input#phone(type="tel", name="phone")
+                                .form-row-address
+                                    label(for="address1") Address Line 1:
+                                    input#address1(type="text", name="address1", required)
+                                .form-row-address
+                                    label(for="address2") Address Line 2:
+                                    input#address2(type="text", name="address2")
+                                .form-row-address
+                                    label(for="city") City:
+                                    input#city(type="text", name="city", required)
+                                .form-row-address
+                                    label(for="state") State:
+                                    input#state(type="text", name="state", required)
+                                .form-row-address
+                                    label(for="zip") Zip Code:
+                                    input#zip(type="text", name="zip", required)
+                                button#save-address(type="submit").submit-btn Save Address
+                    each address in addresses 
+                        .address 
+                            .heading
+                                h2 #{address.nickname}
+                                form(action="/user/remove_address" method="POST")
+                                    input(type="hidden", name="address_id", value=address.id)
+                                    button(type="submit" class="remove")
+                                        img(src="/images/users/remove.png" alt="Remove address")
+                            .information
+                                span #{address.name}
+                                if address.phone
+                                    span #{address.phone}
+                                span #{address.address1}
+                                if address.address2
+                                    span #{address.address2}
+                                span #{address.city}, #{address.state} #{address.zip}
 
             script(src="/js/user.js")

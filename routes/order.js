@@ -5,13 +5,13 @@ const db = require('../db/db');
 // Get order information
 router.post('/', async (req, res) => {
     const shippingInfo = {
-        name: req.body['shipping-name'],
-        phone: req.body['shipping-phone'],
-        address1: req.body['shipping-address1'],
-        address2: req.body['shipping-address2'],
-        city: req.body['shipping-city'],
-        state: req.body['shipping-state'],
-        zip: req.body['shipping-zip']
+        name: req.body['shipping-name'].trim(),
+        phone: req.body['shipping-phone'].trim(),
+        address1: req.body['shipping-address1'].trim(),
+        address2: req.body['shipping-address2'].trim(),
+        city: req.body['shipping-city'].trim(),
+        state: req.body['shipping-state'].trim(),
+        zip: req.body['shipping-zip'].trim()
     };
     req.session.shippingInfo = shippingInfo;
 

@@ -65,11 +65,13 @@ router.get('/', async (req, res) => {
 
     const user_id = req.session.user.id;
     const orders = await getUserPageData(user_id);
+    const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
 
     res.render('user', {
         title: 'Rocks! | Profile',
         username: req.session.user.username,
-        orders
+        orders,
+        addresses
     });
 });
 
@@ -82,6 +84,7 @@ router.post('/change_pass', async (req, res) => {
     try {
         const orders = await getUserPageData(userId);
         const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [userId]);
+        const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
 
         if (newPassword !== confirmPassword) {
             return res.render('user', {
@@ -89,7 +92,8 @@ router.post('/change_pass', async (req, res) => {
                 username: user.username,
                 orders,
                 error: 'New passwords do not match.',
-                selectedSection: 'change-password'
+                selectedSection: 'change-password'.
+                    addresses
             });
         }
 
@@ -100,7 +104,8 @@ router.post('/change_pass', async (req, res) => {
                 username: user.username,
                 orders,
                 error: 'Current password is incorrect.',
-                selectedSection: 'change-password'
+                selectedSection: 'change-password',
+                addresses
             });
         }
 
@@ -112,19 +117,96 @@ router.post('/change_pass', async (req, res) => {
             username: user.username,
             orders,
             success: 'Password updated successfully.',
-            selectedSection: 'change-password'
+            selectedSection: 'change-password',
+            addresses
         });
     }
     catch (err) {
         console.error(err);
-        const orders = await getUserPageData(userId);
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
+    }
+});
+
+// Add address
+router.post('/add_address', async (req, res) => {
+    const shippingInfo = {
+        nickname: req.body['nickname'].trim() || 'Address',
+        name: req.body['name'].trim(),
+        phone: req.body['phone'].trim(),
+        address1: req.body['address1'].trim(),
+        address2: req.body['address2'].trim(),
+        city: req.body['city'].trim(),
+        state: req.body['state'].trim(),
+        zip: req.body['zip'].trim()
+    };
+    const user_id = req.session.user.id;
+    if (!user_id) return res.redirect('/login');
+
+    try {
+        const orders = await getUserPageData(user_id);
+
+        await db.runAsync(`
+            INSERT INTO addresses (
+                user_id, nickname, name, phone, address1, address2, city, state, zip
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `, [
+            user_id,
+            shippingInfo.nickname,
+            shippingInfo.name,
+            shippingInfo.phone,
+            shippingInfo.address1,
+            shippingInfo.address2,
+            shippingInfo.city,
+            shippingInfo.state,
+            shippingInfo.zip
+        ]);
+
+        const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+
         res.render('user', {
             title: 'Rocks! | Profile',
             username: req.session.user.username,
             orders,
-            error: 'Server error.',
-            selectedSection: 'change-password'
+            selectedSection: 'addresses',
+            addresses
         });
+    }
+    catch (err) {
+        console.error(err);
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
+    }
+});
+
+
+// Remove address
+router.post('/remove_address', async (req, res) => {
+    const user_id = req.session.user.id;
+    const address_id = req.body.address_id;
+
+    if (!user_id || !address_id) {
+        return res.status(400).send('Invalid request');
+    }
+
+    try {
+        await db.runAsync(
+            `DELETE FROM addresses WHERE id = ? AND user_id = ?`,
+            [address_id, user_id]
+        );
+        
+        const orders = await getUserPageData(user_id);
+        const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
+
+        res.render('user', {
+            title: 'Rocks! | Profile',
+            username: req.session.user.username,
+            orders,
+            selectedSection: 'addresses',
+            addresses
+        });
+    }
+    catch (err) {
+        console.error('Error deleting address:', err);
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
