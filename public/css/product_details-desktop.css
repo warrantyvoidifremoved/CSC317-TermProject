@@ -208,16 +208,11 @@ hr {
 
 /* Mobile Friendly */
 @media (max-width: 768px) {
-  body, main {
-    margin: 0;
-    padding: 0;
-  }
-
   .product-container {
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 1rem auto;
+    margin: 2rem auto;
     gap: 1.5rem;
   }
 
@@ -264,23 +259,24 @@ hr {
     width: 100%;
   }
 
+  /* Updated: Scrollable Suggested Section */
   .suggested-container {
     padding: 1rem;
     overflow-x: auto;
     overflow-y: hidden;
-    white-space: nowrap;
+    scroll-behavior: smooth;
   }
 
   .suggested-items {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: row;
     gap: 1rem;
-    min-width: max-content;
+    width: max-content;
   }
 
   .suggested {
     flex: 0 0 auto;
-    width: 140px;
+    min-width: 140px;
   }
 
   .suggested-name {
