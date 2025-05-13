@@ -93,7 +93,7 @@ router.get('/', async (req, res) => {
         delete req.session.shippingInfo;
     }
     catch (err) {
-        res.status(500).render('error', { title: 'Error', message: 'Sorry, we could not confirm your order.' });
+        res.status(500).render('error', { title: 'Error', error: 'Sorry, we could not confirm your order.' });
     }
 });
 

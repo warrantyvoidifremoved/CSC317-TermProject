@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     }
     catch (err) {
         console.error(err);
-        res.status(500).render('error', { title: 'Error', message: 'Database query failed' });
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
     }
     catch (err) {
         console.error('Error fetching category products:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
@@ -72,7 +72,7 @@ router.get('/categories/:category', async (req, res) => {
     }
     catch (err) {
         console.error('Error fetching category products:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 

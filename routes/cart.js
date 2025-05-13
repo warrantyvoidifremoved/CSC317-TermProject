@@ -5,7 +5,7 @@ const db = require('../db/db');
 // Add to cart
 router.post('/', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).send('Please log in to add items to your cart.');
+        return res.status(401).render('error', { title: 'Error', error: 'Please log in to add items to your cart.' });        
     }
 
     const user_id = req.session.user.id;
@@ -32,14 +32,14 @@ router.post('/', async (req, res) => {
     }
     catch (err) {
         console.error('Error adding to cart:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Server Error.' });
     }
 });
 
 // Update cart
 router.post('/update', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).send('Please log in to update items in your cart.');
+        return res.status(401).render('error', { title: 'Error', error: 'Please log in to add items to your cart.' }); 
     }
 
     const user_id = req.session.user.id;
@@ -89,7 +89,7 @@ router.post('/update', async (req, res) => {
     }
     catch (err) {
         console.error('Error updating cart:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Server Error.' });
     }
 });
 
