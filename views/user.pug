@@ -13,7 +13,6 @@ block content
                 button.option(data-section="orders") Orders
                 button.option(data-section="change-password") Change Password
                 button.option(data-section="addresses") Addresses
-                button.option(data-section="payments") Payments
         main.main-content(data-selected-section=selectedSection || 'orders')
             .orders(data-section="orders")
                 h2 Orders
@@ -58,7 +57,5 @@ block content
                         button(type="submit").submit-btn Update Password
             .addresses(data-section="addresses")
                 h2 Addresses
-            .payments(data-section="payments")
-                h2 Payments
 
             script(src="/js/user.js")

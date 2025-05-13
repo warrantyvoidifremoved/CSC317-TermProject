@@ -234,12 +234,3 @@ hr {
 .addresses.active {
     display: block;
 }
-
-/* Payments */
-.payments {
-    display: none;
-}
-
-.payments.active {
-    display: block;
-}
