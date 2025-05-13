@@ -208,11 +208,16 @@ hr {
 
 /* Mobile Friendly */
 @media (max-width: 768px) {
+  body, main {
+    margin: 0;
+    padding: 0;
+  }
+
   .product-container {
     display: flex;
     flex-direction: column;
     width: 90%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     gap: 1.5rem;
   }
 
@@ -257,5 +262,55 @@ hr {
 
   .add-to-cart {
     width: 100%;
+  }
+
+  .suggested-container {
+    padding: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .suggested-items {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    min-width: max-content;
+  }
+
+  .suggested {
+    flex: 0 0 auto;
+    width: 140px;
+  }
+
+  .suggested-name {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .suggested-price {
+    font-size: 0.9rem;
+  }
+
+  .reviews-container {
+    padding: 1rem;
+    max-height: unset;
+    overflow: auto;
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .review {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .user img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .timestamp {
+    font-size: 0.85rem;
   }
 }
