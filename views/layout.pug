@@ -52,45 +52,49 @@ html(lang="en")
                         img#instagram(src="/images/social_media/Instagram-logo.png", alt="Instagram Logo")
                     a(href="/discord", target="_blank")
                         img#discord(src="/images/social_media/Discord-logo.png", alt="Discord Logo")
-        block scripts
-       script.
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if on mobile
-      const isMobile = window.innerWidth <= 768;
-      
-      if (isMobile) {
-        // Get dropdown triggers
-        const productsTrigger = document.querySelector('#nav-links li:nth-child(2)');
-        const profileTrigger = document.querySelector('#nav-links li:nth-child(5)');
-        
-        // Products dropdown toggle
-        if (productsTrigger) {
-          productsTrigger.addEventListener('click', function(e) {
-            if (e.target === this.querySelector('a')) {
-              e.preventDefault();
+ block scripts
+    script.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if on mobile
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Get dropdown triggers
+                const productsTrigger = document.querySelector('#nav-links li:nth-child(2)');
+                const profileTrigger = document.querySelector('#nav-links li:nth-child(5)');
+                
+                // Products dropdown toggle
+                if (productsTrigger) {
+                    productsTrigger.addEventListener('click', function(e) {
+                        if (e.target === this.querySelector('a')) {
+                            e.preventDefault();
+                        }
+                        if (profileTrigger) {
+                            profileTrigger.classList.remove('active');
+                        }
+                        this.classList.toggle('active');
+                        e.stopPropagation();
+                    });
+                }
+                
+                // Profile dropdown toggle
+                if (profileTrigger) {
+                    profileTrigger.addEventListener('click', function(e) {
+                        if (e.target === this.querySelector('a')) {
+                            e.preventDefault();
+                        }
+                        if (productsTrigger) {
+                            productsTrigger.classList.remove('active');
+                        }
+                        this.classList.toggle('active');
+                        e.stopPropagation();
+                    });
+                }
+                
+                // Close dropdowns when clicking elsewhere
+                document.addEventListener('click', function() {
+                    if (productsTrigger) productsTrigger.classList.remove('active');
+                    if (profileTrigger) profileTrigger.classList.remove('active');
+                });
             }
-            profileTrigger.classList.remove('active');
-            this.classList.toggle('active');
-            e.stopPropagation();
-          });
-        }
-        
-        // Profile dropdown toggle
-        if (profileTrigger) {
-          profileTrigger.addEventListener('click', function(e) {
-            if (e.target === this.querySelector('a')) {
-              e.preventDefault();
-            }
-            productsTrigger.classList.remove('active');
-            this.classList.toggle('active');
-            e.stopPropagation();
-          });
-        }
-        
-        // Close dropdowns when clicking elsewhere
-        document.addEventListener('click', function() {
-          if (productsTrigger) productsTrigger.classList.remove('active');
-          if (profileTrigger) profileTrigger.classList.remove('active');
         });
-      }
-    });
