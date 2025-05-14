@@ -316,20 +316,22 @@ body {
   #nav-links li.active #nav-products,
   #nav-links li.active #profile-options {
     display: block !important; /* Use !important to override any conflicting styles */
-    position: absolute;
-    top: 100%;
-    left: 0; /* Align to the left edge of the parent */
-    width: auto;
-    min-width: 180px;
-    text-align: left;
+    position: fixed; /* Change to fixed positioning */
+    top: auto; /* Reset top */
+    left: 50% !important; /* Center horizontally */
+    transform: translateX(-50%) !important; /* Center horizontally */
+    width: 80%; /* Limit width to 80% of screen */
+    max-width: 300px; /* Set maximum width */
+    text-align: center;
     z-index: 1001;
     background-color: #003153;
     border: 1px solid #749D92;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     padding: 0.5rem;
-    margin-top: 0.5rem;
-    transform: none; /* Remove any transforms that might be affecting positioning */
+    margin-top: 0;
+    /* Calculate position based on the trigger element */
+    margin-top: 2.5rem; /* Add space below the navbar items */
   }
   
   /* Styles for dropdown items */
@@ -346,7 +348,7 @@ body {
     width: 100%;
     box-sizing: border-box;
     padding: 0.75rem 1rem;
-    text-align: left;
+    text-align: center; /* Center text */
     white-space: nowrap;
     border-radius: 0.25rem;
   }
