@@ -327,26 +327,31 @@ body {
   }
   
   /* Make dropdown more visible and usable on mobile */
-  #nav-products,
+    #nav-products,
   #profile-options {
     background-color: #003153;
     border: 1px solid #749D92;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 0.25rem;
+    border-radius: 0.5rem;
+    width: auto;
+    min-width: 150px;
+    padding: 0.5rem;
+    transform: translateX(-50%) translateY(0.5rem);
   }
   
   #nav-products li,
   #profile-options li {
-    width: 100%;
+    margin: 0.25rem 0;
   }
   
   #nav-products li a,
   #profile-options li a,
   #profile-options form button {
-    padding: 0.75rem 1rem;
-    width: 100%;
-    text-align: center;
     display: block;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 0.25rem;
   }
   
   /* Remove the pseudo-element causing issues */
