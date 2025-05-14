@@ -53,87 +53,44 @@ html(lang="en")
                     a(href="/discord", target="_blank")
                         img#discord(src="/images/social_media/Discord-logo.png", alt="Discord Logo")
         block scripts
-        script.
+       script.
     document.addEventListener('DOMContentLoaded', function() {
       // Check if on mobile
       const isMobile = window.innerWidth <= 768;
       
       if (isMobile) {
-        // Get all dropdown trigger elements
+        // Get dropdown triggers
         const productsTrigger = document.querySelector('#nav-links li:nth-child(2)');
         const profileTrigger = document.querySelector('#nav-links li:nth-child(5)');
         
-        // Add click event for Products dropdown
+        // Products dropdown toggle
         if (productsTrigger) {
           productsTrigger.addEventListener('click', function(e) {
-            // Only prevent default if clicking the direct link
             if (e.target === this.querySelector('a')) {
               e.preventDefault();
             }
-            
-            // Remove active class from other dropdowns
-            if (profileTrigger) {
-              profileTrigger.classList.remove('active');
-            }
-            
-            // Toggle active class for current dropdown
+            profileTrigger.classList.remove('active');
             this.classList.toggle('active');
-            
-            e.stopPropagation(); // Prevent document click from immediately closing
+            e.stopPropagation();
           });
         }
         
-        // Add click event for Profile dropdown
+        // Profile dropdown toggle
         if (profileTrigger) {
           profileTrigger.addEventListener('click', function(e) {
-            // Only prevent default if clicking the direct link
             if (e.target === this.querySelector('a')) {
               e.preventDefault();
             }
-            
-            // Remove active class from other dropdowns
-            if (productsTrigger) {
-              productsTrigger.classList.remove('active');
-            }
-            
-            // Toggle active class for current dropdown
+            productsTrigger.classList.remove('active');
             this.classList.toggle('active');
-            
-            e.stopPropagation(); // Prevent document click from immediately closing
+            e.stopPropagation();
           });
         }
         
         // Close dropdowns when clicking elsewhere
-        document.addEventListener('click', function(e) {
-          if (!e.target.closest('#nav-links li.active')) {
-            if (productsTrigger) {
-              productsTrigger.classList.remove('active');
-            }
-            if (profileTrigger) {
-              profileTrigger.classList.remove('active');
-            }
-          }
-        });
-        
-        // Allow dropdown links to work
-        const dropdownLinks = document.querySelectorAll('#nav-products a, #profile-options a');
-        dropdownLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            e.stopPropagation(); // Let the link navigate without being prevented
-          });
+        document.addEventListener('click', function() {
+          if (productsTrigger) productsTrigger.classList.remove('active');
+          if (profileTrigger) profileTrigger.classList.remove('active');
         });
       }
-      
-      // Add resize event to handle switching between mobile and desktop
-      window.addEventListener('resize', function() {
-        const isMobileNow = window.innerWidth <= 768;
-        
-        // If switched from mobile to desktop, remove active classes
-        if (!isMobileNow) {
-          const dropdowns = document.querySelectorAll('#nav-links li');
-          dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-          });
-        }
-      });
     });
