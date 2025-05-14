@@ -280,6 +280,10 @@ body {
     background-position: 10px center;
   }
 
+  .search-container input:focus {
+    width: 100%;
+  }
+
   .search-container:focus-within button {
     right: 10px;
   }
@@ -297,11 +301,57 @@ body {
     padding: 0.5rem;
   }
 
-  #nav-products,
-  #profile-options {
+  /* New dropdown menu styles for mobile */
+  #nav-links li {
+    position: relative;
+  }
+  
+  /* Change hover behavior for mobile */
+  #nav-links li:hover #nav-products,
+  #nav-links li:hover #profile-options {
+    display: none; /* Override the hover display for mobile */
+  }
+  
+  /* Add active class that will be toggled with JavaScript */
+  #nav-links li.active #nav-products,
+  #nav-links li.active #profile-options {
+    display: block;
+    position: absolute;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    top: 115%;
+    width: max-content;
+    text-align: center;
+    z-index: 1001;
+    margin-top: 0.5rem;
+  }
+  
+  /* Make dropdown more visible and usable on mobile */
+  #nav-products,
+  #profile-options {
+    background-color: #003153;
+    border: 1px solid #749D92;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 0.25rem;
+  }
+  
+  #nav-products li,
+  #profile-options li {
+    width: 100%;
+  }
+  
+  #nav-products li a,
+  #profile-options li a,
+  #profile-options form button {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+  
+  /* Remove the pseudo-element causing issues */
+  #nav-links li::after {
+    display: none;
   }
 
   #footer {
