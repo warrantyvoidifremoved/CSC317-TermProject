@@ -315,32 +315,27 @@ body {
   /* Add active class that will be toggled with JavaScript */
   #nav-links li.active #nav-products,
   #nav-links li.active #profile-options {
-    display: block;
+    display: block !important; /* Use !important to override any conflicting styles */
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    text-align: center;
+    left: 0; /* Align to the left edge of the parent */
+    width: auto;
+    min-width: 180px;
+    text-align: left;
     z-index: 1001;
-    margin-top: 0.5rem;
-  }
-  
-  /* Make dropdown more visible and usable on mobile */
-    #nav-products,
-  #profile-options {
     background-color: #003153;
     border: 1px solid #749D92;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
-    width: auto;
-    min-width: 150px;
     padding: 0.5rem;
-    transform: translateX(-50%) translateY(0.5rem);
+    margin-top: 0.5rem;
+    transform: none; /* Remove any transforms that might be affecting positioning */
   }
   
+  /* Styles for dropdown items */
   #nav-products li,
   #profile-options li {
+    width: 100%;
     margin: 0.25rem 0;
   }
   
@@ -348,8 +343,10 @@ body {
   #profile-options li a,
   #profile-options form button {
     display: block;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.75rem 1rem;
-    text-align: center;
+    text-align: left;
     white-space: nowrap;
     border-radius: 0.25rem;
   }
