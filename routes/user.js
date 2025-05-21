@@ -7,15 +7,15 @@ const db = require('../db/db');
 async function getUserPageData(user_id) {
     const orderInfo = await db.allAsync(`
         SELECT orders.order_number,
-               orders.fulfilled,
-               order_items.product_id,
-               order_items.quantity,
-               products.name,
-               products.img_src,
-               products.price
+                orders.fulfilled,
+                order_items.product_id,
+                order_items.quantity,
+                products.name,
+                products.img_src,
+                products.price
         FROM orders
-                 JOIN order_items ON orders.order_number = order_items.order_number
-                 JOIN products ON order_items.product_id = products.id
+                JOIN order_items ON orders.order_number = order_items.order_number
+                JOIN products ON order_items.product_id = products.id
         WHERE orders.user_id = ?
         ORDER BY orders.order_number DESC
     `, [user_id]);
@@ -65,11 +65,11 @@ async function getUniqueProducts(user_id) {
         FROM order_items
                  JOIN products ON order_items.product_id = products.id
         WHERE order_items.order_number IN (SELECT order_number
-                                           FROM orders
-                                           WHERE user_id = ?)
+                                        FROM orders
+                                        WHERE user_id = ?)
           AND products.id NOT IN (SELECT product_id
-                                  FROM reviews
-                                  WHERE user_id = ?)
+                                FROM reviews
+                                WHERE user_id = ?)
     `, [user_id, user_id]);
 
     return uniqueProducts;
@@ -83,16 +83,17 @@ router.get('/', async (req, res) => {
 
     const user_id = req.session.user.id;
     const orders = await getUserPageData(user_id);
+    const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
     const uniqueProducts = await getUniqueProducts(user_id);
     const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
     const reviews = await db.allAsync(`
         SELECT reviews.product_id,
-               products.name,
-               products.img_src,
-               reviews.review,
-               reviews.timestamp
+                products.name,
+                products.img_src,
+                reviews.review,
+                reviews.timestamp
         FROM reviews
-                 JOIN products ON reviews.product_id = products.id
+                JOIN products ON reviews.product_id = products.id
         WHERE reviews.user_id = ?
         ORDER BY reviews.timestamp DESC
     `, [user_id]);
@@ -103,6 +104,7 @@ router.get('/', async (req, res) => {
         orders,
         uniqueProducts,
         addresses,
+        default_address_id: user.default_address_id,
         reviews
     });
 });
@@ -120,12 +122,12 @@ router.post('/change_pass', async (req, res) => {
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
         const reviews = await db.allAsync(`
             SELECT reviews.product_id,
-                   products.name,
-                   products.img_src,
-                   reviews.review,
-                   reviews.timestamp
+                    products.name,
+                    products.img_src,
+                    reviews.review,
+                    reviews.timestamp
             FROM reviews
-                     JOIN products ON reviews.product_id = products.id
+                    JOIN products ON reviews.product_id = products.id
             WHERE reviews.user_id = ?
             ORDER BY reviews.timestamp DESC
         `, [user_id]);
@@ -139,6 +141,7 @@ router.post('/change_pass', async (req, res) => {
                 selectedSection: 'change-password',
                 uniqueProducts,
                 addresses,
+                default_address_id: user.default_address_id,
                 reviews
             });
         }
@@ -153,6 +156,7 @@ router.post('/change_pass', async (req, res) => {
                 selectedSection: 'change-password',
                 uniqueProducts,
                 addresses,
+                default_address_id: user.default_address_id,
                 reviews
             });
         }
@@ -166,6 +170,7 @@ router.post('/change_pass', async (req, res) => {
             orders,
             success: 'Password updated successfully.',
             selectedSection: 'change-password',
+            default_address_id: user.default_address_id,
             uniqueProducts,
             addresses,
             reviews
@@ -208,16 +213,17 @@ router.post('/add_address', async (req, res) => {
         ]);
 
         const orders = await getUserPageData(user_id);
+        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
         const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
         const reviews = await db.allAsync(`
             SELECT reviews.product_id,
-                   products.name,
-                   products.img_src,
-                   reviews.review,
-                   reviews.timestamp
+                    products.name,
+                    products.img_src,
+                    reviews.review,
+                    reviews.timestamp
             FROM reviews
-                     JOIN products ON reviews.product_id = products.id
+                    JOIN products ON reviews.product_id = products.id
             WHERE reviews.user_id = ?
             ORDER BY reviews.timestamp DESC
         `, [user_id]);
@@ -228,6 +234,7 @@ router.post('/add_address', async (req, res) => {
             orders,
             selectedSection: 'addresses',
             addresses,
+            default_address_id: user.default_address_id,
             uniqueProducts,
             reviews
         });
@@ -257,16 +264,17 @@ router.post('/remove_address', async (req, res) => {
         );
 
         const orders = await getUserPageData(user_id);
+        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
         const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
         const reviews = await db.allAsync(`
             SELECT reviews.product_id,
-                   products.name,
-                   products.img_src,
-                   reviews.review,
-                   reviews.timestamp
+                    products.name,
+                    products.img_src,
+                    reviews.review,
+                    reviews.timestamp
             FROM reviews
-                     JOIN products ON reviews.product_id = products.id
+                    JOIN products ON reviews.product_id = products.id
             WHERE reviews.user_id = ?
             ORDER BY reviews.timestamp DESC
         `, [user_id]);
@@ -277,6 +285,7 @@ router.post('/remove_address', async (req, res) => {
             orders,
             selectedSection: 'addresses',
             addresses,
+            default_address_id: user.default_address_id,
             uniqueProducts,
             reviews
         });
@@ -300,16 +309,17 @@ router.post('/submit_review', async (req, res) => {
         `, [user_id, product_id, review]);
 
         const orders = await getUserPageData(user_id);
+        const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
         const uniqueProducts = await getUniqueProducts(user_id);
         const addresses = await db.allAsync('SELECT * FROM addresses WHERE user_id = ? ORDER BY id DESC', [user_id]);
         const reviews = await db.allAsync(`
             SELECT reviews.product_id,
-                   products.name,
-                   products.img_src,
-                   reviews.review,
-                   reviews.timestamp
+                    products.name,
+                    products.img_src,
+                    reviews.review,
+                    reviews.timestamp
             FROM reviews
-                     JOIN products ON reviews.product_id = products.id
+                    JOIN products ON reviews.product_id = products.id
             WHERE reviews.user_id = ?
             ORDER BY reviews.timestamp DESC
         `, [user_id]);
@@ -320,6 +330,7 @@ router.post('/submit_review', async (req, res) => {
             orders,
             selectedSection: 'reviews',
             addresses,
+            default_address_id: user.default_address_id,
             uniqueProducts,
             reviews
         });
@@ -343,12 +354,12 @@ router.post('/set_default_address', async (req, res) => {
         const user = await db.getAsync('SELECT * FROM users WHERE id = ?', [user_id]);
         const reviews = await db.allAsync(`
             SELECT reviews.product_id,
-                   products.name,
-                   products.img_src,
-                   reviews.review,
-                   reviews.timestamp
+                    products.name,
+                    products.img_src,
+                    reviews.review,
+                    reviews.timestamp
             FROM reviews
-                     JOIN products ON reviews.product_id = products.id
+                    JOIN products ON reviews.product_id = products.id
             WHERE reviews.user_id = ?
             ORDER BY reviews.timestamp DESC
         `, [user_id]);
