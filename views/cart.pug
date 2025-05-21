@@ -9,30 +9,34 @@ block content
             section.payment-left
                 section.cart-items
                     h2 Cart
-                    each product in cart
-                        .cart-item
-                            .left
-                                .image
-                                    a(href=`/products/${product.product_id}`)
-                                        img(src=product.img_src, alt=product.name)
-                                .item
-                                    a(href=`/products/${product.product_id}`)
-                                        span #{product.name}
+                    if cart.length <= 0
+                        .empty-cart
+                            span Your Rocks! cart is empty.
+                    else
+                        each product in cart
+                            .cart-item
+                                .left
+                                    .image
+                                        a(href=`/products/${product.product_id}`)
+                                            img(src=product.img_src, alt=product.name)
+                                    .item
+                                        a(href=`/products/${product.product_id}`)
+                                            span #{product.name}
+                                        form(action="/cart/update" method="POST")
+                                            input(type="hidden" name="product_id" value=product.product_id)
+                                            .quantity-controls
+                                                button(type="submit" name="action" value="decrease" class="decrease")
+                                                    img(src="/images/cart/decrease.png" alt="Reduce quantity")
+                                                input(type="text" name="quantity" min="0" value=product.quantity class="quantity" onchange="this.form.submit()")
+                                                button(type="submit" name="action" value="increase" class="increase")
+                                                    img(src="/images/cart/increase.png" alt="Increase quantity")
+                                .price
                                     form(action="/cart/update" method="POST")
                                         input(type="hidden" name="product_id" value=product.product_id)
-                                        .quantity-controls
-                                            button(type="submit" name="action" value="decrease" class="decrease")
-                                                img(src="/images/cart/decrease.png" alt="Reduce quantity")
-                                            input(type="text" name="quantity" min="0" value=product.quantity class="quantity" onchange="this.form.submit()")
-                                            button(type="submit" name="action" value="increase" class="increase")
-                                                img(src="/images/cart/increase.png" alt="Increase quantity")
-                            .price
-                                form(action="/cart/update" method="POST")
-                                    input(type="hidden" name="product_id" value=product.product_id)
-                                    input(type="hidden" name="quantity" value=0)
-                                    button(type="submit" name="action" value="remove" class="remove")
-                                        img(src="/images/cart/remove-cart.png" alt="Remove from cart")
-                                span US $#{product.price.toFixed(2)}
+                                        input(type="hidden" name="quantity" value=0)
+                                        button(type="submit" name="action" value="remove" class="remove")
+                                            img(src="/images/cart/remove-cart.png" alt="Remove from cart")
+                                    span US $#{product.price.toFixed(2)}
             section.payment-right
                 section.order-summary
                     h2 Order Summary
@@ -44,35 +48,65 @@ block content
                     .total
                         strong Total:
                         strong US $#{totalPrice.toFixed(2)}
-                //- TODO: Implement promo code functionality
-                //- section.promo-code
-                //-     input(type="text", name="code", placeholder="Enter Promo Code")
-                section.order 
+                section.order
                     form(name="order", action="/order", method="POST")
                         section.shipping-info-container
                             h2.shipping-info-1 Shipping Information
                             .shipping-info-2
-                                    .form-row
-                                        label(for="shipping-name") Full Name:
-                                        input#shipping-name(type="text", name="shipping-name", required)
-                                    .form-row
-                                        label(for="shipping-phone") Phone Number:
-                                        input#shipping-phone(type="tel", name="shipping-phone")
-                                    .form-row
-                                        label(for="shipping-address1") Address Line 1:
-                                        input#shipping-address1(type="text", name="shipping-address1", required)
-                                    .form-row
-                                        label(for="shipping-address2") Address Line 2:
-                                        input#shipping-address2(type="text", name="shipping-address2")
-                                    .form-row
-                                        label(for="shipping-city") City:
-                                        input#shipping-city(type="text", name="shipping-city", required)
-                                    .form-row
-                                        label(for="shipping-state") State:
-                                        input#shipping-state(type="text", name="shipping-state", required)
-                                    .form-row
-                                        label(for="shipping-zip") Zip Code:
-                                        input#shipping-zip(type="text", name="shipping-zip", required)
+                                .form-row
+                                    label(for="shipping-name") Full Name:
+                                    input#shipping-name(
+                                        type="text",
+                                        name="shipping-name",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.name ? defaultAddress.name : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-phone") Phone Number:
+                                    input#shipping-phone(
+                                        type="tel",
+                                        name="shipping-phone",
+                                        value=(defaultAddress && defaultAddress.phone ? defaultAddress.phone : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-address1") Address Line 1:
+                                    input#shipping-address1(
+                                        type="text",
+                                        name="shipping-address1",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.address1 ? defaultAddress.address1 : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-address2") Address Line 2:
+                                    input#shipping-address2(
+                                        type="text",
+                                        name="shipping-address2",
+                                        value=(defaultAddress && defaultAddress.address2 ? defaultAddress.address2 : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-city") City:
+                                    input#shipping-city(
+                                        type="text",
+                                        name="shipping-city",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.city ? defaultAddress.city : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-state") State:
+                                    input#shipping-state(
+                                        type="text",
+                                        name="shipping-state",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.state ? defaultAddress.state : '')
+                                    )
+                                .form-row
+                                    label(for="shipping-zip") Zip Code:
+                                    input#shipping-zip(
+                                        type="text",
+                                        name="shipping-zip",
+                                        required,
+                                        value=(defaultAddress && defaultAddress.zip ? defaultAddress.zip : '')
+                                    )
                         section.card-info-container
                             h2.card-info-1 Payment Information
                             .card-info-2
@@ -80,16 +114,16 @@ block content
                                 img(src="/images/cart/visa_mastercard_discover_amex.png", alt=Accepted Payment Methods)
                             hr
                             .card-info-3
-                                    .form-row
-                                        label(for="card-number") Card Number:
-                                        input#card-number(type="text", name="card-number", required)
-                                    .form-row
-                                        label(for="card-name") Card Name:
-                                        input#card-name(type="text", name="card-name", required)
-                                    .form-row
-                                        label(for="card-cvv") CVV:
-                                        input#card-cvv(type="text", name="card-cvv", required)
-                                    .form-row
-                                        label(for="card-expiration") Expiration Date:
-                                        input#card-expiration(type="text", name="card-expiration", placeholder="MM/YY", required)
+                                .form-row
+                                    label(for="card-number") Card Number:
+                                    input#card-number(type="text", name="card-number", required)
+                                .form-row
+                                    label(for="card-name") Card Name:
+                                    input#card-name(type="text", name="card-name", required)
+                                .form-row
+                                    label(for="card-cvv") CVV:
+                                    input#card-cvv(type="text", name="card-cvv", required)
+                                .form-row
+                                    label(for="card-expiration") Expiration Date:
+                                    input#card-expiration(type="text", name="card-expiration", placeholder="MM/YY", required)
                             button.pay-btn(type="submit") Pay

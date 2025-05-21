@@ -1,6 +1,9 @@
 .account-wrapper {
     display: flex;
     background-color: #D3D9D4;
+    background-image: url("/images/background.png");
+    background-size: cover;
+    background-position: center;
 }
 
 /* Sidebar */
@@ -54,6 +57,7 @@
     background-color: #A80505;
 }
 
+/* Main section */
 .main-content {
     flex: 1;
     padding: 1.5rem 2rem;
@@ -65,6 +69,12 @@
 }
 
 /* Orders */
+.sectionHeading {
+    background-color: #749D92;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
 .orders {
     display: none
 }
@@ -123,33 +133,100 @@
     text-decoration: none;
 }
 
-.bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-}
-
-.order-btn {
-    padding: 0.75rem 1.5rem;
-    width: 20%;
-    background-color: #760303;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.order-btn:hover {
-    background-color: #A80505;
-}
-
 hr {
     margin: 1rem 0;
     border: none;
     border-top: 0.0625rem solid black;
+}
+
+/* Reviews */
+.reviews {
+    display: none;
+}
+
+.reviews.active {
+    display: block;
+}
+
+.reviews-container {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    width: 20%;
+    background: white;
+    box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+}
+
+.review-card .item {
+    display: flex;
+}
+
+.review-card .item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.review-card .details a {
+    font-size: 1.25rem;
+    color: black;
+    text-decoration: none;
+}
+
+.review-card .review {
+    margin-top: 1rem;
+}
+
+.review-card .review form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.review-card .review form textarea {
+    padding: 0.5rem;
+    height: 10rem;
+    width: 20rem;
+    outline: none;
+    border: solid black 0.0625rem;
+    border-radius: 0.3rem;
+    font-family: inherit;
+    line-height: 1.5;
+    resize: none;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+.submitReview {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #760303;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.submitReview:hover {
+    background-color: #A80505;
 }
 
 /* Change Password */
@@ -168,30 +245,26 @@ hr {
     align-self: center;
     padding: 2rem;
     background: white;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-#passwordHeading {
-    text-align: center;
-}
-
-.form-group {
+.form-row-password {
     margin-bottom: 1.2rem;
 }
 
-.form-group label {
+.form-row-password label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
-.form-group input[type="password"] {
+.form-row-password input[type="password"] {
     width: 100%;
-    padding: 0.6rem 0;
+    padding: 0.6rem 1rem;
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid black;
+    border-radius: 0.3rem;
     font-size: 1rem;
 }
 
@@ -215,7 +288,7 @@ hr {
     background-color: #760303;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 0.5rem;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
@@ -235,17 +308,89 @@ hr {
     display: block;
 }
 
-/* Payments */
-.payments {
-    display: none;
+.addresses-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
+.address, .add-address {
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.address {
+    width: 20rem;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+}
+
+.remove {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-top: 0.4rem;
+}
+
+.remove img {
+    width: 30px;
+    height: 30px;
+}
+
+.information {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-row-address {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-row-address label {
+    flex: 0 0 125px;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0;
+    text-align: right;
+}
+
+.form-row-address input {
+    flex: 1;
+    margin-bottom: 0.5rem;
+    width: 20rem;
+    padding: 0.3rem 1rem;
+    border: 0.0625rem solid black;
+    outline: none;
+    border-radius: 0.3rem;
+}
+
+#save-address {
+    margin-top: 1rem;
+
+/* Mobile Friendly */
 .payments.active {
     display: block;
 }
-
-
-/* Mobile Friendly */
 @media (max-width: 768px) {
   .account-wrapper {
     flex-direction: column;
@@ -370,4 +515,5 @@ hr {
   #save-address {
     width: 100%;
   }
+
 }

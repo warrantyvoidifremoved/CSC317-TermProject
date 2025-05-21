@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     }
     catch (err) {
         console.error(err);
-        res.status(500).render('error', { title: 'Error', message: 'Database query failed' });
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
@@ -34,17 +34,29 @@ router.get('/:id', async (req, res) => {
             const suggested = await db.allAsync(
                 'SELECT * FROM products WHERE category = ?', [product.category]
             );
+
+            const reviews = await db.allAsync(`
+                SELECT 
+                    users.username,
+                    reviews.review,
+                    reviews.timestamp
+                FROM reviews
+                JOIN users ON reviews.user_id = users.id
+                WHERE reviews.product_id = ?
+                ORDER BY reviews.timestamp DESC
+            `, [id]);
             
             res.render('product_details', {
                 title: 'Rocks! | ' + `${product.name}`,
                 product,
-                suggested
+                suggested,
+                reviews
             });
         }
     }
     catch (err) {
         console.error('Error fetching category products:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
@@ -72,7 +84,7 @@ router.get('/categories/:category', async (req, res) => {
     }
     catch (err) {
         console.error('Error fetching category products:', err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
     }
 });
 
