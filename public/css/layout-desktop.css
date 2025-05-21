@@ -2,381 +2,394 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    font-size: 16px;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	font-size: 16px;
 
 }
 
 body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    height: 100vh;
-    font-family: "Poppins", sans-serif;
-    font-style: normal;
-    background-color: #D3D9D4;
-    background-image: url("/images/background.png");
-    background-size: cover;
-    background-position: center;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	height: 100vh;
+	font-family: "Poppins", sans-serif;
+	font-style: normal;
+	background-color: #D3D9D4;
+	background-image: url("/images/background.png");
+	background-size: cover;
+	background-position: center;
 }
 
 /* Navbar Styles */
 #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 0.625rem 1.25rem;
-    background: #003153;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	padding: 0.625rem 1.25rem;
+	background: #003153;
 }
 
-#navbar a{
-    text-decoration: none;
+#navbar a {
+	text-decoration: none;
 }
 
 #title {
-    font-family: "Bungee Tint", sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
+	font-family: "Bungee Tint", sans-serif;
+	font-size: 2.5rem;
+	font-weight: bold;
 }
 
 /* Search */
 .search-container input {
-    width: 45px;
-    height: 45px;
-    padding: 10px 10px 10px 33px;
-    box-sizing: border-box;
-    cursor: pointer;
-    background: #D3D9D4 url("/images/nav/search.png") no-repeat 12px center;
-    background-size: 20px 20px;
-    color: black;
-    border: 4px solid #749D92;
-    outline: none;
-    border-radius: 50px;
-    transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+	width: 45px;
+	height: 45px;
+	padding: 10px 10px 10px 33px;
+	box-sizing: border-box;
+	cursor: pointer;
+	background: #D3D9D4 url("/images/nav/search.png") no-repeat 12px center;
+	background-size: 20px 20px;
+	color: black;
+	border: 4px solid #749D92;
+	outline: none;
+	border-radius: 50px;
+	transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
 .search-container input:focus {
-    width: 350px;
-    border-radius: 10px;
-    cursor: text;
-    background: #D3D9D4;
+	width: 350px;
+	border-radius: 10px;
+	cursor: text;
+	background: #D3D9D4;
 }
 
 .search-container button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    opacity: 0;
-    visibility: hidden;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    background-image: none;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px 20px;
-    transition: 0.3s ease-in-out;
+	position: absolute;
+	right: 5px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 40px;
+	opacity: 0;
+	visibility: hidden;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px 20px;
+	transition: 0.3s ease-in-out;
 }
 
 .search-container:focus-within button {
-    right: 310px;
-    opacity: 1;
-    visibility: visible;
-    background-image: url("/images/nav/search.png");
+	right: 310px;
+	opacity: 1;
+	visibility: visible;
+	background-image: url("/images/nav/search.png");
 }
 
 /* Nav links */
 #nav-links {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	list-style: none;
+	gap: 1rem;
 }
 
 #nav-links a {
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	color: white;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 0.3s ease-in-out;
 }
 
 .nav-img {
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 2rem;
-    max-height: 2rem;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 2rem;
+	max-height: 2rem;
 }
 
 #nav-links a:hover {
-    background-color: #749D92;
+	background-color: #749D92;
 }
 
 #nav-links li {
-    position: relative;
+	position: relative;
 }
 
 #nav-links li:hover #nav-products {
-    display: block;
+	display: block;
 }
 
 #nav-links li:hover #profile-options {
-    display: block;
+	display: block;
 }
 
 #cart {
-    margin-bottom: 0.1rem;
+	margin-bottom: 0.1rem;
 }
 
 .logout-link {
-    background: none;
-    border: none;
-    color: white;
-    font: inherit;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 0.5rem 0.75rem;
-    width: 100%;
-    text-align: center;
-    display: block;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    white-space: nowrap;
+	background: none;
+	border: none;
+	color: white;
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 0.5rem 0.75rem;
+	width: 100%;
+	text-align: center;
+	display: block;
+	border-radius: 0.5rem;
+	font-weight: 600;
+	white-space: nowrap;
 }
 
-.logout-link:hover{
-    background-color: #749D92;
+.logout-link:hover {
+	background-color: #749D92;
 }
 
 #nav-links li::after {
-    content: "";
-    position: absolute;
-    top: 100%;         
-    left: 0;
-    width: 100%;
-    height: 2.3rem;       
-    pointer-events: auto;
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 2.3rem;
+	pointer-events: auto;
 }
 
 #nav-products {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 30%);
-    z-index: 1000;
-    padding: 0;
-    list-style: none;
-    background: #003153;
-    border-radius: 0.5rem;
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, 30%);
+	z-index: 1000;
+	padding: 0;
+	list-style: none;
+	background: #003153;
+	border-radius: 0.5rem;
 }
 
 #nav-products li a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: center;
-    transition: background-color 0.3s ease-in-out;
+	display: block;
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+	text-align: center;
+	transition: background-color 0.3s ease-in-out;
 }
 
 #nav-products li a:hover {
-    background-color: #749D92;
+	background-color: #749D92;
 }
 
 #profile-options {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, 40%);
-    z-index: 1000;
-    padding: 0;
-    list-style: none;
-    background: #003153;
-    border-radius: 0.5rem;
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translate(-50%, 40%);
+	z-index: 1000;
+	padding: 0;
+	list-style: none;
+	background: #003153;
+	border-radius: 0.5rem;
 }
 
 #profile-options form {
-    margin: 0;
-    padding: 0;
-    display: block;
+	margin: 0;
+	padding: 0;
+	display: block;
 }
 
 #profile-options a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    white-space: nowrap;
-    text-align: center;
-    transition: background-color 0.3s ease-in-out;
+	display: block;
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+	text-align: center;
+	transition: background-color 0.3s ease-in-out;
 }
 
 /* Footer Styles */
 #footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.625rem 1.25rem;
-    margin: auto;
-    background-color: #003153;
-    color: white;
-    font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.625rem 1.25rem;
+	margin: auto;
+	background-color: #003153;
+	color: white;
+	font-weight: 600;
 }
 
 .social-media img {
-    margin-left: 1.875rem;
-    max-width: 2rem;
-    max-height: 2rem;
+	margin-left: 1.875rem;
+	max-width: 2rem;
+	max-height: 2rem;
 }
 
-#X, #instagram, #discord {
-    margin-left: 3rem;
+#X,
+#instagram,
+#discord {
+	margin-left: 3rem;
 }
 
 #X {
-    margin-top: 0.1875rem;
+	margin-top: 0.1875rem;
 }
 
 #instagram {
-    margin-top: 0.1875rem;
+	margin-top: 0.1875rem;
 }
 
 #discord {
-    margin-bottom: 0.1875rem;
+	margin-bottom: 0.1875rem;
 }
-
 
 /* Mobile Friendly */
 @media (max-width: 768px) {
-  #navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    gap: 1rem;
-  }
+	#navbar {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 1rem;
+		gap: 1rem;
+	}
 
-  #title {
-    font-size: 2rem;
-    text-align: center;
-    width: 100%;
-  }
+	#title {
+		font-size: 2rem;
+		text-align: center;
+		width: 100%;
+	}
 
-  .search-container input {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 2.5rem;
-    background-position: 10px center;
-  }
+	.search-container input {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 2.5rem;
+		background-position: 10px center;
+	}
 
-  .search-container input:focus {
-    width: 100%;
-  }
+	.search-container input:focus {
+		width: 100%;
+	}
 
-  .search-container:focus-within button {
-    right: 10px;
-  }
+	.search-container:focus-within button {
+		right: 10px;
+	}
 
-  #nav-links {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    width: 100%;
-  }
+	#nav-links {
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+		width: 100%;
+	}
 
-  #nav-links a,
-  .logout-link {
-    font-size: 0.95rem;
-    padding: 0.5rem;
-  }
+	#nav-links a,
+	.logout-link {
+		font-size: 0.95rem;
+		padding: 0.5rem;
+	}
 
-  /* New dropdown menu styles for mobile */
-  #nav-links li {
-    position: relative;
-  }
-  
-  /* Change hover behavior for mobile */
-  #nav-links li:hover #nav-products,
-  #nav-links li:hover #profile-options {
-    display: none; /* Override the hover display for mobile */
-  }
-  
-  /* Add active class that will be toggled with JavaScript */
-  #nav-links li.active #nav-products,
-  #nav-links li.active #profile-options {
-    display: block !important; /* Use !important to override any conflicting styles */
-    position: fixed; /* Change to fixed positioning */
-    top: auto; /* Reset top */
-    left: 50% !important; /* Center horizontally */
-    transform: translateX(-50%) !important; /* Center horizontally */
-    width: 80%; /* Limit width to 80% of screen */
-    max-width: 300px; /* Set maximum width */
-    text-align: center;
-    z-index: 1001;
-    background-color: #003153;
-    border: 1px solid #749D92;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin-top: 0;
-    /* Calculate position based on the trigger element */
-    margin-top: 2.5rem; /* Add space below the navbar items */
-  }
-  
-  /* Styles for dropdown items */
-  #nav-products li,
-  #profile-options li {
-    width: 100%;
-    margin: 0.25rem 0;
-  }
-  
-  #nav-products li a,
-  #profile-options li a,
-  #profile-options form button {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.75rem 1rem;
-    text-align: center; /* Center text */
-    white-space: nowrap;
-    border-radius: 0.25rem;
-  }
-  
-  /* Remove the pseudo-element causing issues */
-  #nav-links li::after {
-    display: none;
-  }
+	/* New dropdown menu styles for mobile */
+	#nav-links li {
+		position: relative;
+	}
 
-  #footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-    padding: 1rem;
-  }
+	/* Change hover behavior for mobile */
+	#nav-links li:hover #nav-products,
+	#nav-links li:hover #profile-options {
+		display: none;
+		/* Override the hover display for mobile */
+	}
 
-  .social-media {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+	/* Add active class that will be toggled with JavaScript */
+	#nav-links li.active #nav-products,
+	#nav-links li.active #profile-options {
+		display: block !important;
+		/* Use !important to override any conflicting styles */
+		position: fixed;
+		/* Change to fixed positioning */
+		top: auto;
+		/* Reset top */
+		left: 50% !important;
+		/* Center horizontally */
+		transform: translateX(-50%) !important;
+		/* Center horizontally */
+		width: 80%;
+		/* Limit width to 80% of screen */
+		max-width: 300px;
+		/* Set maximum width */
+		text-align: center;
+		z-index: 1001;
+		background-color: #003153;
+		border: 1px solid #749D92;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		border-radius: 0.5rem;
+		padding: 0.5rem;
+		margin-top: 0;
+		/* Calculate position based on the trigger element */
+		margin-top: 2.5rem;
+		/* Add space below the navbar items */
+	}
 
-  .social-media img {
-    margin: 0;
-  }
+	/* Styles for dropdown items */
+	#nav-products li,
+	#profile-options li {
+		width: 100%;
+		margin: 0.25rem 0;
+	}
 
-  #X, #instagram, #discord {
-    margin: 0;
-  }
+	#nav-products li a,
+	#profile-options li a,
+	#profile-options form button {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0.75rem 1rem;
+		text-align: center;
+		/* Center text */
+		white-space: nowrap;
+		border-radius: 0.25rem;
+	}
+
+	/* Remove the pseudo-element causing issues */
+	#nav-links li::after {
+		display: none;
+	}
+
+	#footer {
+		flex-direction: column;
+		text-align: center;
+		gap: 1rem;
+		padding: 1rem;
+	}
+
+	.social-media {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.social-media img {
+		margin: 0;
+	}
+
+	#X,
+	#instagram,
+	#discord {
+		margin: 0;
+	}
 }
