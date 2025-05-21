@@ -5,7 +5,7 @@ const db = require('../db/db');
 // Add to cart
 router.post('/', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).render('error', { title: 'Error', error: 'Please log in to add items to your cart.' });        
+        return res.status(401).render('login', { title: 'Rocks! | Login'});
     }
 
     const user_id = req.session.user.id;
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 // Update cart
 router.post('/update', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).render('error', { title: 'Error', error: 'Please log in to add items to your cart.' }); 
+        return res.status(401).render('login', { title: 'Rocks! | Login'});
     }
 
     const user_id = req.session.user.id;
@@ -96,12 +96,9 @@ router.post('/update', async (req, res) => {
 // Cart page
 router.get('/', async (req, res) => {
     if (!req.session.user) {
-        res.render('cart', {
-            title: 'Rocks! | Cart',
-            cart: [],
-            totalPrice: 0
-        });
+        return res.status(401).render('login', { title: 'Rocks! | Login'});
     }
+
     else {
         const user_id = req.session.user.id;
         if (!user_id) return res.redirect('/login');
@@ -117,7 +114,7 @@ router.get('/', async (req, res) => {
                 addr.state,
                 addr.zip
             FROM users AS users
-                     LEFT JOIN addresses AS addr ON users.default_address_id = addr.id
+                LEFT JOIN addresses AS addr ON users.default_address_id = addr.id
             WHERE users.id = ?
         `, [user_id]);
 

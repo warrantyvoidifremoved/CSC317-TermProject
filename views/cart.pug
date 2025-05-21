@@ -9,30 +9,34 @@ block content
             section.payment-left
                 section.cart-items
                     h2 Cart
-                    each product in cart
-                        .cart-item
-                            .left
-                                .image
-                                    a(href=`/products/${product.product_id}`)
-                                        img(src=product.img_src, alt=product.name)
-                                .item
-                                    a(href=`/products/${product.product_id}`)
-                                        span #{product.name}
+                    if cart.length <= 0
+                        .empty-cart
+                            span Your Rocks! cart is empty.
+                    else
+                        each product in cart
+                            .cart-item
+                                .left
+                                    .image
+                                        a(href=`/products/${product.product_id}`)
+                                            img(src=product.img_src, alt=product.name)
+                                    .item
+                                        a(href=`/products/${product.product_id}`)
+                                            span #{product.name}
+                                        form(action="/cart/update" method="POST")
+                                            input(type="hidden" name="product_id" value=product.product_id)
+                                            .quantity-controls
+                                                button(type="submit" name="action" value="decrease" class="decrease")
+                                                    img(src="/images/cart/decrease.png" alt="Reduce quantity")
+                                                input(type="text" name="quantity" min="0" value=product.quantity class="quantity" onchange="this.form.submit()")
+                                                button(type="submit" name="action" value="increase" class="increase")
+                                                    img(src="/images/cart/increase.png" alt="Increase quantity")
+                                .price
                                     form(action="/cart/update" method="POST")
                                         input(type="hidden" name="product_id" value=product.product_id)
-                                        .quantity-controls
-                                            button(type="submit" name="action" value="decrease" class="decrease")
-                                                img(src="/images/cart/decrease.png" alt="Reduce quantity")
-                                            input(type="text" name="quantity" min="0" value=product.quantity class="quantity" onchange="this.form.submit()")
-                                            button(type="submit" name="action" value="increase" class="increase")
-                                                img(src="/images/cart/increase.png" alt="Increase quantity")
-                            .price
-                                form(action="/cart/update" method="POST")
-                                    input(type="hidden" name="product_id" value=product.product_id)
-                                    input(type="hidden" name="quantity" value=0)
-                                    button(type="submit" name="action" value="remove" class="remove")
-                                        img(src="/images/cart/remove-cart.png" alt="Remove from cart")
-                                span US $#{product.price.toFixed(2)}
+                                        input(type="hidden" name="quantity" value=0)
+                                        button(type="submit" name="action" value="remove" class="remove")
+                                            img(src="/images/cart/remove-cart.png" alt="Remove from cart")
+                                    span US $#{product.price.toFixed(2)}
             section.payment-right
                 section.order-summary
                     h2 Order Summary
@@ -44,9 +48,6 @@ block content
                     .total
                         strong Total:
                         strong US $#{totalPrice.toFixed(2)}
-                //- TODO: Implement promo code functionality
-                //- section.promo-code
-                //-     input(type="text", name="code", placeholder="Enter Promo Code")
                 section.order
                     form(name="order", action="/order", method="POST")
                         section.shipping-info-container
