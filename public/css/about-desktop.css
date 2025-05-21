@@ -132,3 +132,78 @@
     font-weight: 600;
     margin-bottom: 0.3rem;
 }
+
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+    text-align: center;
+    height: auto;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .collapsed-container-1,
+  .collapsed-container-2 {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+  }
+
+  .circle-1,
+  .circle-2 {
+    width: 90%;
+    height: auto;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .expanded-container-1,
+  .expanded-container-2 {
+    width: 90%;
+    margin: 2rem auto;
+  }
+
+  .expanded-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .expanded-heading img,
+  .heading img {
+    margin-top: 0.5rem;
+  }
+
+  .content-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .team-member {
+    width: 90%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .content-grid img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-blurb {
+    margin-left: 0;
+  }
+}

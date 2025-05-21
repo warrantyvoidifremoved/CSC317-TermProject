@@ -69,3 +69,35 @@
     display: none;
     font-size: 0.9rem;
 }
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 2rem 1rem;
+  }
+
+  .signup-content {
+    width: 100%;
+    max-width: 320px;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .form-group input {
+    width: 100%;
+  }
+
+  .signup-btn {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .login-link {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+  }
+
+  .error-msg {
+    font-size: 0.8rem;
+  }
+}
