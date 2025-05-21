@@ -31,12 +31,12 @@ block content
                                                 button(type="submit" name="action" value="increase" class="increase")
                                                     img(src="/images/cart/increase.png" alt="Increase quantity")
                                 .price
+                                    span US $#{product.price.toFixed(2)}
                                     form(action="/cart/update" method="POST")
                                         input(type="hidden" name="product_id" value=product.product_id)
                                         input(type="hidden" name="quantity" value=0)
                                         button(type="submit" name="action" value="remove" class="remove")
                                             img(src="/images/cart/remove-cart.png" alt="Remove from cart")
-                                    span US $#{product.price.toFixed(2)}
             section.payment-right
                 section.order-summary
                     h2 Order Summary
