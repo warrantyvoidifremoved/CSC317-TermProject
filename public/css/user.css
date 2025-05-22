@@ -273,14 +273,14 @@ hr {
 }
 
 .error-msg {
-	color: #b00020;
+	color: #760303;
 	font-weight: 500;
 	margin: 1rem 0;
 	text-align: center;
 }
 
 .success-msg {
-	color: #007e33;
+	color: #760303;
 	font-weight: 500;
 	margin: 1rem 0;
 	text-align: center;
@@ -393,6 +393,16 @@ hr {
 
 #save-address {
 	margin-top: 1rem;
+}
+
+#default-address {
+	margin-top: 2rem;
+	color: #760303; 
+	font-weight: bold; 
+}
+
+#set-default-address {
+	margin-top: 1.25rem;
 }
 
 /* Mobile Friendly */

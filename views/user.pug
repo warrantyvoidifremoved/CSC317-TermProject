@@ -131,11 +131,11 @@ block content
                                     span #{address.address2}
                                 span #{address.city}, #{address.state} #{address.zip}
                                 if address.id == default_address_id
-                                    span(style="color: green; font-weight: bold; margin-left: 10px") Default Address
+                                    span#default-address Default Address
                                 else
                                     form(action="/user/set_default_address", method="POST")
                                         input(type="hidden", name="address_id", value=address.id)
-                                        button(type="submit").submit-btn Use as Default
+                                        button#set-default-address(type="submit").submit-btn Use as Default
 block scripts
     script(src="/js/layout.js")
     script(src="/js/user.js")
