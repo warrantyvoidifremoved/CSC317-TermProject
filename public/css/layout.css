@@ -25,7 +25,7 @@ body {
 }
 
 /* Navbar Styles */
-#navbar {
+.desktop-nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -36,11 +36,11 @@ body {
 	background: #003153;
 }
 
-#navbar a {
+.desktop-nav a {
 	text-decoration: none;
 }
 
-#title {
+.title {
 	font-family: "Bungee Tint", sans-serif;
 	font-size: 2.5rem;
 	font-weight: bold;
@@ -259,137 +259,110 @@ body {
 	margin-bottom: 0.1875rem;
 }
 
-/* Mobile Friendly */
+#menu-toggle {
+	display: none;
+}
+
+.mobile-nav {
+	display: none;
+}
+
+/* Mobile Styling */
 @media (max-width: 768px) {
-	#navbar {
+	.desktop-nav {
+		display: none;
+	}
+
+	.mobile-nav {
+		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
-		padding: 1rem;
-		gap: 1rem;
+		align-items: center;
+		background: #003153;
+		padding: 0.5rem 1rem;
 	}
 
-	#title {
+	.mobile-nav a {
+		text-decoration: none;
+	}
+
+	.mobile-header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	#mobile-menu-toggle {
+		background: none;
+		border: none;
 		font-size: 2rem;
-		text-align: center;
-		width: 100%;
+		color: white;
+		cursor: pointer;
 	}
 
-	.search-container input {
-		width: 100%;
-		max-width: 100%;
-		padding-left: 2.5rem;
-		background-position: 10px center;
-	}
-
-	.search-container input:focus {
-		width: 100%;
-	}
-
-	.search-container:focus-within button {
-		right: 10px;
-	}
-
-	#nav-links {
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		justify-content: center;
-		width: 100%;
-	}
-
-	#nav-links a,
-	.logout-link {
-		font-size: 0.95rem;
-		padding: 0.5rem;
-	}
-
-	/* New dropdown menu styles for mobile */
-	#nav-links li {
+	.mobile-nav .search-container {
+		width: 90%;
+		margin: 0.75rem auto;
 		position: relative;
 	}
 
-	/* Change hover behavior for mobile */
-	#nav-links li:hover #nav-products,
-	#nav-links li:hover #profile-options {
-		display: none;
-		/* Override the hover display for mobile */
-	}
-
-	/* Add active class that will be toggled with JavaScript */
-	#nav-links li.active #nav-products,
-	#nav-links li.active #profile-options {
-		display: block !important;
-		/* Use !important to override any conflicting styles */
-		position: fixed;
-		/* Change to fixed positioning */
-		top: auto;
-		/* Reset top */
-		left: 50% !important;
-		/* Center horizontally */
-		transform: translateX(-50%) !important;
-		/* Center horizontally */
-		width: 80%;
-		/* Limit width to 80% of screen */
-		max-width: 300px;
-		/* Set maximum width */
-		text-align: center;
-		z-index: 1001;
-		background-color: #003153;
-		border: 1px solid #749D92;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		border-radius: 0.5rem;
-		padding: 0.5rem;
-		margin-top: 0;
-		/* Calculate position based on the trigger element */
-		margin-top: 2.5rem;
-		/* Add space below the navbar items */
-	}
-
-	/* Styles for dropdown items */
-	#nav-products li,
-	#profile-options li {
+	.mobile-nav .search-container input {
 		width: 100%;
-		margin: 0.25rem 0;
-	}
-
-	#nav-products li a,
-	#profile-options li a,
-	#profile-options form button {
-		display: block;
-		width: 100%;
-		box-sizing: border-box;
-		padding: 0.75rem 1rem;
-		text-align: center;
-		/* Center text */
-		white-space: nowrap;
+		padding-left: 1rem;
+		padding-right: 3rem;
 		border-radius: 0.25rem;
+		background: #D3D9D4;
 	}
 
-	/* Remove the pseudo-element causing issues */
-	#nav-links li::after {
-		display: none;
+	.mobile-nav .search-container button {
+		right: 0.5rem;
+		opacity: 1;
+		visibility: visible;
+		background-image: url("/images/nav/search.png");
 	}
 
-	#footer {
-		flex-direction: column;
-		text-align: center;
-		gap: 1rem;
-		padding: 1rem;
-	}
-
-	.social-media {
+    #sticky-nav-links {
 		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		padding: 1rem 0;
+		width: 90%;
+		overflow-x: scroll;
+		gap: 1rem;
+	}
+
+	#sticky-nav-links a {
+		font-size: 1rem;
+		color: white;
+	}
+
+	#mobile-nav-links {
+		display: none;
+		flex-direction: row;
+		padding: 0;
+		align-items: center;
 		justify-content: center;
+		background: #003153;
+		overflow: hidden;
+		list-style: none;
 		gap: 1rem;
 		flex-wrap: wrap;
 	}
 
-	.social-media img {
-		margin: 0;
+	#mobile-nav-links li a,
+	.mobile-nav .logout-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 5rem;
+		padding: 1rem 0;
+		color: white;
+		text-align: center;
+		border: 1px white solid;
+		border-radius: 0.25rem;
 	}
 
-	#X,
-	#instagram,
-	#discord {
-		margin: 0;
+	.mobile-nav.open #mobile-nav-links {
+		display: flex;
 	}
 }
