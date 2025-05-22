@@ -178,13 +178,13 @@
 	}
 
 	.expanded-heading {
-		flex-direction: column;
-		align-items: flex-start;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
 	}
 
-	.expanded-heading img,
-	.heading img {
-		margin-top: 0.5rem;
+	.expanded-heading img, .heading img {
+		margin-bottom: 1.5rem;
 	}
 
 	.content-grid {
@@ -205,8 +205,9 @@
 	}
 
 	.heading {
-		flex-direction: column;
-		align-items: flex-start;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
 	}
 
 	.about-blurb {
