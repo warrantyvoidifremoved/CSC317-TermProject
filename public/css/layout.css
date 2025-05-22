@@ -368,4 +368,9 @@ body {
 	.mobile-nav.open #mobile-nav-links {
 		display: flex;
 	}
+
+	#discord {
+		margin-top: 0.1875rem;
+		margin-bottom: 0;
+	}
 }
