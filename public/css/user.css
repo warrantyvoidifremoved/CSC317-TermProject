@@ -159,11 +159,11 @@ hr {
 
 .review-card {
 	display: flex;
+	/* width: 20%; */
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 2rem;
-	width: 20%;
 	background: white;
 	box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.3);
 	border-radius: 0.5rem;
@@ -200,8 +200,8 @@ hr {
 
 .review-card .review form textarea {
 	padding: 0.5rem;
-	height: 10rem;
-	width: 20rem;
+	height: 5rem;
+	width: 90%;
 	outline: none;
 	border: solid black 0.0625rem;
 	border-radius: 0.3rem;
@@ -392,6 +392,10 @@ hr {
 
 /* Mobile Friendly */
 @media (max-width: 768px) {
+	.review-card {
+		width: 100%;
+	}
+
 	.account-wrapper {
 		flex-direction: column;
 	}
@@ -399,6 +403,7 @@ hr {
 	.sidebar {
 		flex-direction: row;
 		justify-content: space-around;
+		box-sizing: border-box;
 		width: 100%;
 		padding: 1rem;
 		flex-wrap: wrap;
@@ -488,28 +493,39 @@ hr {
 		padding: 1rem;
 	}
 
-	.heading {
+	.information {
+		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
-		height: auto;
-		text-align: center;
 	}
 
-	.form-row-address,
-	.form-row-password {
+	.form-row-address {
+		display: flex;
+		align-items: flex-start;
 		flex-direction: column;
-		align-items: stretch;
+		margin: 0;
+		padding: 0;
 	}
 
-	.form-row-address label,
-	.form-row-password label {
-		text-align: left;
-		width: 100%;
+	.form-row-address label {
+		all: unset;
+		font-weight: 600;
+		font-size: 1rem;
+		margin-bottom: 0.2rem;
+		line-height: 1.1;
 	}
 
-	.form-row-address input,
-	.form-row-password input {
+	.form-row-address input {
+		all: unset;
+		display: block;
 		width: 100%;
+		padding: 0.5rem 0.75rem;
+		border: 1px solid black;
+		margin-bottom: 2rem;
+		border-radius: 0.3rem;
+		font-size: 1rem;
+		line-height: 1.25;
+		box-sizing: border-box;
+		background: white;
 	}
 
 	#save-address {
