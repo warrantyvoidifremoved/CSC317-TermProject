@@ -11,3 +11,5 @@ block content
                     img.product-image(src=product.img_src alt='Image of ' + product.name)
                     span.product-name #{product.name}
                     span.product-price $#{product.price.toFixed(2)}
+block scripts
+    script(src="/js/layout.js")

@@ -279,6 +279,7 @@ body {
 		align-items: center;
 		background: #003153;
 		padding: 0.5rem 1rem;
+		z-index: 1000;
 	}
 
 	.mobile-nav a {
@@ -360,6 +361,8 @@ body {
 		text-align: center;
 		border: 1px white solid;
 		border-radius: 0.25rem;
+		font-size: 1rem;
+		font-weight: normal;
 	}
 
 	.mobile-nav.open #mobile-nav-links {
