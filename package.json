@@ -1,32 +1,32 @@
 {
-  "name": "csc317-termproject",
-  "version": "1.0.0",
-  "description": "This repository contains the files for CSC-317 Assignment: Term Project, with the final product being an e-commerce webpage.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/warrantyvoidifremoved/CSC317-TermProject.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/warrantyvoidifremoved/CSC317-TermProject/issues"
-  },
-  "homepage": "https://github.com/warrantyvoidifremoved/CSC317-TermProject#readme",
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "express-session": "^1.18.1",
-    "pug": "^3.0.3",
-    "sqlite3": "^5.1.7"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+	"name": "csc317-termproject",
+	"version": "1.0.0",
+	"description": "This repository contains the files for CSC-317 Assignment: Term Project, with the final product being an e-commerce webpage.",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/warrantyvoidifremoved/CSC317-TermProject.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/warrantyvoidifremoved/CSC317-TermProject/issues"
+	},
+	"homepage": "https://github.com/warrantyvoidifremoved/CSC317-TermProject#readme",
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"dotenv": "^16.5.0",
+		"express": "^5.1.0",
+		"express-session": "^1.18.1",
+		"pug": "^3.0.3",
+		"sqlite3": "^5.1.7"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	}
 }

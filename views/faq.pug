@@ -1,132 +1,132 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/faq.css")
+	link(rel="stylesheet", href="/css/faq.css")
 
 block content
-    main
-        section.hero-section
-            h1 Frequently Asked Questions
-            p Find answers to common questions about our products, shipping, and more
-        section.faq-container
-            section.faq-categories
-                button.category-btn(data-category="all").active All Questions
-                button.category-btn(data-category="products") Products
-                button.category-btn(data-category="orders") Orders & Shipping
-                button.category-btn(data-category="returns") Returns & Refunds
-                button.category-btn(data-category="account") Account & Payment
-            section.faq-list(data-category="all")
-                // Products
-                .faq-item(data-category="products")
-                    .faq-question
-                        h3 What types of rocks do you sell?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We offer a wide variety of rock specimens across three main categories: igneous, sedimentary, and metamorphic.
-                .faq-item(data-category="products")
-                    .faq-question
-                        h3 Are your specimens natural or treated?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Unless specifically stated in the product description, all our specimens are 100% natural and untreated.
-                .faq-item(data-category="products")
-                    .faq-question
-                        h3 How do you source your rocks?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We source our specimens from reputable miners, collectors, and geological expeditions worldwide.
-                .faq-item(data-category="products")
-                    .faq-question
-                        h3 Do you provide certificates of authenticity?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Yes, all our specimens come with a certificate of authenticity.
+	main
+		section.hero-section
+			h1 Frequently Asked Questions
+			p Find answers to common questions about our products, shipping, and more
+		section.faq-container
+			section.faq-categories
+				button.category-btn(data-category="all").active All Questions
+				button.category-btn(data-category="products") Products
+				button.category-btn(data-category="orders") Orders & Shipping
+				button.category-btn(data-category="returns") Returns & Refunds
+				button.category-btn(data-category="account") Account & Payment
+			section.faq-list(data-category="all")
+				// Products
+				.faq-item(data-category="products")
+					.faq-question
+						h3 What types of rocks do you sell?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We offer a wide variety of rock specimens across three main categories: igneous, sedimentary, and metamorphic.
+				.faq-item(data-category="products")
+					.faq-question
+						h3 Are your specimens natural or treated?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Unless specifically stated in the product description, all our specimens are 100% natural and untreated.
+				.faq-item(data-category="products")
+					.faq-question
+						h3 How do you source your rocks?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We source our specimens from reputable miners, collectors, and geological expeditions worldwide.
+				.faq-item(data-category="products")
+					.faq-question
+						h3 Do you provide certificates of authenticity?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Yes, all our specimens come with a certificate of authenticity.
 
-                // Orders & Shipping
-                .faq-item(data-category="orders")
-                    .faq-question
-                        h3 How long does shipping take?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Standard shipping typically takes 3-5 business days within the continental US.
-                .faq-item(data-category="orders")
-                    .faq-question
-                        h3 Do you ship internationally?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Unfortunately, we currently only offer shipping within the United States.
-                .faq-item(data-category="orders")
-                    .faq-question
-                        h3 How are specimens packaged for shipping?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We take great care in packaging our specimens to ensure they arrive safely.
+				// Orders & Shipping
+				.faq-item(data-category="orders")
+					.faq-question
+						h3 How long does shipping take?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Standard shipping typically takes 3-5 business days within the continental US.
+				.faq-item(data-category="orders")
+					.faq-question
+						h3 Do you ship internationally?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Unfortunately, we currently only offer shipping within the United States.
+				.faq-item(data-category="orders")
+					.faq-question
+						h3 How are specimens packaged for shipping?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We take great care in packaging our specimens to ensure they arrive safely.
 
-                // Returns & Refunds
-                .faq-item(data-category="returns")
-                    .faq-question
-                        h3 What is your return policy?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We offer a 30-day return policy for most items.
-                .faq-item(data-category="returns")
-                    .faq-question
-                        h3 How do I initiate a return?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p To initiate a return, please email us at help@rocks.com with your order number and the details of your return.
-                .faq-item(data-category="returns")
-                    .faq-question
-                        h3 Do you cover return shipping costs?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We cover return shipping costs for items that arrived damaged or were incorrectly described.
+				// Returns & Refunds
+				.faq-item(data-category="returns")
+					.faq-question
+						h3 What is your return policy?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We offer a 30-day return policy for most items.
+				.faq-item(data-category="returns")
+					.faq-question
+						h3 How do I initiate a return?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p To initiate a return, please email us at help@rocks.com with your order number and the details of your return.
+				.faq-item(data-category="returns")
+					.faq-question
+						h3 Do you cover return shipping costs?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We cover return shipping costs for items that arrived damaged or were incorrectly described.
 
-                // Account & Payment
-                .faq-item(data-category="account")
-                    .faq-question
-                        h3 What payment methods do you accept?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p We accept the following major credit and debit cards: Visa, Mastercard, American Express, and Discover.
-                .faq-item(data-category="account")
-                    .faq-question
-                        h3 Do I need an account to make a purchase?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Yes, you’ll need an account to place an order with us.
-                .faq-item(data-category="account")
-                    .faq-question
-                        h3 Is my personal information secure?
-                        .faq-toggle
-                            img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
-                            img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
-                    .faq-answer
-                        p Yes, protecting your personal information is a top priority for us.
+				// Account & Payment
+				.faq-item(data-category="account")
+					.faq-question
+						h3 What payment methods do you accept?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p We accept the following major credit and debit cards: Visa, Mastercard, American Express, and Discover.
+				.faq-item(data-category="account")
+					.faq-question
+						h3 Do I need an account to make a purchase?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Yes, you’ll need an account to place an order with us.
+				.faq-item(data-category="account")
+					.faq-question
+						h3 Is my personal information secure?
+						.faq-toggle
+							img.faq-expand(src="/images/faq/expand.png" alt="Expand topic")
+							img.faq-collapse(src="/images/faq/collapse.png" alt="Collapse topic")
+					.faq-answer
+						p Yes, protecting your personal information is a top priority for us.
 block scripts
-    script(src="/js/layout.js")
-    script(src="/js/faq.js")
+	script(src="/js/layout.js")
+	script(src="/js/faq.js")

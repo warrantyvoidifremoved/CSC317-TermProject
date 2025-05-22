@@ -1,50 +1,50 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/order.css")
+	link(rel="stylesheet", href="/css/order.css")
 
 block content
-    main
-        section.hero
-            h1 Your Order Is Confirmed!
-            p Your order number is: #{order_number}
-        section.order-wrapper
-            section.order-left
-                section.order-items
-                    h2 Order
-                    each product in order
-                        .order-item
-                            .left
-                                .image
-                                    a(href=`/products/${product.product_id}`)
-                                        img(src=product.img_src, alt=product.name)
-                                .item
-                                    a(href=`/products/${product.product_id}`)
-                                        span #{product.name}
-                            .quantity
-                                span x #{product.quantity}
-            section.order-right
-                section.order-summary
-                    h2 Order Summary
-                    each product in order
-                        .product-price
-                            span #{product.name}
-                            span US $#{product.price.toFixed(2)} x #{product.quantity}
-                    hr
-                    .total
-                        strong Total:
-                        strong US $#{totalPrice.toFixed(2)}
-                section.shipping-info-container
-                    h2.shipping-info-1 Shipping Information
-                    .shipping-info-2
-                        .shipping-row
-                            span #{shippingInfo.name}
-                        .shipping-row
-                            span #{shippingInfo.phone}
-                        .shipping-row
-                            span #{shippingInfo.address1}
-                            span #{shippingInfo.address2}
-                            span #{shippingInfo.city}
-                            span #{shippingInfo.state} #{shippingInfo.zip}
+	main
+		section.hero
+			h1 Your Order Is Confirmed!
+			p Your order number is: #{order_number}
+		section.order-wrapper
+			section.order-left
+				section.order-items
+					h2 Order
+					each product in order
+						.order-item
+							.left
+								.image
+									a(href=`/products/${product.product_id}`)
+										img(src=product.img_src, alt=product.name)
+								.item
+									a(href=`/products/${product.product_id}`)
+										span #{product.name}
+							.quantity
+								span x #{product.quantity}
+			section.order-right
+				section.order-summary
+					h2 Order Summary
+					each product in order
+						.product-price
+							span #{product.name}
+							span US $#{product.price.toFixed(2)} x #{product.quantity}
+					hr
+					.total
+						strong Total:
+						strong US $#{totalPrice.toFixed(2)}
+				section.shipping-info-container
+					h2.shipping-info-1 Shipping Information
+					.shipping-info-2
+						.shipping-row
+							span #{shippingInfo.name}
+						.shipping-row
+							span #{shippingInfo.phone}
+						.shipping-row
+							span #{shippingInfo.address1}
+							span #{shippingInfo.address2}
+							span #{shippingInfo.city}
+							span #{shippingInfo.state} #{shippingInfo.zip}
 block scripts
-    script(src="/js/layout.js")                            
+	script(src="/js/layout.js")                            

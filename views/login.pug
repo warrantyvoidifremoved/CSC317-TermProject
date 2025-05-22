@@ -1,25 +1,25 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/login.css")
+	link(rel="stylesheet", href="/css/login.css")
 
 block content
-    section.login-container
-        .login-content
-            h2 Welcome Back
-            form(action="/login", method="POST")
-                .form-group
-                    label(for="username") Username
-                    input#username(type="text", name="username", value = username || '')
-                    span#username-error.error-msg(style="display:inline;")=usernameError || ''
-                .form-group
-                    label(for="password") Password
-                    input#password(type="password", name="password")
-                    span#password-error.error-msg(style="display:inline;")=passwordError || ''
-                input(type="hidden" name="returnTo" value=returnTo)
-                button(type="submit").login-btn Log In
-                p.signup-link
-                    | Don't have an account?
-                    a(href="/signup")  Sign Up
+	section.login-container
+		.login-content
+			h2 Welcome Back
+			form(action="/login", method="POST")
+				.form-group
+					label(for="username") Username
+					input#username(type="text", name="username", value = username || '')
+					span#username-error.error-msg(style="display:inline;")=usernameError || ''
+				.form-group
+					label(for="password") Password
+					input#password(type="password", name="password")
+					span#password-error.error-msg(style="display:inline;")=passwordError || ''
+				input(type="hidden" name="returnTo" value=returnTo)
+				button(type="submit").login-btn Log In
+				p.signup-link
+					| Don't have an account?
+					a(href="/signup")  Sign Up
 block scripts
-    script(src="/js/layout.js")                    
+	script(src="/js/layout.js")                    

@@ -1,15 +1,15 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/products.css")
+	link(rel="stylesheet", href="/css/products.css")
 
 block content
-    main
-        .products-container
-            each product in products
-                a.products(href=`/products/${product.id}`)
-                    img.product-image(src=product.img_src alt='Image of ' + product.name)
-                    span.product-name #{product.name}
-                    span.product-price $#{product.price.toFixed(2)}
+	main
+		.products-container
+			each product in products
+				a.products(href=`/products/${product.id}`)
+					img.product-image(src=product.img_src alt='Image of ' + product.name)
+					span.product-name #{product.name}
+					span.product-price $#{product.price.toFixed(2)}
 block scripts
-    script(src="/js/layout.js")
+	script(src="/js/layout.js")

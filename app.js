@@ -20,17 +20,18 @@ const searchRouter = require('./routes/search');
 const orderRouter = require('./routes/order');
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60,
-        secure: false }
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+		maxAge: 1000 * 60 * 60,
+		secure: false
+	}
 }));
 
 app.use((req, res, next) => {
-    res.locals.user = req.session.user || null;
-    next();
+	res.locals.user = req.session.user || null;
+	next();
 });
 
 app.use(express.urlencoded({ extended: true }));
@@ -50,26 +51,26 @@ app.use('/order', orderRouter);
 
 // Map for routes
 const redirectRoutes = new Map([
-    ["/x", "https://x.com/"],
-    ["/instagram", "https://www.instagram.com/"],
-    ["/discord", "https://discord.com/"]
+	["/x", "https://x.com/"],
+	["/instagram", "https://www.instagram.com/"],
+	["/discord", "https://discord.com/"]
 ]);
 
 redirectRoutes.forEach((url, route) => {
-    app.get(route, (req, res) => {
-        res.redirect(url);
-    });
+	app.get(route, (req, res) => {
+		res.redirect(url);
+	});
 });
 
 // 404 handler
 app.use((req, res) => {
-    res.status(404).render('error', {
-        title: 'Oops!',
-        error: 'Sorry, the page you are looking for does not exist.'
-    });
+	res.status(404).render('error', {
+		title: 'Oops!',
+		error: 'Sorry, the page you are looking for does not exist.'
+	});
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+	console.log(`Server running on http://localhost:${PORT}`);
 });

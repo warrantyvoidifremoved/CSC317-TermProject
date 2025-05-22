@@ -1,82 +1,82 @@
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        title #{title}
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/css/layout.css")
-        link(rel="icon" type="image/png" href="/images/favicon.png")
-        link(rel="icon" type="image/png" sizes="64x64" href="/images/favicon/favicon-64x64.png")
-        link(rel="icon" type="image/png" sizes="128x128" href="/images/favicon/favicon-128x128.png")
-        link(rel="icon" type="image/png" sizes="256x256" href="/images/favicon/favicon-256x256.png")
+	head
+		meta(charset="UTF-8")
+		title #{title}
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="/css/layout.css")
+		link(rel="icon" type="image/png" href="/images/favicon.png")
+		link(rel="icon" type="image/png" sizes="64x64" href="/images/favicon/favicon-64x64.png")
+		link(rel="icon" type="image/png" sizes="128x128" href="/images/favicon/favicon-128x128.png")
+		link(rel="icon" type="image/png" sizes="256x256" href="/images/favicon/favicon-256x256.png")
 
-        block stylesheets
-    body
-        nav.desktop-nav
-            div.title
-                a(href="/") Rocks!
-            button#menu-toggle(aria-label="Toggle menu") ☰
-            ul#nav-links
-                li.search-container
-                    form(name="search", action="/search", method="GET")
-                        input(type="text", name="q")
-                        button(type="submit")
-                li
-                    a(href="/") Products ▾
-                    ul#nav-products
-                        li: a(href="/products/categories/igneous") Igneous
-                        li: a(href="/products/categories/sedimentary") Sedimentary
-                        li: a(href="/products/categories/metamorphic") Metamorphic
-                li: a(href="/about") About
-                li: a(href="/faq") FAQ
-                li
-                    a(href="#")
-                        img.nav-img(src="/images/nav/user.png", alt="User Profile")
-                    ul#profile-options
-                        if !user
-                            li: a(href="/login") Log In
-                            li: a(href="/signup") Sign Up
-                        else
-                            li: a(href="/user") Profile
-                            li: form(action="/logout", method="POST")
-                                button(type="submit" class="logout-link") Log Out
-                li: a(href="/cart")
-                    img.nav-img#cart(src="/images/nav/shopping-cart.png", alt="Shopping Cart")
-        nav.mobile-nav
-            .mobile-header
-                div.title
-                    a(href="/") Rocks!
-                button#mobile-menu-toggle(aria-label="Toggle menu") ☰
-            form.search-container(name="search", action="/search", method="GET")
-                input(type="text", name="q")
-                button(type="submit" aria-label="Search")
-            #sticky-nav-links
-                a(href="/") All
-                a(href="/products/categories/igneous") Igneous
-                a(href="/products/categories/sedimentary") Sedimentary
-                a(href="/products/categories/metamorphic") Metamorphic
-            ul#mobile-nav-links
-                li: a(href="/about") About
-                li: a(href="/faq") FAQ
-                li: a(href="/cart") Cart
-                if !user
-                    li: a(href="/login") Log In
-                    li: a(href="/signup") Sign Up
-                else
-                    li: a(href="/user") Profile
-                    li
-                        form(action="/logout", method="POST")
-                            button(type="submit" class="logout-link") Log Out
-        block content
-        footer
-            #footer
-                #SFSU © 2025 San Francisco State University - Introduction to Web Software Development
-                .social-media
-                    a(href="/x", target="_blank")
-                        img#X(src="/images/social_media/X-logo.png", alt="X Logo")
-                    a(href="/instagram", target="_blank")
-                        img#instagram(src="/images/social_media/Instagram-logo.png", alt="Instagram Logo")
-                    a(href="/discord", target="_blank")
-                        img#discord(src="/images/social_media/Discord-logo.png", alt="Discord Logo")
+		block stylesheets
+	body
+		nav.desktop-nav
+			div.title
+				a(href="/") Rocks!
+			button#menu-toggle(aria-label="Toggle menu") ☰
+			ul#nav-links
+				li.search-container
+					form(name="search", action="/search", method="GET")
+						input(type="text", name="q")
+						button(type="submit")
+				li
+					a(href="/") Products ▾
+					ul#nav-products
+						li: a(href="/products/categories/igneous") Igneous
+						li: a(href="/products/categories/sedimentary") Sedimentary
+						li: a(href="/products/categories/metamorphic") Metamorphic
+				li: a(href="/about") About
+				li: a(href="/faq") FAQ
+				li
+					a(href="#")
+						img.nav-img(src="/images/nav/user.png", alt="User Profile")
+					ul#profile-options
+						if !user
+							li: a(href="/login") Log In
+							li: a(href="/signup") Sign Up
+						else
+							li: a(href="/user") Profile
+							li: form(action="/logout", method="POST")
+								button(type="submit" class="logout-link") Log Out
+				li: a(href="/cart")
+					img.nav-img#cart(src="/images/nav/shopping-cart.png", alt="Shopping Cart")
+		nav.mobile-nav
+			.mobile-header
+				div.title
+					a(href="/") Rocks!
+				button#mobile-menu-toggle(aria-label="Toggle menu") ☰
+			form.search-container(name="search", action="/search", method="GET")
+				input(type="text", name="q")
+				button(type="submit" aria-label="Search")
+			#sticky-nav-links
+				a(href="/") All
+				a(href="/products/categories/igneous") Igneous
+				a(href="/products/categories/sedimentary") Sedimentary
+				a(href="/products/categories/metamorphic") Metamorphic
+			ul#mobile-nav-links
+				li: a(href="/about") About
+				li: a(href="/faq") FAQ
+				li: a(href="/cart") Cart
+				if !user
+					li: a(href="/login") Log In
+					li: a(href="/signup") Sign Up
+				else
+					li: a(href="/user") Profile
+					li
+						form(action="/logout", method="POST")
+							button(type="submit" class="logout-link") Log Out
+		block content
+		footer
+			#footer
+				#SFSU © 2025 San Francisco State University - Introduction to Web Software Development
+				.social-media
+					a(href="/x", target="_blank")
+						img#X(src="/images/social_media/X-logo.png", alt="X Logo")
+					a(href="/instagram", target="_blank")
+						img#instagram(src="/images/social_media/Instagram-logo.png", alt="Instagram Logo")
+					a(href="/discord", target="_blank")
+						img#discord(src="/images/social_media/Discord-logo.png", alt="Discord Logo")
 block scripts
-    script(src="/js/layout.js")
+	script(src="/js/layout.js")

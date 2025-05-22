@@ -1,49 +1,49 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/product_details.css")
+	link(rel="stylesheet", href="/css/product_details.css")
 
 block content
-    main
-        section.product-container
-            .image-container
-                img(src=product.img_src alt='Image of ' + product.name)
-            .details-container
-                .product
-                    span.name #{product.name}
-                    a.category(href=`/products/categories/${product.category}`) #{product.category.charAt(0).toUpperCase() + product.category.slice(1)}
-                hr
-                .about
-                    span.about-heading About
-                    span.details #{product.about}
-                hr
-                .checkout
-                    span.price US $#{product.price.toFixed(2)}
-                    form(action="/cart" method="POST")
-                        label(for="quantity") Quantity: 
-                        input(type="text" class="quantity" name="quantity" min="1" value="1")
-                        input(type="hidden" name="product_id" value=product.id)
-                        button(type="submit").add-to-cart Add to Cart
-            section.suggested-container
-                span.suggested-heading Suggested for You
-                .suggested-items
-                    each suggest in suggested
-                        if suggest.id != product.id
-                            a.suggested(href=`/products/${suggest.id}`)
-                                img.suggested-image(src=suggest.img_src alt='Image of ' + suggest.name)
-                                span.suggested-name #{suggest.name}
-                                span.suggested-price $#{suggest.price.toFixed(2)}
-            section.reviews-container
-                h2 Reviews
-                each review in reviews
-                    .review
-                        .top
-                            .user
-                                img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
-                                span #{review.username}
-                            .timestamp
-                                span Reviewed on #{review.timestamp}
-                        .bottom
-                            span #{review.review}
+	main
+		section.product-container
+			.image-container
+				img(src=product.img_src alt='Image of ' + product.name)
+			.details-container
+				.product
+					span.name #{product.name}
+					a.category(href=`/products/categories/${product.category}`) #{product.category.charAt(0).toUpperCase() + product.category.slice(1)}
+				hr
+				.about
+					span.about-heading About
+					span.details #{product.about}
+				hr
+				.checkout
+					span.price US $#{product.price.toFixed(2)}
+					form(action="/cart" method="POST")
+						label(for="quantity") Quantity: 
+						input(type="text" class="quantity" name="quantity" min="1" value="1")
+						input(type="hidden" name="product_id" value=product.id)
+						button(type="submit").add-to-cart Add to Cart
+			section.suggested-container
+				span.suggested-heading Suggested for You
+				.suggested-items
+					each suggest in suggested
+						if suggest.id != product.id
+							a.suggested(href=`/products/${suggest.id}`)
+								img.suggested-image(src=suggest.img_src alt='Image of ' + suggest.name)
+								span.suggested-name #{suggest.name}
+								span.suggested-price $#{suggest.price.toFixed(2)}
+			section.reviews-container
+				h2 Reviews
+				each review in reviews
+					.review
+						.top
+							.user
+								img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
+								span #{review.username}
+							.timestamp
+								span Reviewed on #{review.timestamp}
+						.bottom
+							span #{review.review}
 block scripts
-    script(src="/js/layout.js")                            
+	script(src="/js/layout.js")                            

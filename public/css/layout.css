@@ -322,7 +322,7 @@ body {
 		background-image: url("/images/nav/search.png");
 	}
 
-    #sticky-nav-links {
+	#sticky-nav-links {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;

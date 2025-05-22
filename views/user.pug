@@ -1,141 +1,141 @@
 extends layout
 
 block stylesheets
-    link(rel="stylesheet", href="/css/user.css")
+	link(rel="stylesheet", href="/css/user.css")
 
 block content
-    .account-wrapper
-        aside.sidebar
-            .profile
-                img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
-                h3 #{username}
-            nav.sidebar-links
-                button.option(type="button", data-section="orders") Orders
-                button.option(type="button", data-section="reviews") Reviews
-                button.option(type="button", data-section="addresses") Addresses
-                button.option(type="button", data-section="change-password") Change Password
-        main.main-content(data-selected-section=selectedSection || 'orders')
-            .orders(data-section="orders")
-                h2.sectionHeading Orders
-                each order in orders
-                    .order-card
-                        .top
-                            span Order Placed: #{order.order_date}
-                            span Total: US $#{order.total.toFixed(2)}
-                            span Order #: #{order.order_number}
-                        hr
-                        .products
-                            each product in order.products
-                                .item
-                                    .image
-                                        a(href=`/products/${product.id}`)
-                                            img(src=product.img_src, alt=product.name)
-                                    .details
-                                        a(href=`/products/${product.id}`)
-                                            span #{product.name} x#{product.quantity}
-            .reviews(data-section="reviews")
-                h2.sectionHeading Pending Reviews
-                .reviews-container
-                    each product in uniqueProducts
-                        .review-card
-                            .item
-                                .image
-                                    a(href=`/products/${product.id}`)
-                                        img(src=product.img_src, alt=product.name)
-                                .details
-                                    a(href=`/products/${product.id}`)
-                                        span #{product.name}
-                            .review
-                                form(action="/user/submit_review", method="POST")
-                                    input(type="hidden", name="product_id", value=product.id)
-                                    textarea(name="review", required)
-                                    button.submitReview(type="submit") Submit Review
-                h2.sectionHeading Submitted Reviews
-                .reviews-container
-                    each review in reviews
-                        .review-card
-                            .item
-                                .image
-                                    a(href=`/products/${review.product_id}`)
-                                        img(src=review.img_src, alt=review.name)
-                                .details
-                                    a(href=`/products/${review.product_id}`)
-                                        span #{review.name}
-                            .review
-                                span #{review.review}
-            .change-password(data-section="change-password")
-                h2.sectionHeading Change Password
-                .change-password-container
-                    form(action="/user/change_pass", method="POST")
-                        .form-row-password
-                            label(for="currentPassword") Current Password
-                            input#currentPassword(type="password", name="currentPassword", required)
-                        .form-row-password
-                            label(for="newPassword") New Password
-                            input#newPassword(type="password", name="newPassword", required minlength="8")
-                        .form-row-password
-                            label(for="confirmPassword") Confirm New Password
-                            input#confirmPassword(type="password", name="confirmPassword", required minlength="8")
-                        if error
-                            .error-msg= error
-                        if success
-                            .success-msg= success
-                        button(type="submit").submit-btn Update Password
-            .addresses(data-section="addresses")
-                h2.sectionHeading Addresses
-                .addresses-container
-                    .add-address
-                        .heading
-                            h2 Add Address
-                        .information
-                            form(action="/user/add_address", method="POST")
-                                .form-row-address
-                                    label(for="nickname") Address Name:
-                                    input#nickname(type="text", name="nickname", placeholder="Default: Address")
-                                .form-row-address
-                                    label(for="name") Full Name:
-                                    input#name(type="text", name="name", required)
-                                .form-row-address
-                                    label(for="phone") Phone Number:
-                                    input#phone(type="tel", name="phone")
-                                .form-row-address
-                                    label(for="address1") Address Line 1:
-                                    input#address1(type="text", name="address1", required)
-                                .form-row-address
-                                    label(for="address2") Address Line 2:
-                                    input#address2(type="text", name="address2")
-                                .form-row-address
-                                    label(for="city") City:
-                                    input#city(type="text", name="city", required)
-                                .form-row-address
-                                    label(for="state") State:
-                                    input#state(type="text", name="state", required)
-                                .form-row-address
-                                    label(for="zip") Zip Code:
-                                    input#zip(type="text", name="zip", required)
-                                button#save-address(type="submit").submit-btn Save Address
-                    each address in addresses
-                        .address
-                            .heading
-                                h2 #{address.nickname}
-                                form(action="/user/remove_address" method="POST")
-                                    input(type="hidden", name="address_id", value=address.id)
-                                    button(type="submit" class="remove")
-                                        img(src="/images/users/remove.png" alt="Remove address")
-                            .information
-                                span #{address.name}
-                                if address.phone
-                                    span #{address.phone}
-                                span #{address.address1}
-                                if address.address2
-                                    span #{address.address2}
-                                span #{address.city}, #{address.state} #{address.zip}
-                                if address.id == default_address_id
-                                    span#default-address Default Address
-                                else
-                                    form(action="/user/set_default_address", method="POST")
-                                        input(type="hidden", name="address_id", value=address.id)
-                                        button#set-default-address(type="submit").submit-btn Use as Default
+	.account-wrapper
+		aside.sidebar
+			.profile
+				img.profile-pic(src="/images/users/user-default.png", alt="Profile Picture")
+				h3 #{username}
+			nav.sidebar-links
+				button.option(type="button", data-section="orders") Orders
+				button.option(type="button", data-section="reviews") Reviews
+				button.option(type="button", data-section="addresses") Addresses
+				button.option(type="button", data-section="change-password") Change Password
+		main.main-content(data-selected-section=selectedSection || 'orders')
+			.orders(data-section="orders")
+				h2.sectionHeading Orders
+				each order in orders
+					.order-card
+						.top
+							span Order Placed: #{order.order_date}
+							span Total: US $#{order.total.toFixed(2)}
+							span Order #: #{order.order_number}
+						hr
+						.products
+							each product in order.products
+								.item
+									.image
+										a(href=`/products/${product.id}`)
+											img(src=product.img_src, alt=product.name)
+									.details
+										a(href=`/products/${product.id}`)
+											span #{product.name} x#{product.quantity}
+			.reviews(data-section="reviews")
+				h2.sectionHeading Pending Reviews
+				.reviews-container
+					each product in uniqueProducts
+						.review-card
+							.item
+								.image
+									a(href=`/products/${product.id}`)
+										img(src=product.img_src, alt=product.name)
+								.details
+									a(href=`/products/${product.id}`)
+										span #{product.name}
+							.review
+								form(action="/user/submit_review", method="POST")
+									input(type="hidden", name="product_id", value=product.id)
+									textarea(name="review", required)
+									button.submitReview(type="submit") Submit Review
+				h2.sectionHeading Submitted Reviews
+				.reviews-container
+					each review in reviews
+						.review-card
+							.item
+								.image
+									a(href=`/products/${review.product_id}`)
+										img(src=review.img_src, alt=review.name)
+								.details
+									a(href=`/products/${review.product_id}`)
+										span #{review.name}
+							.review
+								span #{review.review}
+			.change-password(data-section="change-password")
+				h2.sectionHeading Change Password
+				.change-password-container
+					form(action="/user/change_pass", method="POST")
+						.form-row-password
+							label(for="currentPassword") Current Password
+							input#currentPassword(type="password", name="currentPassword", required)
+						.form-row-password
+							label(for="newPassword") New Password
+							input#newPassword(type="password", name="newPassword", required minlength="8")
+						.form-row-password
+							label(for="confirmPassword") Confirm New Password
+							input#confirmPassword(type="password", name="confirmPassword", required minlength="8")
+						if error
+							.error-msg= error
+						if success
+							.success-msg= success
+						button(type="submit").submit-btn Update Password
+			.addresses(data-section="addresses")
+				h2.sectionHeading Addresses
+				.addresses-container
+					.add-address
+						.heading
+							h2 Add Address
+						.information
+							form(action="/user/add_address", method="POST")
+								.form-row-address
+									label(for="nickname") Address Name:
+									input#nickname(type="text", name="nickname", placeholder="Default: Address")
+								.form-row-address
+									label(for="name") Full Name:
+									input#name(type="text", name="name", required)
+								.form-row-address
+									label(for="phone") Phone Number:
+									input#phone(type="tel", name="phone")
+								.form-row-address
+									label(for="address1") Address Line 1:
+									input#address1(type="text", name="address1", required)
+								.form-row-address
+									label(for="address2") Address Line 2:
+									input#address2(type="text", name="address2")
+								.form-row-address
+									label(for="city") City:
+									input#city(type="text", name="city", required)
+								.form-row-address
+									label(for="state") State:
+									input#state(type="text", name="state", required)
+								.form-row-address
+									label(for="zip") Zip Code:
+									input#zip(type="text", name="zip", required)
+								button#save-address(type="submit").submit-btn Save Address
+					each address in addresses
+						.address
+							.heading
+								h2 #{address.nickname}
+								form(action="/user/remove_address" method="POST")
+									input(type="hidden", name="address_id", value=address.id)
+									button(type="submit" class="remove")
+										img(src="/images/users/remove.png" alt="Remove address")
+							.information
+								span #{address.name}
+								if address.phone
+									span #{address.phone}
+								span #{address.address1}
+								if address.address2
+									span #{address.address2}
+								span #{address.city}, #{address.state} #{address.zip}
+								if address.id == default_address_id
+									span#default-address Default Address
+								else
+									form(action="/user/set_default_address", method="POST")
+										input(type="hidden", name="address_id", value=address.id)
+										button#set-default-address(type="submit").submit-btn Use as Default
 block scripts
-    script(src="/js/layout.js")
-    script(src="/js/user.js")
+	script(src="/js/layout.js")
+	script(src="/js/user.js")
