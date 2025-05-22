@@ -1,8 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(faqItem => {
-        faqItem.addEventListener('click', () => {
-            faqItem.classList.toggle('expanded');
+        faqItem.addEventListener('click', (e) => {
+            if (!faqItem.classList.contains('expanded')) {
+                faqItem.classList.add('expanded');
+            } 
+            else {
+                if (e.target.classList.contains('faq-collapse')) {
+                    faqItem.classList.remove('expanded');
+                }
+            }
         });
     });
 
@@ -19,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (buttonCategory === 'all' || itemCategory === buttonCategory) {
                     faqItem.style.display = 'block';
-                }
+                } 
                 else {
                     faqItem.style.display = 'none';
                 }

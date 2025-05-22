@@ -73,6 +73,10 @@
 	transition: all 0.3s ease-in-out;
 }
 
+.faq-toggle {
+	cursor: pointer;
+}
+
 .faq-question {
 	display: flex;
 	justify-content: space-between;
@@ -101,6 +105,7 @@
 
 .faq-item.expanded {
 	border: solid white 0.125rem;
+	cursor: default;
 }
 
 .faq-item.expanded .faq-answer {
