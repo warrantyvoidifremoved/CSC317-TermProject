@@ -230,7 +230,7 @@ hr {
 	border-top: 0.0625rem solid black;
 }
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.payment-wrapper {
 		flex-direction: column;

@@ -251,7 +251,7 @@ hr {
 	font-style: italic;
 }
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.product-container {
 		display: flex;

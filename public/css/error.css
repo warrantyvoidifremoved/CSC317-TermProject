@@ -16,8 +16,7 @@ main {
 	border-radius: 0.5rem;
 }
 
-
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.error {
 		font-size: 2rem;

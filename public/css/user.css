@@ -405,7 +405,7 @@ hr {
 	margin-top: 1.25rem;
 }
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.review-card {
 		width: 100%;

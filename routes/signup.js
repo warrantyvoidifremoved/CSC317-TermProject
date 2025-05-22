@@ -52,7 +52,8 @@ router.post('/', async (req, res) => {
 		};
 		res.redirect('/');
 
-	} catch (err) {
+	}
+	catch (err) {
 		console.error('Signup error:', err);
 		res.status(500).render('error', {
 			title: 'Oops!',

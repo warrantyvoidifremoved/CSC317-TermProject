@@ -140,7 +140,7 @@ hr {
 }
 
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.hero {
 		height: auto;

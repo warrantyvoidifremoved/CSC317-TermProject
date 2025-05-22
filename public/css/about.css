@@ -139,7 +139,7 @@
 	margin-bottom: 0.3rem;
 }
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.hero {
 		padding: 1rem;

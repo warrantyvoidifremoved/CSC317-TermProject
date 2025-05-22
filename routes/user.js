@@ -175,7 +175,8 @@ router.post('/change_pass', async (req, res) => {
 			addresses,
 			reviews
 		});
-	} catch (err) {
+	}
+	catch (err) {
 		console.error(err);
 		res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
 	}
@@ -238,7 +239,8 @@ router.post('/add_address', async (req, res) => {
 			uniqueProducts,
 			reviews
 		});
-	} catch (err) {
+	}
+	catch (err) {
 		console.error(err);
 		res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
 	}
@@ -289,7 +291,8 @@ router.post('/remove_address', async (req, res) => {
 			uniqueProducts,
 			reviews
 		});
-	} catch (err) {
+	}
+	catch (err) {
 		console.error('Error deleting address:', err);
 		res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
 	}
@@ -334,7 +337,8 @@ router.post('/submit_review', async (req, res) => {
 			uniqueProducts,
 			reviews
 		});
-	} catch (err) {
+	}
+	catch (err) {
 		console.error(err);
 		res.status(500).render('error', { title: 'Error', error: 'Database query failed' });
 	}
@@ -374,7 +378,8 @@ router.post('/set_default_address', async (req, res) => {
 			uniqueProducts,
 			reviews
 		});
-	} catch (err) {
+	}
+	catch (err) {
 		console.error('Set Default Address Error:', err);
 		res.status(500).render('error', { title: 'Error', error: err.message || 'Failed to set default address' });
 	}

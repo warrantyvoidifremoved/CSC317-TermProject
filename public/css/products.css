@@ -53,8 +53,7 @@
 	font-weight: 600;
 }
 
-
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.products-container {
 		grid-template-columns: 1fr;

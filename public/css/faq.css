@@ -120,7 +120,7 @@
 	display: block;
 }
 
-/* Mobile Friendly */
+/* Mobile Styling */
 @media (max-width: 768px) {
 	.hero-section {
 		padding: 1rem;
