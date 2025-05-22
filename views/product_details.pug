@@ -27,10 +27,8 @@ block content
             section.suggested-container
                 span.suggested-heading Suggested for You
                 .suggested-items
-                    - let count = 0
                     each suggest in suggested
-                        if suggest.id != product.id && count < 5
-                            - count++
+                        if suggest.id != product.id
                             a.suggested(href=`/products/${suggest.id}`)
                                 img.suggested-image(src=suggest.img_src alt='Image of ' + suggest.name)
                                 span.suggested-name #{suggest.name}

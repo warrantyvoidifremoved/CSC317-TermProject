@@ -149,15 +149,18 @@ hr {
 }
 
 .suggested-items {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	justify-content: center;
+	display: flex;
+	flex-direction: row;
+	padding-bottom: 0.5rem;
 	gap: 1rem;
+	overflow-x: auto;
+	overflow-y: hidden;
 }
 
 .suggested {
 	display: flex;
 	flex-direction: column;
+	min-width: 20rem;
 	align-items: center;
 	justify-content: center;
 	background-color: #003153;
@@ -367,16 +370,8 @@ hr {
 		margin-bottom: 0.5rem;
 	}
 
-	.suggested-items {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 0.5rem;
-		width: 100%;
-		overflow-x: visible;
-	}
-
 	.suggested {
-		min-width: 0;
+		min-width: 7rem;
 		padding: 0.5rem;
 		height: auto;
 		border-width: 0.0625rem;
@@ -424,10 +419,6 @@ hr {
 		font-size: 1.1rem;
 	}
 
-	.suggested-items {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
 	.suggested-image {
 		width: 90%;
 	}
@@ -442,10 +433,6 @@ hr {
 }
 
 @media (max-width: 320px) {
-	.suggested-items {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
 	.add-to-cart {
 		font-size: 0.9rem;
 		padding: 0.6rem;
