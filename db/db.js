@@ -30,7 +30,6 @@ async function setupDatabase() {
 		`);
 		console.log('Products table ensured');
 
-
 		// Create users table
 		await db.runAsync(`
 			CREATE TABLE IF NOT EXISTS users (
