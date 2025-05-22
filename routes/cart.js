@@ -5,7 +5,7 @@ const db = require('../db/db');
 // Add to cart
 router.post('/', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).render('login', { title: 'Rocks! | Login'});
+        return res.redirect(`/login?returnTo=${encodeURIComponent(req.get('Referer') || '/')}`);
     }
 
     const user_id = req.session.user.id;
@@ -39,7 +39,7 @@ router.post('/', async (req, res) => {
 // Update cart
 router.post('/update', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).render('login', { title: 'Rocks! | Login'});
+        return res.redirect(`/login?returnTo=${encodeURIComponent(req.originalUrl || '/')}`);
     }
 
     const user_id = req.session.user.id;
@@ -96,7 +96,7 @@ router.post('/update', async (req, res) => {
 // Cart page
 router.get('/', async (req, res) => {
     if (!req.session.user) {
-        return res.status(401).render('login', { title: 'Rocks! | Login'});
+        return res.redirect(`/login?returnTo=${encodeURIComponent(req.originalUrl || '/')}`);
     }
 
     else {

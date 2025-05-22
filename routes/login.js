@@ -4,7 +4,8 @@ const db = require('../db/db');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('login', { title: 'Rocks! | Login' });
+    const returnTo = req.query.returnTo || '/';
+    res.render('login', { title: 'Rocks! | Login', returnTo });
 });
 
 router.post('/', async (req, res) => {
@@ -48,8 +49,9 @@ router.post('/', async (req, res) => {
                 id: user.id,
                 username: user.username
             };
-            res.redirect('/')
-        } catch (err) {
+            res.redirect(req.body.returnTo || '/');
+        } 
+        catch (err) {
             console.error('Login error:', err);
             res.status(500).render('error', {
                 title: 'Oops!',
@@ -57,7 +59,6 @@ router.post('/', async (req, res) => {
             });
         }
     }
-)
-;
+);
 
 module.exports = router;

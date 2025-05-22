@@ -16,6 +16,7 @@ block content
                     label(for="password") Password
                     input#password(type="password", name="password")
                     span#password-error.error-msg(style="display:inline;")=passwordError || ''
+                input(type="hidden" name="returnTo" value=returnTo)
                 button(type="submit").login-btn Log In
                 p.signup-link
                     | Don't have an account?
