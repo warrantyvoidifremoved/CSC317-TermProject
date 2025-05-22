@@ -17,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
             expandedBox1.innerHTML = `
                 <div class="expanded-heading">
                     <h2>${heading}</h2>
-                    <img src="/images/about/collapse.png" alt="Collapse topic"> 
+                    <img src="/images/about/collapse.png" alt="Collapse topic" class="collapse"> 
                 </div>
                 <div class="content">${contentHTML}</div>
             `;
             expandedBox1.classList.add('expanded');
 
-            expandedBox1.addEventListener('click', () => {
+            const collapseImg = expandedBox1.querySelector('.collapse');
+            collapseImg.addEventListener('click', () => {
                 if (activeCircle1) activeCircle1.style.display = '';
                 activeCircle1 = null;
 
@@ -55,13 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
             expandedBox2.innerHTML = `
                 <div class="expanded-heading">
                     <h2>${heading}</h2>
-                    <img src="/images/about/collapse.png" alt="Collapse topic"> 
+                    <img src="/images/about/collapse.png" alt="Collapse topic" class="collapse"> 
                 </div>
                 <div class="${wrapperClass}">${contentHTML}</div>
             `;
             expandedBox2.classList.add('expanded');
 
-            expandedBox2.addEventListener('click', () => {
+            const collapseImg = expandedBox2.querySelector('.collapse');
+            collapseImg.addEventListener('click', () => {
                 if (activeCircle2) activeCircle2.style.display = '';
                 activeCircle2 = null;
 

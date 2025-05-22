@@ -26,7 +26,6 @@
 	margin: 4rem auto;
 	padding: 1.5rem;
 	width: 77.3%;
-	cursor: pointer;
 	background-color: #749D92;
 	border: 0.125rem solid white;
 	border-radius: 0.5rem;
@@ -174,7 +173,7 @@
 
 	.expanded-container-1,
 	.expanded-container-2 {
-		width: 90%;
+		width: 76.5%;
 		margin: 2rem auto;
 	}
 
